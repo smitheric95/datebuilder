@@ -1,11 +1,11 @@
 <?php
 function create_database($name) {
 
-    $servername = "localhost";
-    $username = "datebuilder";
-    $password = "password";
+    $db_servername = "localhost";
+    $db_username = "datebuilder";
+    $db_password = "password";
 
-    $conn = new mysqli($servername, $username, $password);
+    $conn = new mysqli($db_servername, $db_username, $db_password);
 //    $logger = $this->get('logger');
 
     // Check connection

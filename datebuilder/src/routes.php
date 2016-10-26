@@ -24,18 +24,31 @@ $app->get('/hello/{name}', function (Request $request, Response $response) {
 });
 
 $app->post('/users', function (Request $request, Response $response) {
-    // include
-});
+    $name = $request->getAttribute('name');
+    $email = $request->getAttribute('email');
+    $password = $request->getAttribute('password');
+    $age = $request->getAttribute('age');
+    $loc_serv = $request->getAttribute('allow_loc_services');
 
-$app->get('/sys_create_database/', function (Request $request, Response $response) {
-    include '_setup.php';
-    try {
-        create_database("datebuilder_db");
-        $response->getBody()->write("database created");
-    } catch (Exception $e) {
-        $response->getBody()->write("error creating database:", $e->getMessage());
+    include 'add_user.php';
+
+    if (add_user($name, $password, $email, $age, $loc_serv)) {
+        $response->getBody()->write("New account created successfully.");
+    } else {
+        $response->getBody()->write("Error creating account, account already exists.");
     }
-
 
     return $response;
 });
+
+//$app->get('/sys_create_database/', function (Request $request, Response $response) {
+//    include '_setup.php';
+//    try {
+//        create_database("datebuilder_db");
+//        $response->getBody()->write("database created");
+//    } catch (Exception $e) {
+//        $response->getBody()->write("error creating database: " . $e->getMessage());
+//    }
+//
+//    return $response;
+//});
