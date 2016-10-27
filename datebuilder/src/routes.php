@@ -23,7 +23,7 @@ $app->get('/hello/{name}', function (Request $request, Response $response) {
     return $response;
 });
 
-$app->post('/users', function (Request $request, Response $response) {
+$app->post('/users/', function (Request $request, Response $response) {
     $parsed_body = $request->getParsedBody();
     var_dump($parsed_body);
     $name = $parsed_body['name'];
