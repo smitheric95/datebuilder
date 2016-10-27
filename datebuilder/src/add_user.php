@@ -5,8 +5,8 @@
 function add_user($name, $password, $email, $age, $allow_loc_services) {
 
     $db_servername = "localhost";
-    $db_username = "root";
-    $db_password = "pass";
+    $db_username = "app";
+    $db_password = "app!db!password";
     $table_name = "datebuilder_db.users";
 
     $conn = new mysqli($db_servername, $db_username, $db_password);
