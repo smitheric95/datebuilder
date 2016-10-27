@@ -4,7 +4,7 @@
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 
-require '../vendor/autoload.php';
+// require '../vendor/autoload.php';
 
 $app = new \Slim\App;
 
@@ -22,4 +22,37 @@ $app->get('/hello/{name}', function (Request $request, Response $response) {
 
     return $response;
 });
-// $app->run();
+
+$app->post('/users', function (Request $request, Response $response) {
+    $parsed_body = $request->getParsedBody();
+    var_dump($parsed_body);
+    $name = $parsed_body['name'];
+    $email = $parsed_body['email'];
+    $password = $parsed_body['password'];
+    $age = $parsed_body['age'];
+    $loc_serv = $parsed_body['allow_loc_services'];
+
+    include 'add_user.php';
+
+    $status = add_user($name, $password, $email, $age, $loc_serv);
+
+    if ($status === TRUE) {
+        $response->getBody()->write("New account created successfully.");
+    } else {
+        $response->getBody()->write("Error creating account: ". $status);
+    }
+
+    return $response;
+});
+
+//$app->get('/sys_create_database/', function (Request $request, Response $response) {
+//    include '_setup.php';
+//    try {
+//        create_database("datebuilder_db");
+//        $response->getBody()->write("database created");
+//    } catch (Exception $e) {
+//        $response->getBody()->write("error creating database: " . $e->getMessage());
+//    }
+//
+//    return $response;
+//});
