@@ -24,17 +24,17 @@
       <file leaf-file-name="_setup.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/_setup.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" column="38" selection-start-line="18" selection-start-column="38" selection-end-line="18" selection-end-column="38" />
+            <state relative-caret-position="150">
+              <caret line="10" column="23" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="routes.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="routes.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/routes.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
+            <state relative-caret-position="223">
               <caret line="25" column="8" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="8" />
               <folding>
                 <element signature="e#17#73#0#PHP" expanded="true" />
@@ -43,27 +43,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="add_user.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="add_user.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/add_user.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="885">
-              <caret line="59" column="8" selection-start-line="59" selection-start-column="8" selection-end-line="59" selection-end-column="8" />
+            <state relative-caret-position="-135">
+              <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="9" selection-end-column="41" />
               <folding>
-                <marker date="1477576531000" expanded="true" signature="1542:1554" ph="INSERT INTO ${$table_name}... " />
-                <marker date="1477576531000" expanded="true" signature="1542:1581" ph="INSERT INTO DATABASE... " />
-                <marker date="1477576531000" expanded="true" signature="1542:1652" ph="INSERT INTO ${$table_name}VALUES... " />
-                <marker date="1477576531000" expanded="true" signature="1542:1653" ph="INSERT INTO ${$db_name}... " />
-                <marker date="1477576531000" expanded="true" signature="1722:1816" ph="INSERT INTO $... " />
+                <marker date="1477586224000" expanded="true" signature="1589:1601" ph="INSERT INTO $... " />
+                <marker date="1477586224000" expanded="true" signature="1589:1749" ph="INSERT INTO " />
+                <marker date="1477586224000" expanded="true" signature="2058:2218" ph="INSERT INTO $... " />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="satly.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/satly.php">
+      <file leaf-file-name="salty.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/salty.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="35" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -123,6 +121,48 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="WebServerToolWindowFactoryState" value="false" />
   </component>
+  <component name="RunManager">
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" working-dir="">
+      <method />
+    </configuration>
+    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpBehatConfigurationType" factoryName="Behat">
+      <BehatRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run-script" />
+      <scripts />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <working-directory />
+      <pass-parent-env>true</pass-parent-env>
+      <envs />
+      <ui />
+      <extra-mocha-options />
+      <test-kind>DIRECTORY</test-kind>
+      <test-directory />
+      <recursive>false</recursive>
+      <method />
+    </configuration>
+  </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
   </component>
@@ -133,15 +173,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1477506434254</updated>
-      <workItem from="1477506436485" duration="13595000" />
+      <workItem from="1477506436485" duration="16489000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13595000" />
+    <option name="totallyTimeSpent" value="16489000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1280" height="734" extended-state="6" />
+    <frame x="0" y="23" width="1280" height="734" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -179,42 +219,48 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/_setup.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="38" selection-start-line="18" selection-start-column="38" selection-end-line="18" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/satly.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="35" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
+        <state relative-caret-position="165">
+          <caret line="11" column="1" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/routes.php">
+    <entry file="file://$PROJECT_DIR$/src/salty.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="25" column="8" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="8" />
-          <folding>
-            <element signature="e#17#73#0#PHP" expanded="true" />
-          </folding>
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/_setup.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="23" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/add_user.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="885">
-          <caret line="59" column="8" selection-start-line="59" selection-start-column="8" selection-end-line="59" selection-end-column="8" />
+        <state relative-caret-position="-135">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="9" selection-end-column="41" />
           <folding>
-            <marker date="1477576531000" expanded="true" signature="1542:1554" ph="INSERT INTO ${$table_name}... " />
-            <marker date="1477576531000" expanded="true" signature="1542:1581" ph="INSERT INTO DATABASE... " />
-            <marker date="1477576531000" expanded="true" signature="1542:1652" ph="INSERT INTO ${$table_name}VALUES... " />
-            <marker date="1477576531000" expanded="true" signature="1542:1653" ph="INSERT INTO ${$db_name}... " />
-            <marker date="1477576531000" expanded="true" signature="1722:1816" ph="INSERT INTO $... " />
+            <marker date="1477586224000" expanded="true" signature="1589:1601" ph="INSERT INTO $... " />
+            <marker date="1477586224000" expanded="true" signature="1589:1749" ph="INSERT INTO " />
+            <marker date="1477586224000" expanded="true" signature="2058:2218" ph="INSERT INTO $... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/routes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="223">
+          <caret line="25" column="8" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="8" />
+          <folding>
+            <element signature="e#17#73#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>

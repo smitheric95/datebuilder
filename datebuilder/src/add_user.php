@@ -19,7 +19,7 @@ function add_user($name, $password, $email, $age, $allow_loc_services) {
 
     // regex check input
     $name_pattern = "/^\w+$/";
-    $email_pattern = "/^\w+@\w\.\w{3}$/";
+    $email_pattern = "/^\w+@\w+\.\w{3}$/";
     $age_pattern = "/^\d{1,3}$/";
     $loc_serv_pattern = "/^(True|False)$/";
 
@@ -40,18 +40,12 @@ function add_user($name, $password, $email, $age, $allow_loc_services) {
             $allow_loc_services = 0;
         }
 
-//        $sql = "INSERT INTO " . $table_name . "VALUES (" . $name . $email . $age . $allow_loc_services . $password . $salt . ")";
+//        $email = mysqli_real_escape_string()
 
-        //prepare statement
-        if (!$stmt = $conn->prepare("INSERT INTO ? (name, email, age, allow_loc_services, password, salt) VALUES (?, ?, ?, ?, ?, ?)")) {
-            echo "Error preparing statement: " . $stmt->error . "\n";
-        }
-        //bind parameters
-        if (!$stmt->bind_param("sssiiss", $table_name, $name, $email, $age, $allow_loc_services, $password, $salt)) {
-            echo "Error binding parameters: " . $stmt->error . "\n";
-        }
-        //execute statement
-        if ($stmt->execute()) {
+        $sql = "INSERT INTO {$table_name} (name, email, age, allow_loc_services, password, salt) VALUES ('$name', '$email', '$age', '$allow_loc_services', '$password', '$salt')";
+
+
+        if ($conn->query($sql) === TRUE) {
             echo "New user successfully created";
             $conn->close();
             return TRUE;
@@ -59,7 +53,22 @@ function add_user($name, $password, $email, $age, $allow_loc_services) {
             return "Error adding new user: " . $conn->error;
         }
 
-
+//        //prepare statement
+//        if (!$stmt = $conn->prepare("INSERT INTO '$table_name' (name, email, age, allow_loc_services, password, salt) VALUES ('$name', '$email', '$age', '$allow_loc_services', '$password', '$salt')")) {
+//            return "Error preparing statement: " . $conn->error . "</br>";
+//        }
+//        //bind parameters
+//        if (!$stmt->bind_param("sssiiss", $table_name, $name, $email, $age, $allow_loc_services, $password, $salt)) {
+//            return "Error binding parameters: " . $conn->error . "</br>";
+//        }
+//        //execute statement
+//        if ($stmt->execute()) {
+//            echo "New user successfully created";
+//            $conn->close();
+//            return TRUE;
+//        } else {
+//            return "Error adding new user: " . $conn->error;
+//        }
     }
     $conn->close();
     return "Invalid input.";
