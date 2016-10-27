@@ -24,18 +24,22 @@ $app->get('/hello/{name}', function (Request $request, Response $response) {
 });
 
 $app->post('/users', function (Request $request, Response $response) {
-    $name = $request->getAttribute('name');
-    $email = $request->getAttribute('email');
-    $password = $request->getAttribute('password');
-    $age = $request->getAttribute('age');
-    $loc_serv = $request->getAttribute('allow_loc_services');
+    $parsed_body = $request->getParsedBody();
+    var_dump($parsed_body);
+    $name = $parsed_body['name'];
+    $email = $parsed_body['email'];
+    $password = $parsed_body['password'];
+    $age = $parsed_body['age'];
+    $loc_serv = $parsed_body['allow_loc_services'];
 
     include 'add_user.php';
 
-    if (add_user($name, $password, $email, $age, $loc_serv)) {
+    $status = add_user($name, $password, $email, $age, $loc_serv);
+
+    if ($status === TRUE) {
         $response->getBody()->write("New account created successfully.");
     } else {
-        $response->getBody()->write("Error creating account, account already exists.");
+        $response->getBody()->write("Error creating account: ". $status);
     }
 
     return $response;
