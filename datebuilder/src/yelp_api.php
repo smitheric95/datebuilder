@@ -55,17 +55,17 @@ function request($host, $path) {
     global $TOKEN;
     global $TOKEN_SECRET;
 
-    echo "cons_key: " . $CONSUMER_KEY . "</br>";
-    echo "cons_sec: " . $CONSUMER_SECRET . "</br>";
-    echo "tok: " . $TOKEN . "</br>";
-    echo "tok_sec: " . $TOKEN_SECRET . "</br>";
+//    echo "cons_key: " . $CONSUMER_KEY . "</br>";
+//    echo "cons_sec: " . $CONSUMER_SECRET . "</br>";
+//    echo "tok: " . $TOKEN . "</br>";
+//    echo "tok_sec: " . $TOKEN_SECRET . "</br>";
 
     // Token object built using the OAuth library
     $token = new OAuthToken($TOKEN, $TOKEN_SECRET);
 
     // Consumer object built using the OAuth library
     $consumer = new OAuthConsumer($CONSUMER_KEY, $CONSUMER_SECRET);
-    echo $consumer;
+//    echo $consumer;
 
     // Yelp uses HMAC SHA1 encoding
     $signature_method = new OAuthSignatureMethod_HMAC_SHA1();
@@ -142,7 +142,7 @@ function search($term, $location) {
     $url_params['limit'] = $SEARCH_LIMIT;
     $search_path = $SEARCH_PATH . "?" . http_build_query($url_params);
 
-    echo "search path: " . $search_path . "</br>";
+//    echo "search path: " . $search_path . "</br>";
 
     return request($API_HOST, $search_path);
 }
