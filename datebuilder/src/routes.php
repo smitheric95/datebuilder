@@ -9,9 +9,6 @@ require '../vendor/autoload.php';
 $app = new \Slim\App;
 
 $app->get('/[{name}]', function ($request, $response, $args) {
-    // Sample log message
-    //$this->logger->info("Slim-Skeleton '/' route");
-
     // Render index view
     $view = new \Slim\Views\PhpRenderer(__DIR__.'/../templates/');
     return $view->render($response, './index.phtml', $args);
