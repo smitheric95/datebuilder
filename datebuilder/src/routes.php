@@ -51,25 +51,22 @@ $app->post('/users/', function (Request $request, Response $response) {
 $app->post('/build/', function (Request $request, Response $response) {
 
     $parsed_body = $request->getParsedBody();
-    var_dump( $parsed_body);
+    var_dump($parsed_body); 
     $business = $parsed_body['business'];
     $distances = $parsed_body['distances'];
     $categories = $parsed_body['categories'];
     $total_cost = $parsed_body['total_cost'];
     $name = $parsed_body['name'];
     $total_time = $parsed_body['total_time'];
-    $image_url = ['image_url'];
-
+    $image_url = $parsed_body['image_url'];
     include 'build_date.php';
 
     $status = build_date($business, $distances, $categories, $total_cost, $name, $total_time, $image_url);
-
     if ($status === TRUE) {
         $response->getBody()->write("Date built!!!");
     } else {
         $response->getBody()->write("Error building date: ". $status);
     }
-    
     return $response;
 });
 
