@@ -1,5 +1,6 @@
 <?php
 // Routes
+ini_set('display_errors', 1);
 
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
@@ -50,8 +51,7 @@ $app->post('/users/', function (Request $request, Response $response) {
 $app->post('/build/', function (Request $request, Response $response) {
 
     $parsed_body = $request->getParsedBody();
-    $arJson = json_decode( $parsed_body, true );
-    var_dump( $arJson[ 0 ] );
+    var_dump( $parsed_body);
     $business = $parsed_body['business'];
     $distances = $parsed_body['distances'];
     $categories = $parsed_body['categories'];
