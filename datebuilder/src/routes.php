@@ -46,9 +46,12 @@ $app->post('/users/', function (Request $request, Response $response) {
     return $response;
 });
 
+
 $app->post('/build/', function (Request $request, Response $response) {
+
     $parsed_body = $request->getParsedBody();
-    var_dump($parsed_body);
+    $arJson = json_decode( $parsed_body, true );
+    var_dump( $arJson[ 0 ] );
     $business = $parsed_body['business'];
     $distances = $parsed_body['distances'];
     $categories = $parsed_body['categories'];
@@ -57,20 +60,19 @@ $app->post('/build/', function (Request $request, Response $response) {
     $total_time = $parsed_body['total_time'];
     $image_url = ['image_url'];
 
-    
     include 'build_date.php';
 
     $status = build_date($business, $distances, $categories, $total_cost, $name, $total_time, $image_url);
 
     if ($status === TRUE) {
-        $response->getBody()->write("New account created successfully.");
+        $response->getBody()->write("Date built!!!");
     } else {
-        $response->getBody()->write("Error creating account: ". $status);
+        $response->getBody()->write("Error building date: ". $status);
     }
-    */
-
+    
     return $response;
 });
+
 
 //$app->get('/sys_create_database/', function (Request $request, Response $response) {
 //    include '_setup.php';
