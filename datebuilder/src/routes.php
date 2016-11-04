@@ -45,6 +45,24 @@ $app->post('/users', function (Request $request, Response $response) {
     return $response;
 });
 
+$app->post('/users/login', function (Request $request, Response $response) {
+   $parsed_body = $request->getParsedBody();
+    $user_email = $parsed_body['email'];
+    $password = $parsed_body['password'];
+
+    include "login.php";
+
+    $status = validate_login($user_email, $password);
+
+    if ($status === TRUE) {
+        $response->getBody()->write("Log in confirmed.");
+    } else {
+        $response->getBody()->write("Error logging in user: " . $status);
+    }
+
+    return $response;
+});
+
 
 // Returns a JSON object that contains the site logo, the user's account pic.
 // The "businesses" key maps to a list of recomended businesses, ranked for the user.
@@ -96,16 +114,3 @@ $app->post('/build/', function (Request $request, Response $response) {
     }
     return $response;
 });
-
-
-//$app->get('/sys_create_database/', function (Request $request, Response $response) {
-//    include '_setup.php';
-//    try {
-//        create_database("datebuilder_db");
-//        $response->getBody()->write("database created");
-//    } catch (Exception $e) {
-//        $response->getBody()->write("error creating database: " . $e->getMessage());
-//    }
-//
-//    return $response;
-//});
