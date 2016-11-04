@@ -34,33 +34,40 @@ function build_date($business, $distances, $categories, $total_cost, $name, $tot
     if (1 < 2){#$tc_match == 1 && $n_match == 1 && $tt_match == 1 && $iu_match == 1) {
 
 //        $email = mysqli_real_escape_string()
-        for($i = 0; $i < sizeof($business); $i++)
-        {
-            $this_business = $business[$i];
-            $sql = "INSERT INTO {$subtable_name} (business_id) VALUES ('$this_business')";
-            if ($conn->query($sql) === TRUE) {
-                echo $sql;
-                echo "successfully posted to date_elements  ";
-            }  
-            else
-            {
-                echo("Error description: " . mysqli_error($conn));
-                return "error creating date elements";
-            }
-            #else{
-            #    return "Error creating date_elements table";
-            #}
-        }  
+    
         
 
         $sql = "INSERT INTO {$table_name} (date_id, user_id, name, total_cost, total_time, image_url) VALUES (NULL,1, '$name', '$total_cost', '$total_time', '$image_url')";
         #(in progress -> posting date elements)  "INSERT INTO {$subtable_name} (de_id, date_id, business_id)";
-
-        if ($conn->query($sql) === TRUE) {
+        /*
+        SELECT `AUTO_INCREMENT`
+FROM  INFORMATION_SCHEMA.TABLES
+WHERE TABLE_SCHEMA = 'DatabaseName'
+AND   TABLE_NAME   = 'TableName';
+        */
+        $date_id = 1;
+        if ($conn->query($sql) === TRUE) 
+        {
+            $date_id = $conn->insert_id;
+            #$link = mysql_connect('localhost', 'root', 'pass');
+            for($i = 0; $i < sizeof($business); $i++)
+            {
+                $this_business = $business[$i];
+                $sql = "INSERT INTO {$subtable_name} (date_id, business_id) VALUES ('$date_id', '$this_business')";
+                if ($conn->query($sql) === TRUE) {
+                    #echo $sql;
+                    #echo "successfully posted to date_elements  ";
+                }  
+                else
+                {
+                    echo("Error description: " . mysqli_error($conn));
+                    return "error creating DATE ELEMENT";
+                }
+            }  
             $conn->close();
             return TRUE;
         } else {
-            return "Error adding date to db: " . $conn->error;
+            return "Error adding BASIC DATE to db: " . $conn->error;
         }
 
     }
