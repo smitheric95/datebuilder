@@ -23,9 +23,9 @@ function validate_login ($email, $password) {
         $stmt = $conn->stmt_init();
 
         // select user by email from users table
-        if (!$stmt->prepare("SELECT * FROM {$table_name} WHERE email=?")) {
+        if (!$stmt->prepare("SELECT * FROM {$table_name} WHERE email = ?")) {
             // log error
-            return False;
+            return "Could not prepare email query";
         }
 
         if (!$stmt->bind_param("s", $email)) {
@@ -35,7 +35,7 @@ function validate_login ($email, $password) {
 
         if (!$stmt->execute()) {
             // log error
-            return False;
+            return "Error getting email from users table";
         }
 
         if ($stmt->num_rows == 0) {
@@ -49,7 +49,7 @@ function validate_login ($email, $password) {
 
         // select user by email and password
         if (!$stmt->prepare("SELECT * FROM {$table_name} WHERE email = ? AND password = ?")) {
-            return False;
+            return "Could not prepare email and password query";
         }
 
         if (!$stmt->bind_param("ss", $email, $password)) {
@@ -68,7 +68,7 @@ function validate_login ($email, $password) {
 
 
         // if the email and password are valid add the user to an active user table?
-
-        return False;
     }
+
+    return "Invalid email format";
 }
