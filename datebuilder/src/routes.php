@@ -1,5 +1,6 @@
 <?php
 // Routes
+ini_set('display_errors', 1);
 
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
@@ -44,6 +45,7 @@ $app->post('/users', function (Request $request, Response $response) {
     return $response;
 });
 
+
 // Returns a JSON object that contains the site logo, the user's account pic.
 // The "businesses" key maps to a list of recomended businesses, ranked for the user.
 $app->get('/search/load', function (Request $request, Response $response) {
@@ -71,3 +73,39 @@ $app->get('/search/search/{query}', function (Request $request, Response $respon
 
     return $response;
 });
+
+
+$app->post('/build/', function (Request $request, Response $response) {
+
+    $parsed_body = $request->getParsedBody();
+    var_dump($parsed_body); 
+    $business = $parsed_body['business'];
+    $distances = $parsed_body['distances'];
+    $categories = $parsed_body['categories'];
+    $total_cost = $parsed_body['total_cost'];
+    $name = $parsed_body['name'];
+    $total_time = $parsed_body['total_time'];
+    $image_url = $parsed_body['image_url'];
+    include 'build_date.php';
+
+    $status = build_date($business, $distances, $categories, $total_cost, $name, $total_time, $image_url);
+    if ($status === TRUE) {
+        $response->getBody()->write("Date built!!!");
+    } else {
+        $response->getBody()->write("Error building date: ". $status);
+    }
+    return $response;
+});
+
+
+//$app->get('/sys_create_database/', function (Request $request, Response $response) {
+//    include '_setup.php';
+//    try {
+//        create_database("datebuilder_db");
+//        $response->getBody()->write("database created");
+//    } catch (Exception $e) {
+//        $response->getBody()->write("error creating database: " . $e->getMessage());
+//    }
+//
+//    return $response;
+//});
