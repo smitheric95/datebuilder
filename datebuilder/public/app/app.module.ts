@@ -6,19 +6,24 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { LandingComponent } from './landing/landing.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { SearchComponent } from './search/search.component';
+import { SearchbarComponent } from './search-bar/search-bar.component';
 
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
     RouterModule.forRoot([
-      { path: '', component: LandingComponent }
+      { path: '', component: LandingComponent },
+      { path: 'search', component: SearchComponent }
     ])
   ],
   declarations: [
   	AppComponent,
   	LandingComponent,
-    NavbarComponent
+    NavbarComponent,
+    SearchComponent,
+    SearchbarComponent
   ],
   bootstrap: [AppComponent],
 })

@@ -15,6 +15,8 @@ var router_1 = require('@angular/router');
 var app_component_1 = require('./app.component');
 var landing_component_1 = require('./landing/landing.component');
 var navbar_component_1 = require('./navbar/navbar.component');
+var search_component_1 = require('./search/search.component');
+var search_bar_component_1 = require('./search-bar/search-bar.component');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -24,13 +26,16 @@ var AppModule = (function () {
                 platform_browser_1.BrowserModule,
                 forms_1.FormsModule,
                 router_1.RouterModule.forRoot([
-                    { path: '', component: landing_component_1.LandingComponent }
+                    { path: '', component: landing_component_1.LandingComponent },
+                    { path: 'search', component: search_component_1.SearchComponent }
                 ])
             ],
             declarations: [
                 app_component_1.AppComponent,
                 landing_component_1.LandingComponent,
-                navbar_component_1.NavbarComponent
+                navbar_component_1.NavbarComponent,
+                search_component_1.SearchComponent,
+                search_bar_component_1.SearchbarComponent
             ],
             bootstrap: [app_component_1.AppComponent],
         }), 
