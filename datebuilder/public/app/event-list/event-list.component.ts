@@ -17,9 +17,16 @@ export class EventListComponent {
 
     ngOnInit() {
         this.route.params.forEach((params: Params) => {
+
+            //router: search/
             if( params[0] == undefined ){
                 this.events = this.eventsService.getEvents();
-                console.log(this.events);
+            }
+
+            //router: search/:id=event-id
+            else{
+                console.log(params);
+                //this.events = this.eventsService.getEvent()
             }
         });
     }

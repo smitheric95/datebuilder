@@ -7,7 +7,7 @@ export class EventsService {
 
     constructor() {
         /*
-            NOTE: 
+            TO DO: 
         
             Pulling "event" metadate in search results will require a seperate 
                 API call

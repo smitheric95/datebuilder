@@ -20,9 +20,12 @@ var EventListComponent = (function () {
     EventListComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.route.params.forEach(function (params) {
+            //router: search/
             if (params[0] == undefined) {
                 _this.events = _this.eventsService.getEvents();
-                console.log(_this.events);
+            }
+            else {
+                console.log(params);
             }
         });
     };

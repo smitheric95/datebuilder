@@ -1,6 +1,8 @@
 <ul>
     <li *ngFor="let event of events">
-        <img src='{{ event.image_url }}'/>
-        <h3>{{ event.name }}</h3>
+        <a [routerLink]="event.id">
+            <img src='{{ event.image_url }}'/>
+            <h3>{{ event.name }}</h3>
+        </a>
     </li>
 </ul>

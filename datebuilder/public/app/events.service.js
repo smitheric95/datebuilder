@@ -12,7 +12,7 @@ var core_1 = require('@angular/core');
 var EventsService = (function () {
     function EventsService() {
         /*
-            NOTE:
+            TO DO:
         
             Pulling "event" metadate in search results will require a seperate
                 API call

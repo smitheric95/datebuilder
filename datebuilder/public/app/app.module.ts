@@ -19,7 +19,8 @@ import { EventListComponent } from './event-list/event-list.component';
     RouterModule.forRoot([
       { path: '', component: LandingComponent },
       { path: 'search', component: SearchComponent },
-      { path: 'search/:id', component: SearchComponent } 
+      { path: 'search/:id', component: SearchComponent }
+      /* { path: '**', component:  } */
     ])
   ],
   declarations: [
