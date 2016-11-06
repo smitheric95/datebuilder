@@ -8,6 +8,7 @@ import { LandingComponent } from './landing/landing.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SearchComponent } from './search/search.component';
 import { SearchbarComponent } from './search-bar/search-bar.component';
+import { EventListComponent } from './event-list/event-list.component';
 
 @NgModule({
   imports: [
@@ -16,6 +17,7 @@ import { SearchbarComponent } from './search-bar/search-bar.component';
     RouterModule.forRoot([
       { path: '', component: LandingComponent },
       { path: 'search', component: SearchComponent }
+      /* { path: 'search/:id', component: SearchComponent } */
     ])
   ],
   declarations: [
@@ -23,7 +25,8 @@ import { SearchbarComponent } from './search-bar/search-bar.component';
   	LandingComponent,
     NavbarComponent,
     SearchComponent,
-    SearchbarComponent
+    SearchbarComponent,
+    EventListComponent
   ],
   bootstrap: [AppComponent],
 })
