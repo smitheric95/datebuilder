@@ -1,1 +1,6 @@
-<p>list of events</p>
+<ul>
+    <li *ngFor="let event of events">
+        <img src='{{ event.image_url }}'/>
+        <h3>{{ event.name }}</h3>
+    </li>
+</ul>

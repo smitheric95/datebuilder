@@ -14,7 +14,6 @@ export class EventsService {
             /search/:id=event-id will return all the data about an event
         */
         this.events = [
-            [
                 {
                     "categories": [
                         [
@@ -35,7 +34,7 @@ export class EventsService {
                             "San Francisco, CA 94105"
                         ]
                     },
-                    "name": "Yelp",
+                    "name": "Business Name",
                     "rating": 2.5,
                     "url": "http://www.yelp.com/biz/yelp-san-francisco",
                     "snippet_text": "What would I do without Yelp?\n\nI wouldn't be HALF the foodie I've become it weren't for this business.    \n\nYelp makes it virtually effortless to discover new...",
@@ -57,13 +56,12 @@ export class EventsService {
                             "Dallas, TX 75206"
                         ]
                     },
-                    "name": "Yelp",
+                    "name": "Lorem Ipsum",
                     "rating": 1.5,
                     "url": "http://www.yelp.com/biz/yelp-san-francisco",
                     "snippet_text": "Lorem ipsum description foshizzle",
                 }
-            ]
-        ]//end of this.events
+            ]//end of this.events
     }
 
     getEvents() : any[] {

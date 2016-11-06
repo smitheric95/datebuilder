@@ -12,6 +12,7 @@ var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var forms_1 = require('@angular/forms');
 var router_1 = require('@angular/router');
+var events_service_1 = require('./events.service');
 var app_component_1 = require('./app.component');
 var landing_component_1 = require('./landing/landing.component');
 var navbar_component_1 = require('./navbar/navbar.component');
@@ -40,6 +41,7 @@ var AppModule = (function () {
                 search_bar_component_1.SearchbarComponent,
                 event_list_component_1.EventListComponent
             ],
+            providers: [events_service_1.EventsService],
             bootstrap: [app_component_1.AppComponent],
         }), 
         __metadata('design:paramtypes', [])

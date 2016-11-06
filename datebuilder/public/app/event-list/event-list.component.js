@@ -9,15 +9,30 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
+var events_service_1 = require('./../events.service');
 var EventListComponent = (function () {
-    function EventListComponent() {
+    function EventListComponent(route, router, eventsService) {
+        this.route = route;
+        this.router = router;
+        this.eventsService = eventsService;
     }
+    EventListComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.route.params.forEach(function (params) {
+            if (params[0] == undefined) {
+                _this.events = _this.eventsService.getEvents();
+                console.log(_this.events);
+            }
+        });
+    };
     EventListComponent = __decorate([
         core_1.Component({
             selector: 'event-list',
-            templateUrl: './app/event-list/event-list.html'
+            templateUrl: './app/event-list/event-list.html',
+            styleUrls: ['./app/event-list/event-list.css']
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [router_1.ActivatedRoute, router_1.Router, events_service_1.EventsService])
     ], EventListComponent);
     return EventListComponent;
 }());

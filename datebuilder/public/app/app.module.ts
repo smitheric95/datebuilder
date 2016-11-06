@@ -30,6 +30,7 @@ import { EventListComponent } from './event-list/event-list.component';
     SearchbarComponent,
     EventListComponent
   ],
+  providers: [ EventsService ],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
