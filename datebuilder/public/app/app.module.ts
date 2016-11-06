@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
+import { EventsService } from './events.service';
+
 import { AppComponent } from './app.component';
 import { LandingComponent } from './landing/landing.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -16,8 +18,8 @@ import { EventListComponent } from './event-list/event-list.component';
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: LandingComponent },
-      { path: 'search', component: SearchComponent }
-      /* { path: 'search/:id', component: SearchComponent } */
+      { path: 'search', component: SearchComponent },
+      { path: 'search/:id', component: SearchComponent } 
     ])
   ],
   declarations: [

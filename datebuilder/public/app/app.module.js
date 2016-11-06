@@ -28,7 +28,8 @@ var AppModule = (function () {
                 forms_1.FormsModule,
                 router_1.RouterModule.forRoot([
                     { path: '', component: landing_component_1.LandingComponent },
-                    { path: 'search', component: search_component_1.SearchComponent }
+                    { path: 'search', component: search_component_1.SearchComponent },
+                    { path: 'search/:id', component: search_component_1.SearchComponent }
                 ])
             ],
             declarations: [
