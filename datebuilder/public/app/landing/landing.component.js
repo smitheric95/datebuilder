@@ -15,7 +15,7 @@ var LandingComponent = (function () {
     LandingComponent = __decorate([
         core_1.Component({
             selector: 'landing',
-            template: '<h1>landing page</h1>'
+            template: "\n    <h1>landin page</h1>\n    \n  "
         }), 
         __metadata('design:paramtypes', [])
     ], LandingComponent);

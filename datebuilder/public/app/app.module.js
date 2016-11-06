@@ -14,6 +14,7 @@ var forms_1 = require('@angular/forms');
 var router_1 = require('@angular/router');
 var app_component_1 = require('./app.component');
 var landing_component_1 = require('./landing/landing.component');
+var navbar_component_1 = require('./navbar/navbar.component');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -28,7 +29,8 @@ var AppModule = (function () {
             ],
             declarations: [
                 app_component_1.AppComponent,
-                landing_component_1.LandingComponent
+                landing_component_1.LandingComponent,
+                navbar_component_1.NavbarComponent
             ],
             bootstrap: [app_component_1.AppComponent],
         }), 

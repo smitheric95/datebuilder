@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { LandingComponent } from './landing/landing.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import { LandingComponent } from './landing/landing.component';
   ],
   declarations: [
   	AppComponent,
-  	LandingComponent
+  	LandingComponent,
+    NavbarComponent
   ],
   bootstrap: [AppComponent],
 })
