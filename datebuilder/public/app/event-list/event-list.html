@@ -1,8 +1,14 @@
+<p>Popular Events</p>
 <ul>
     <li *ngFor="let event of events">
         <a [routerLink]="event.id">
-            <img src='{{ event.image_url }}'/>
+            <img src='{{ event.image_url }}' />
             <h3>{{ event.name }}</h3>
+            <div class='event-info' *ngIf="event.id === selectedEvent.id">
+                <p>{{ event.location.display_address }}</p>
+                <p>{{ event.display_phone }}</p>
+                <p>Rating: {{ event.rating }}</p>
+            </div>
         </a>
     </li>
 </ul>

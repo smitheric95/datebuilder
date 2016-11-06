@@ -19,14 +19,15 @@ var EventListComponent = (function () {
     }
     EventListComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.selectedEvent = {};
         this.route.params.forEach(function (params) {
-            //router: search/
-            if (params[0] == undefined) {
-                _this.events = _this.eventsService.getEvents();
+            //router: search/:id=event-id
+            if (params['id'] !== undefined) {
+                _this.selectedEvent = _this.eventsService.getEvent(params['id']);
             }
-            else {
-                console.log(params);
-            }
+            _this.events = _this.eventsService.getEvents();
+            console.log(params);
+            console.log(_this.selectedEvent);
         });
     };
     EventListComponent = __decorate([

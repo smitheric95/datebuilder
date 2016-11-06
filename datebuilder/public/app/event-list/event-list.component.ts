@@ -10,24 +10,26 @@ import { EventsService } from './../events.service';
 export class EventListComponent {
 
     events: any[];
+    selectedEvent: any;
 
     constructor(private route: ActivatedRoute,
                 private router: Router,
                 private eventsService: EventsService) { }
 
     ngOnInit() {
+        this.selectedEvent = {};
+
         this.route.params.forEach((params: Params) => {
 
-            //router: search/
-            if( params[0] == undefined ){
-                this.events = this.eventsService.getEvents();
-            }
-
             //router: search/:id=event-id
-            else{
-                console.log(params);
-                //this.events = this.eventsService.getEvent()
+            if( params['id'] !== undefined ){
+                this.selectedEvent = this.eventsService.getEvent( params['id'] );
             }
+            
+            this.events = this.eventsService.getEvents();
+
+            console.log(params);
+            console.log(this.selectedEvent);
         });
     }
 }

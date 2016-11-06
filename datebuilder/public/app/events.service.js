@@ -71,8 +71,12 @@ var EventsService = (function () {
     EventsService.prototype.getEvents = function () {
         return this.events;
     };
-    EventsService.prototype.getEvent = function (index) {
-        return this.events[index];
+    EventsService.prototype.getEvent = function (id) {
+        for (var i = 0; i < this.events.length; i++) {
+            if (this.events[i].id == id)
+                return this.events[i];
+        }
+        return {};
     };
     EventsService = __decorate([
         core_1.Injectable(), 

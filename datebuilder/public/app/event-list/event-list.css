@@ -4,4 +4,12 @@ img {
 
 li {
     list-style-type: none;
+    border: solid 2px black;
+    padding: 5px;
+    width: 300px;
+    margin: 5px;
+}
+
+div.event-info {
+    
 }
