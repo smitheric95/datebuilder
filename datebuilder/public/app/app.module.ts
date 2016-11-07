@@ -11,6 +11,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { SearchComponent } from './search/search.component';
 import { SearchbarComponent } from './search-bar/search-bar.component';
 import { EventListComponent } from './event-list/event-list.component';
+import { BuilderComponent } from './builder/builder.component';
 
 @NgModule({
   imports: [
@@ -24,14 +25,15 @@ import { EventListComponent } from './event-list/event-list.component';
     ])
   ],
   declarations: [
-  	AppComponent,
-  	LandingComponent,
+    AppComponent,
+    LandingComponent,
     NavbarComponent,
     SearchComponent,
     SearchbarComponent,
-    EventListComponent
+    EventListComponent,
+    BuilderComponent
   ],
-  providers: [ EventsService ],
+  providers: [EventsService],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

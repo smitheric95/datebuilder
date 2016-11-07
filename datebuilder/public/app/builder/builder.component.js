@@ -9,17 +9,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var AppComponent = (function () {
-    function AppComponent() {
+var BuilderComponent = (function () {
+    function BuilderComponent() {
     }
-    AppComponent = __decorate([
+    BuilderComponent = __decorate([
         core_1.Component({
-            selector: 'my-app',
-            template: "\n    <div class='container'>\n      <navbar></navbar>\n      <router-outlet></router-outlet>\n      <builder></builder>\n    </div>\n  "
+            selector: 'builder',
+            templateUrl: './app/builder/builder.html',
+            styleUrls: ['./app/builder/builder.css']
         }), 
         __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
+    ], BuilderComponent);
+    return BuilderComponent;
 }());
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+exports.BuilderComponent = BuilderComponent;
+//# sourceMappingURL=builder.component.js.map
