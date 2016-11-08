@@ -155,7 +155,8 @@ function search($term, $location) {
 function get_business($business_id) {
     global $API_HOST;
     global $BUSINESS_PATH;
-
+    $API_HOST = 'api.yelp.com';
+    $BUSINESS_PATH = '/v2/business/';
     $business_path = $BUSINESS_PATH . urlencode($business_id);
 
     return request($API_HOST, $business_path);
