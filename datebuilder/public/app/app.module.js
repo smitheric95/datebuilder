@@ -21,6 +21,7 @@ var search_bar_component_1 = require('./search-bar/search-bar.component');
 var event_list_component_1 = require('./event-list/event-list.component');
 var builder_component_1 = require('./builder/builder.component');
 var account_component_1 = require('./account/account.component');
+var login_component_1 = require('./login/login.component');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -44,7 +45,8 @@ var AppModule = (function () {
                 search_bar_component_1.SearchbarComponent,
                 event_list_component_1.EventListComponent,
                 builder_component_1.BuilderComponent,
-                account_component_1.AccountComponent
+                account_component_1.AccountComponent,
+                login_component_1.LoginComponent
             ],
             providers: [events_service_1.EventsService],
             bootstrap: [app_component_1.AppComponent],

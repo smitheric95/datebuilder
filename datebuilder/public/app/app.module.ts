@@ -12,6 +12,7 @@ import { SearchbarComponent } from './search-bar/search-bar.component';
 import { EventListComponent } from './event-list/event-list.component';
 import { BuilderComponent } from './builder/builder.component';
 import { AccountComponent } from './account/account.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   imports: [
@@ -33,7 +34,8 @@ import { AccountComponent } from './account/account.component';
     SearchbarComponent,
     EventListComponent,
     BuilderComponent,
-    AccountComponent
+    AccountComponent,
+    LoginComponent
   ],
   providers: [EventsService],
   bootstrap: [AppComponent],
