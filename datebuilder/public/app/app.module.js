@@ -20,6 +20,7 @@ var search_component_1 = require('./search/search.component');
 var search_bar_component_1 = require('./search-bar/search-bar.component');
 var event_list_component_1 = require('./event-list/event-list.component');
 var builder_component_1 = require('./builder/builder.component');
+var account_component_1 = require('./account/account.component');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -31,7 +32,8 @@ var AppModule = (function () {
                 router_1.RouterModule.forRoot([
                     { path: '', component: landing_component_1.LandingComponent },
                     { path: 'search', component: search_component_1.SearchComponent },
-                    { path: 'search/:id', component: search_component_1.SearchComponent }
+                    { path: 'search/:id', component: search_component_1.SearchComponent },
+                    { path: 'account', component: account_component_1.AccountComponent }
                 ])
             ],
             declarations: [
@@ -41,7 +43,8 @@ var AppModule = (function () {
                 search_component_1.SearchComponent,
                 search_bar_component_1.SearchbarComponent,
                 event_list_component_1.EventListComponent,
-                builder_component_1.BuilderComponent
+                builder_component_1.BuilderComponent,
+                account_component_1.AccountComponent
             ],
             providers: [events_service_1.EventsService],
             bootstrap: [app_component_1.AppComponent],
