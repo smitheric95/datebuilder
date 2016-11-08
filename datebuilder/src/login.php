@@ -20,54 +20,41 @@ function validate_login ($email, $password) {
     $email_match = preg_match($email_pattern, $email);
 
     if ($email_match == 1) {
-        $stmt = $conn->stmt_init();
+//        $stmt = $conn->stmt_init();
 
         // select user by email from users table
-        if (!$stmt->prepare("SELECT * FROM {$table_name} WHERE email = ?")) {
+        $sql = "SELECT * FROM {$table_name} WHERE email = '$email'";
+
+        // execute query
+        if ($result = $conn->query($sql)) {
+            // if a user was found with the provided email
+            if ($result->num_rows == 1) {
+
+                $row = $result->fetch_assoc();
+                // take salt and hash password
+                include "salty.php";
+                $password = salt_password($password, $row["salt"]);
+
+                // select user by email and salted password
+                $sql = "SELECT * FROM {$table_name} WHERE email = '$email' AND password = '$password'";
+
+                if ($result = $conn->query($sql)) {
+                    // if a user was found with that email and password the login is confirmed
+                    if ($result->num_rows == 1) {
+                        return True;
+                    }
+                } else {
+                    return "Error getting username and email from users table: " . $conn->error;
+                }
+                
+            } else {
+                return "Email not found in users table";
+            }
+
+        } else {
             // log error
-            return "Could not prepare email query";
+            return "Error getting email from users table: " . $conn->error;
         }
-
-        if (!$stmt->bind_param("s", $email)) {
-            // log error
-            return "Could not bind email to login query";
-        }
-
-        if (!$stmt->execute()) {
-            // log error
-            return "Error getting email from users table";
-        }
-
-        if ($stmt->num_rows == 0) {
-            return "email not found in users table";
-        }
-
-        // take salt and hash password
-        include "salty.php";
-        $possible_user = $stmt->fetch_assoc();
-        $password = salt_password($password, $possible_user["salt"]);
-
-        // select user by email and password
-        if (!$stmt->prepare("SELECT * FROM {$table_name} WHERE email = ? AND password = ?")) {
-            return "Could not prepare email and password query";
-        }
-
-        if (!$stmt->bind_param("ss", $email, $password)) {
-            return "Could not bind email and password to login query";
-        }
-
-        if (!$stmt->execute()) {
-            return "User could not be found in the users table";
-        }
-
-        $result = $stmt->get_result();
-
-        if ($result->num_rows == 1) {
-            return True;
-        }
-
-
-        // if the email and password are valid add the user to an active user table?
     }
 
     return "Invalid email format";
