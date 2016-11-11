@@ -16,7 +16,7 @@ var NavbarComponent = (function () {
         core_1.Component({
             selector: 'navbar',
             templateUrl: './app/navbar/navbar.html',
-            styleUrls: ['./app/navbar/navbar.css']
+            styleUrls: ['./app/navbar/navbar.css', './node_modules/bootstrap/dist/css/bootstrap.min.css']
         }), 
         __metadata('design:paramtypes', [])
     ], NavbarComponent);

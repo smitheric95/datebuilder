@@ -15,7 +15,8 @@ var AppComponent = (function () {
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            template: "\n    <div class='container'>\n      <navbar></navbar>\n      <router-outlet></router-outlet>\n      <builder></builder>\n    </div>\n  "
+            template: "\n    <div class='container'>\n      <navbar></navbar>\n      <router-outlet></router-outlet>\n      <builder></builder>\n    </div>\n  ",
+            styleUrls: ['./node_modules/bootstrap/dist/css/bootstrap.min.css']
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);

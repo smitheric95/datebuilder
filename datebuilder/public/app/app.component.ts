@@ -11,6 +11,7 @@ import { BuilderComponent } from './builder/builder.component';
       <router-outlet></router-outlet>
       <builder></builder>
     </div>
-  `
+  `,
+  styleUrls: ['./node_modules/bootstrap/dist/css/bootstrap.min.css']
 })
 export class AppComponent { }

@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { EventsService } from './events.service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { LandingComponent } from './landing/landing.component';
@@ -18,6 +19,7 @@ import { LoginComponent } from './login/login.component';
   imports: [
     BrowserModule,
     FormsModule,
+    NgbModule.forRoot(),
     RouterModule.forRoot([
       { path: '', component: LandingComponent },
       { path: 'search', component: SearchComponent },
