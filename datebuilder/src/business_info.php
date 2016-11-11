@@ -15,7 +15,14 @@ function business_info($businessid) {
   {
   	if (in_array($key, $desired_keys))
   	{
-  		$saved_data[$key] = $val;
+      if($key == "location")
+      {
+        $saved_data[$key] = $val["display_address"];
+      }
+      else
+      {
+  		  $saved_data[$key] = $val;
+      }
   	}
   }
   #$saved_data["location"] = $saved_data["location"]["display_address"];
