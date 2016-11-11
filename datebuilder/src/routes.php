@@ -92,6 +92,18 @@ $app->get('/search/search/{query}', function (Request $request, Response $respon
     return $response;
 });
 
+$app->get('/search/business/{businessid}', function (Request $request, Response $response) {
+    $businessid = $request->getAttribute('businessid');
+
+    include "business_info.php";
+
+    $business_return = business_info($businessid);
+
+    $response->getBody()->write($business_return);
+
+    return $response;
+});
+
 
 $app->post('/build/', function (Request $request, Response $response) {
 
