@@ -92,7 +92,7 @@ $app->get('/search/search/{query}', function (Request $request, Response $respon
     return $response;
 });
 
-$app->get('search/business/{businessid}', function (Request $request, Response $response) {
+$app->get('/search/business/{businessid}', function (Request $request, Response $response) {
     $businessid = $request->getAttribute('businessid');
 
     include "business_info.php";
@@ -102,7 +102,6 @@ $app->get('search/business/{businessid}', function (Request $request, Response $
     $response->getBody()->write($business_return);
 
     return $response;
-
 });
 
 
