@@ -22,6 +22,19 @@ $app->get('/hello/{name}', function (Request $request, Response $response) {
     return $response;
 });
 
+$app->get('/users', function (Request $request, Response $response) {
+    // get user_id from session id
+    $user_id = 1;
+
+    include "user_info.php";
+
+    $data_return = get_user_info($user_id);
+
+    $response->getBody()->write($data_return);
+
+    return $response;
+});
+
 // Request to create an account comes in the form of a JSON object that
 // includes all releveant account data.
 $app->post('/users', function (Request $request, Response $response) {

@@ -2,7 +2,7 @@ $script = <<SCRIPT
 #!/usr/bin/env bash
 
 shareroot="/vagrant/datebuilder"
-webroot="/var/www"
+webroot="/var/www/public"
 password="pass"
 
 #switch to root
