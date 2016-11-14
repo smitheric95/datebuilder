@@ -1,5 +1,4 @@
 <div>
-    <h3>This is the account page.</h3>
     <br><br>
     <login></login>
     <br><br>
@@ -8,33 +7,33 @@
         <form class="form-horizontal">
             <fieldset>
                 <legend>Sign up</legend>
-                <div class="form-group label-floating">
+
+                <div class="form-group label-floating is-empty">
                     <label class="control-label" for="name">Your name</label>
                     <input class="form-control" id="name" type="text">
                 </div>
 
-                <div class="form-group label-static">
+                <div class="form-group label-floating is-empty">
                     <label class="control-label" for="email">Your email</label>
-                    <input class="form-control" id="email" placeholder="yourname@email.com" type="email">
+                    <input class="form-control" id="email" type="email">
                     <span class="help-block">Please enter a valid email address</span>
                 </div>
 
                 <div class="form-group">
                     <label for="year" class="control-label">Year of birth</label>
                     <select id="year" class="form-control">
-                        <option></option>
                         <option *ngFor="let number of years">{{number}}</option>
                     </select>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group label-floating is-empty">
                     <label for="password" class="control-label">Password</label>
-                    <input class="form-control" id="password" placeholder="Password" type="password">
+                    <input class="form-control" id="password" type="password">
                 </div>
 
-                <div class="form-group">
+                <div class="form-group label-floating is-empty">
                     <label for="confirmpassword" class="control-label">Confirm Password</label>
-                    <input class="form-control" id="confirmpassword" placeholder="Confirm Password" type="password">
+                    <input class="form-control" id="confirmpassword" type="password">
                 </div>
 
                 <label>
