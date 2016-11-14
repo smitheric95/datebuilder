@@ -12,6 +12,9 @@ import { BuilderComponent } from './builder/builder.component';
       <builder></builder>
     </div>
   `,
-  styleUrls: ['./node_modules/bootstrap/dist/css/bootstrap.min.css']
+  styleUrls: [
+    './node_modules/bootstrap/dist/css/bootstrap.min.css',
+    './node_modules/bootstrap/node_modules/bootstrap-material-design/dist/css/bootstrap-material-design.min.css'
+  ]
 })
 export class AppComponent { }
