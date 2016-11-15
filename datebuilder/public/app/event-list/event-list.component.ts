@@ -5,7 +5,11 @@ import { EventsService } from './../events.service';
 @Component({
     selector: 'event-list',
     templateUrl: './app/event-list/event-list.html',
-    styleUrls: ['./app/event-list/event-list.css']
+    styleUrls: [
+        './app/event-list/event-list.css',
+         './node_modules/bootstrap/dist/css/bootstrap.min.css',
+        './node_modules/bootstrap/node_modules/bootstrap-material-design/dist/css/bootstrap-material-design.min.css'
+    ]
 })
 export class EventListComponent {
 

@@ -1,16 +1,51 @@
 <div>
-    <h3>This is the account page.</h3>
-    <p>Login:</p>
+    <br><br>
     <login></login>
-    <br>
-    <p>Sign Up:</p>
-    <form>
-        <input type="text" placeholder="Name"/><br>
-        <input type="text" placeholder="Email"/><br>
-        <input type="number" placeholder="Age"/><br>
-        <input type="password" placeholder="Password"/><br>
-        <input type="password" placeholder="Confirm Password"/><br>
-        <input type="checkbox"/>Allow location services <br>
-        <input type="submit" value="Submit"/>
-    </form>
+    <br><br>
+    <div class="col-md-6">
+    <div class="well bs-component">
+        <form class="form-horizontal">
+            <fieldset>
+                <legend>Sign up</legend>
+
+                <div class="form-group label-floating is-empty">
+                    <label class="control-label" for="name">Your name</label>
+                    <input class="form-control" id="name" type="text">
+                </div>
+
+                <div class="form-group label-floating is-empty">
+                    <label class="control-label" for="email">Your email</label>
+                    <input class="form-control" id="email" type="email">
+                    <span class="help-block">Please enter a valid email address</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="year" class="control-label">Year of birth</label>
+                    <select id="year" class="form-control">
+                        <option *ngFor="let number of years">{{number}}</option>
+                    </select>
+                </div>
+
+                <div class="form-group label-floating is-empty">
+                    <label for="password" class="control-label">Password</label>
+                    <input class="form-control" id="password" type="password">
+                </div>
+
+                <div class="form-group label-floating is-empty">
+                    <label for="confirmpassword" class="control-label">Confirm Password</label>
+                    <input class="form-control" id="confirmpassword" type="password">
+                </div>
+
+                <label>
+                    <input type="checkbox"><span class="checkbox-material"><span class="check"></span></span> Allow location services
+                </label>
+
+                <button type="submit" class="btn btn-primary">Submit<div class="ripple-container"></div></button>
+    
+            </fieldset>
+        </form>
+    </div>
+    </div>
 </div>
+
+

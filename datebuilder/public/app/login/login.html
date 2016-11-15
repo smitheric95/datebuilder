@@ -1,5 +1,20 @@
-<form>
-    <input type="text" placeholder="Username"/><br>
-    <input type="password" placeholder="Password"/><br>
-    <input type="submit" value="Submit"/>
-</form>
+<div class="col-md-6">
+    <div class="well bs-component">
+        <form class="form-horizontal">
+            <fieldset>
+                <legend>Log in</legend>
+                <div class="form-group label-floating is-empty">
+                    <label class="control-label" for="email">Your email</label>
+                    <input class="form-control" id="email" type="email">
+                    <span class="help-block">Please enter a valid email address</span>
+                </div>
+
+                <div class="form-group label-floating is-empty">
+                    <label for="password" class="control-label">Password</label>
+                    <input class="form-control" id="password" type="password">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit<div class="ripple-container"></div></button>
+            </fieldset>
+        </form>
+    </div>
+</div>

@@ -16,7 +16,11 @@ var NavbarComponent = (function () {
         core_1.Component({
             selector: 'navbar',
             templateUrl: './app/navbar/navbar.html',
-            styleUrls: ['./app/navbar/navbar.css']
+            styleUrls: [
+                './app/navbar/navbar.css',
+                './node_modules/bootstrap/dist/css/bootstrap.min.css',
+                './node_modules/bootstrap/node_modules/bootstrap-material-design/dist/css/bootstrap-material-design.min.css'
+            ]
         }), 
         __metadata('design:paramtypes', [])
     ], NavbarComponent);

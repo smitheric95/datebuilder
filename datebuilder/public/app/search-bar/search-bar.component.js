@@ -15,7 +15,11 @@ var SearchbarComponent = (function () {
     SearchbarComponent = __decorate([
         core_1.Component({
             selector: 'search-bar',
-            templateUrl: './app/search-bar/search-bar.html'
+            templateUrl: './app/search-bar/search-bar.html',
+            styleUrls: [
+                './node_modules/bootstrap/dist/css/bootstrap.min.css',
+                './node_modules/bootstrap/node_modules/bootstrap-material-design/dist/css/bootstrap-material-design.min.css'
+            ]
         }), 
         __metadata('design:paramtypes', [])
     ], SearchbarComponent);

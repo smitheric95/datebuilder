@@ -13,6 +13,7 @@ var platform_browser_1 = require('@angular/platform-browser');
 var forms_1 = require('@angular/forms');
 var router_1 = require('@angular/router');
 var events_service_1 = require('./events.service');
+var ng_bootstrap_1 = require('@ng-bootstrap/ng-bootstrap');
 var app_component_1 = require('./app.component');
 var landing_component_1 = require('./landing/landing.component');
 var navbar_component_1 = require('./navbar/navbar.component');
@@ -30,6 +31,7 @@ var AppModule = (function () {
             imports: [
                 platform_browser_1.BrowserModule,
                 forms_1.FormsModule,
+                ng_bootstrap_1.NgbModule.forRoot(),
                 router_1.RouterModule.forRoot([
                     { path: '', component: landing_component_1.LandingComponent },
                     { path: 'search', component: search_component_1.SearchComponent },

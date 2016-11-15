@@ -16,7 +16,11 @@ var LoginComponent = (function () {
         core_1.Component({
             selector: 'login',
             templateUrl: './app/login/login.html',
-            styleUrls: ['./app/login/login.css']
+            styleUrls: [
+                './app/login/login.css',
+                './node_modules/bootstrap/dist/css/bootstrap.min.css',
+                './node_modules/bootstrap/node_modules/bootstrap-material-design/dist/css/bootstrap-material-design.min.css'
+            ]
         }), 
         __metadata('design:paramtypes', [])
     ], LoginComponent);
