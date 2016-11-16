@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { EventsService } from './events.service';
+import { HttpModule } from '@angular/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
@@ -14,11 +14,14 @@ import { EventListComponent } from './event-list/event-list.component';
 import { BuilderComponent } from './builder/builder.component';
 import { AccountComponent } from './account/account.component';
 import { LoginComponent } from './login/login.component';
+import { EventsService } from './events.service';
+import { UsersService } from './repositories/users.service';
 
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
+    HttpModule,
     NgbModule.forRoot(),
     RouterModule.forRoot([
       { path: '', component: LandingComponent },
@@ -39,7 +42,10 @@ import { LoginComponent } from './login/login.component';
     AccountComponent,
     LoginComponent
   ],
-  providers: [EventsService],
+  providers: [ 
+    UsersService, 
+    EventsService
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
