@@ -46,7 +46,7 @@ $app->post('/users', function (Request $request, Response $response) {
 });
 
 $app->post('/users/login', function (Request $request, Response $response) {
-   $parsed_body = $request->getParsedBody();
+    $parsed_body = $request->getParsedBody();
     $user_email = $parsed_body['email'];
     $password = $parsed_body['password'];
 
