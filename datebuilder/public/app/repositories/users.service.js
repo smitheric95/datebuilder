@@ -14,15 +14,12 @@ require('rxjs/add/operator/toPromise');
 var UsersService = (function () {
     function UsersService(http) {
         this.http = http;
-        this._apiUrl = 'users/';
+        this._apiUrl = 'users';
     }
-    /*
-    get, add
-    */
     UsersService.prototype.add = function (user) {
         console.log(JSON.stringify(user));
         return this.http
-            .post(this._apiUrl, JSON.stringify(user))
+            .post(this._apiUrl, user)
             .toPromise()
             .then(function () { return user; })
             .catch(function (x) { return alert(x.json().error); });

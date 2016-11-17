@@ -18,14 +18,23 @@ var AccountComponent = (function () {
         this.userService = userService;
     }
     AccountComponent.prototype.ngOnInit = function () {
-        this.user = {};
+        this.user = {
+            "allow_loc_services": "False"
+        };
         this.years = Array(75).fill(0).map(function (x, i) { return (new Date().getFullYear() - i); });
-        /*
-        route params?
-        */
     };
     AccountComponent.prototype.add = function () {
+        if (this.user.allow_loc_services == true)
+            this.user.allow_loc_services = "True";
+        else
+            this.user.allow_loc_services = "False";
+        this.user.age = new Date().getFullYear() - this.user.age;
         this.userService.add(this.user);
+        //.then(() => this.returnToList(`Welcome to DateBuilder, ${this.user.name}!`));
+    };
+    AccountComponent.prototype.returnToList = function (message) {
+        this.router.navigateByUrl('search')
+            .then(function () { return alert(message); });
     };
     AccountComponent = __decorate([
         core_1.Component({

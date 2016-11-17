@@ -20,15 +20,26 @@ export class AccountComponent {
         private userService: UsersService) { }
 
     ngOnInit() {
-        this.user = {};
+        this.user = { //defaults
+            "allow_loc_services" : "False"
+        }
         this.years = Array(75).fill(0).map((x, i) => (new Date().getFullYear() - i));
-
-        /*
-        route params?
-        */
     }
 
     add() {
+        if(this.user.allow_loc_services == true)
+            this.user.allow_loc_services = "True";
+        else
+            this.user.allow_loc_services = "False";
+
+        this.user.age = new Date().getFullYear() - this.user.age;
+
         this.userService.add(this.user);
+            //.then(() => this.returnToList(`Welcome to DateBuilder, ${this.user.name}!`));
     }
+
+    private returnToList(message){
+		this.router.navigateByUrl('search')
+			.then(() => alert(message));
+	}
 }
