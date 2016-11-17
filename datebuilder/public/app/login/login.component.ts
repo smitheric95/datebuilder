@@ -23,7 +23,6 @@ export class LoginComponent {
     }
 
     logIn() {
-        console.log(this.user);
         this.userService.logIn(this.user);
     }
 }

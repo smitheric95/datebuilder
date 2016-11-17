@@ -21,7 +21,7 @@ export class AccountComponent {
 
     ngOnInit() {
         this.user = { //defaults
-            "allow_loc_services" : "False"
+            allow_loc_services : false
         }
         this.years = Array(75).fill(0).map((x, i) => (new Date().getFullYear() - i));
     }
@@ -29,13 +29,14 @@ export class AccountComponent {
     add() {
         if(this.user.allow_loc_services == true)
             this.user.allow_loc_services = "True";
-        else
+        else if(this.user.allow_loc_services != "True")
             this.user.allow_loc_services = "False";
 
         this.user.age = new Date().getFullYear() - this.user.age;
-
-        this.userService.add(this.user);
-            //.then(() => this.returnToList(`Welcome to DateBuilder, ${this.user.name}!`));
+        console.log(this.user);
+        this.userService.add(this.user)
+            .then(() => this.returnToList(`Welcome to DateBuilder, ${this.user.name}!`));
+            
     }
 
 

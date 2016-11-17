@@ -19,18 +19,20 @@ var AccountComponent = (function () {
     }
     AccountComponent.prototype.ngOnInit = function () {
         this.user = {
-            "allow_loc_services": "False"
+            allow_loc_services: false
         };
         this.years = Array(75).fill(0).map(function (x, i) { return (new Date().getFullYear() - i); });
     };
     AccountComponent.prototype.add = function () {
+        var _this = this;
         if (this.user.allow_loc_services == true)
             this.user.allow_loc_services = "True";
-        else
+        else if (this.user.allow_loc_services != "True")
             this.user.allow_loc_services = "False";
         this.user.age = new Date().getFullYear() - this.user.age;
-        this.userService.add(this.user);
-        //.then(() => this.returnToList(`Welcome to DateBuilder, ${this.user.name}!`));
+        console.log(this.user);
+        this.userService.add(this.user)
+            .then(function () { return _this.returnToList("Welcome to DateBuilder, " + _this.user.name + "!"); });
     };
     AccountComponent.prototype.returnToList = function (message) {
         this.router.navigateByUrl('search')

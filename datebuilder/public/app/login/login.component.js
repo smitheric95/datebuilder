@@ -21,7 +21,6 @@ var LoginComponent = (function () {
         this.user = {};
     };
     LoginComponent.prototype.logIn = function () {
-        console.log(this.user);
         this.userService.logIn(this.user);
     };
     LoginComponent = __decorate([
