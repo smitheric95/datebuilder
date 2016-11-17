@@ -37,7 +37,7 @@ var EventListComponent = (function () {
             styleUrls: [
                 './app/event-list/event-list.css',
                 './node_modules/bootstrap/dist/css/bootstrap.min.css',
-                './node_modules/bootstrap/node_modules/bootstrap-material-design/dist/css/bootstrap-material-design.min.css'
+                './node_modules/bootstrap-material-design/dist/css/bootstrap-material-design.min.css'
             ]
         }), 
         __metadata('design:paramtypes', [router_1.ActivatedRoute, router_1.Router, events_service_1.EventsService])

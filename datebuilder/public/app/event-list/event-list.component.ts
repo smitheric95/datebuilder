@@ -8,7 +8,7 @@ import { EventsService } from './../events.service';
     styleUrls: [
         './app/event-list/event-list.css',
          './node_modules/bootstrap/dist/css/bootstrap.min.css',
-        './node_modules/bootstrap/node_modules/bootstrap-material-design/dist/css/bootstrap-material-design.min.css'
+        './node_modules/bootstrap-material-design/dist/css/bootstrap-material-design.min.css'
     ]
 })
 export class EventListComponent {

@@ -18,7 +18,7 @@ var LandingComponent = (function () {
             template: "\n    <h1>landin page</h1>\n  ",
             styleUrls: [
                 './node_modules/bootstrap/dist/css/bootstrap.min.css',
-                './node_modules/bootstrap/node_modules/bootstrap-material-design/dist/css/bootstrap-material-design.min.css'
+                './node_modules/bootstrap-material-design/dist/css/bootstrap-material-design.min.css'
             ]
         }), 
         __metadata('design:paramtypes', [])

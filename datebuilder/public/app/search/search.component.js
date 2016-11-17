@@ -19,7 +19,7 @@ var SearchComponent = (function () {
             styleUrls: [
                 './app/search/search.css',
                 './node_modules/bootstrap/dist/css/bootstrap.min.css',
-                './node_modules/bootstrap/node_modules/bootstrap-material-design/dist/css/bootstrap-material-design.min.css'
+                './node_modules/bootstrap-material-design/dist/css/bootstrap-material-design.min.css'
             ]
         }), 
         __metadata('design:paramtypes', [])
