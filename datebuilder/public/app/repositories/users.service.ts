@@ -9,9 +9,16 @@ export class UsersService {
     constructor(private http: Http){}
 
     add(user) : Promise<any> {
-        console.log(JSON.stringify(user));
         return this.http
             .post(this._apiUrl, user)
+            .toPromise()
+            .then(() => user)
+            .catch(x => alert(x.json().error));
+    }
+
+    logIn(user) : Promise<any> {
+        return this.http
+            .post(this._apiUrl + '/login', user)
             .toPromise()
             .then(() => user)
             .catch(x => alert(x.json().error));

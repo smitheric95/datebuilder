@@ -17,9 +17,15 @@ var UsersService = (function () {
         this._apiUrl = 'users';
     }
     UsersService.prototype.add = function (user) {
-        console.log(JSON.stringify(user));
         return this.http
             .post(this._apiUrl, user)
+            .toPromise()
+            .then(function () { return user; })
+            .catch(function (x) { return alert(x.json().error); });
+    };
+    UsersService.prototype.logIn = function (user) {
+        return this.http
+            .post(this._apiUrl + '/login', user)
             .toPromise()
             .then(function () { return user; })
             .catch(function (x) { return alert(x.json().error); });

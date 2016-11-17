@@ -38,6 +38,7 @@ export class AccountComponent {
             //.then(() => this.returnToList(`Welcome to DateBuilder, ${this.user.name}!`));
     }
 
+
     private returnToList(message){
 		this.router.navigateByUrl('search')
 			.then(() => alert(message));
