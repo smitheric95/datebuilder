@@ -10,6 +10,6 @@
 ></event-list>
 
 <div *ngIf="singleEvent === true">
-    <a >Back to Results</a>
+    <a (click)="goBack()">Back to Results</a>
     <event [event]="selectedEvent"></event>
 </div>

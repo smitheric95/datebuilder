@@ -34,11 +34,17 @@ var SearchComponent = (function () {
     };
     SearchComponent.prototype.onQuery = function (query) {
         var _this = this;
+        this.currentQuery = query;
         this.eventsService.search(query).then(function (x) {
             _this.events = JSON.parse(x);
             _this.singleEvent = false;
             console.log(_this.events);
         });
+    };
+    SearchComponent.prototype.goBack = function () {
+        this.router.navigate(['/search']);
+        this.onQuery(this.currentQuery);
+        //wut
     };
     __decorate([
         core_1.Input(), 

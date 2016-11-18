@@ -15,6 +15,7 @@ export class SearchComponent {
     events: any[];
     selectedEvent: any;
     singleEvent: boolean;
+    currentQuery: string;
 
     @Input() searchQuery: any;
 
@@ -39,6 +40,7 @@ export class SearchComponent {
     }
 
     onQuery(query : any){
+        this.currentQuery = query;
         this.eventsService.search(query).then(x => {
             this.events = JSON.parse(x);
             this.singleEvent = false;
@@ -46,5 +48,9 @@ export class SearchComponent {
         });
     }
 
-
+    goBack() {
+        this.router.navigate(['/search']);
+        this.onQuery(this.currentQuery);
+        //wut
+    }
 }
