@@ -34,8 +34,9 @@ var SearchComponent = (function () {
             //this.singleEvent = false;
         });
     };
-    SearchComponent.prototype.search = function () {
-        console.log(this.searchQuery);
+    SearchComponent.prototype.onQuery = function (query) {
+        console.log('onQuery()');
+        console.log(query);
     };
     __decorate([
         core_1.Input(), 

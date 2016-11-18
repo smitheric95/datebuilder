@@ -11,15 +11,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var SearchbarComponent = (function () {
     function SearchbarComponent() {
-        this.query = new core_1.EventEmitter();
+        this.onQuery = new core_1.EventEmitter();
     }
+    SearchbarComponent.prototype.ngOnInit = function () {
+        this.searchQuery = "";
+    };
     SearchbarComponent.prototype.submitQuery = function () {
-        this.query.emit({ newValue: "test query" });
+        this.onQuery.emit(this.searchQuery);
     };
     __decorate([
-        core_1.Output('search-query'), 
+        core_1.Output(), 
         __metadata('design:type', Object)
-    ], SearchbarComponent.prototype, "query", void 0);
+    ], SearchbarComponent.prototype, "onQuery", void 0);
     SearchbarComponent = __decorate([
         core_1.Component({
             selector: 'search-bar',

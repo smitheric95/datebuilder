@@ -9,9 +9,14 @@ import { Component, Output, EventEmitter } from '@angular/core';
     ]
 })
 export class SearchbarComponent{
-    @Output('search-query') query = new EventEmitter();
+    searchQuery: string;
+    @Output() onQuery = new EventEmitter<string>();
+    
+    ngOnInit(){
+        this.searchQuery = "";
+    }
 
     submitQuery(){
-        this.query.emit({ newValue: "test query" }); 
+        this.onQuery.emit(this.searchQuery); 
     }
 }

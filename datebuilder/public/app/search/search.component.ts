@@ -40,8 +40,9 @@ export class SearchComponent {
         });
     }
 
-    search(){
-        console.log(this.searchQuery);
+    onQuery(query : any){
+        console.log('onQuery()');
+        console.log(query);
     }
 
 
