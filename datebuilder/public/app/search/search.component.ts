@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { EventsService } from './../repositories/events.service';
 
@@ -15,6 +15,8 @@ export class SearchComponent {
     events: any[];
     selectedEvent: any;
     singleEvent: boolean;
+
+    @Input() searchQuery: any;
 
     constructor(private route: ActivatedRoute,
         private router: Router,
@@ -35,8 +37,11 @@ export class SearchComponent {
             // search
             //this.eventsService.listEvents().then(x => this.events = x);
             //this.singleEvent = false;
-
         });
+    }
+
+    search(){
+        console.log(this.searchQuery);
     }
 
 

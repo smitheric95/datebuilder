@@ -1,4 +1,8 @@
-<search-bar *ngIf="singleEvent === false"></search-bar>
+<search-bar
+    (searchQuery)=“search()”
+    *ngIf="singleEvent === false"
+></search-bar>
+
 <event-list 
     *ngIf="singleEvent === false"
     [events]="events"

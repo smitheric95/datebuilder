@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
     selector: 'search-bar',
@@ -9,5 +9,9 @@ import { Component } from '@angular/core';
     ]
 })
 export class SearchbarComponent{
-    
+    @Output('search-query') query = new EventEmitter();
+
+    submitQuery(){
+        this.query.emit({ newValue: "test query" }); 
+    }
 }

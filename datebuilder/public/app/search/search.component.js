@@ -34,6 +34,13 @@ var SearchComponent = (function () {
             //this.singleEvent = false;
         });
     };
+    SearchComponent.prototype.search = function () {
+        console.log(this.searchQuery);
+    };
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Object)
+    ], SearchComponent.prototype, "searchQuery", void 0);
     SearchComponent = __decorate([
         core_1.Component({
             selector: 'search',
