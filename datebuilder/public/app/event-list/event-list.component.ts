@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { EventsService } from './../repositories/events.service';
 
@@ -12,33 +12,14 @@ import { EventsService } from './../repositories/events.service';
     ]
 })
 export class EventListComponent {
-
-    events: any[];
-    selectedEvent: any;
-    singleEvent: boolean;
-
+    @Input() events: any[];
+    @Input() singleEvent: boolean;
+    
     constructor(private route: ActivatedRoute,
                 private router: Router,
                 private eventsService: EventsService) { }
 
     ngOnInit() {
-        this.selectedEvent = {};
-        this.singleEvent = false;
 
-        this.route.params.forEach((params: Params) => {
-
-            //router: search/:id=event-id
-            if( params['id'] !== undefined ){
-                this.eventsService.getEvent(params['id']).then(x => {
-                    this.selectedEvent = JSON.parse(x); 
-                    this.singleEvent = true;
-                    console.log(this.selectedEvent);
-                });
-            }
-            // search/load
-            //this.eventsService.listEvents().then(x => this.events = x);
-
-
-        });
     }
 }

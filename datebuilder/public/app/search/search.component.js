@@ -9,9 +9,31 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
+var events_service_1 = require('./../repositories/events.service');
 var SearchComponent = (function () {
-    function SearchComponent() {
+    function SearchComponent(route, router, eventsService) {
+        this.route = route;
+        this.router = router;
+        this.eventsService = eventsService;
     }
+    SearchComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.selectedEvent = {};
+        this.singleEvent = false;
+        this.route.params.forEach(function (params) {
+            //router: search/:id=event-id
+            if (params['id'] !== undefined) {
+                _this.eventsService.getEvent(params['id']).then(function (x) {
+                    _this.selectedEvent = JSON.parse(x);
+                    _this.singleEvent = true;
+                });
+            }
+            // search
+            //this.eventsService.listEvents().then(x => this.events = x);
+            //this.singleEvent = false;
+        });
+    };
     SearchComponent = __decorate([
         core_1.Component({
             selector: 'search',
@@ -22,7 +44,7 @@ var SearchComponent = (function () {
                 './node_modules/bootstrap-material-design/dist/css/bootstrap-material-design.min.css'
             ]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [router_1.ActivatedRoute, router_1.Router, events_service_1.EventsService])
     ], SearchComponent);
     return SearchComponent;
 }());

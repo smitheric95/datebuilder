@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute, Router, Params } from '@angular/router';
+import { EventsService } from './../repositories/events.service';
 
 @Component({
     selector: 'search',
@@ -10,5 +12,32 @@ import { Component } from '@angular/core';
     ]
 })
 export class SearchComponent {
+    events: any[];
+    selectedEvent: any;
+    singleEvent: boolean;
+
+    constructor(private route: ActivatedRoute,
+        private router: Router,
+        private eventsService: EventsService) { }
+
+    ngOnInit() {
+        this.selectedEvent = {};
+        this.singleEvent = false;
+
+        this.route.params.forEach((params: Params) => {
+            //router: search/:id=event-id
+            if (params['id'] !== undefined) {
+                this.eventsService.getEvent(params['id']).then(x => {
+                    this.selectedEvent = JSON.parse(x);
+                    this.singleEvent = true;
+                });
+            }
+            // search
+            //this.eventsService.listEvents().then(x => this.events = x);
+            //this.singleEvent = false;
+
+        });
+    }
+
 
 }

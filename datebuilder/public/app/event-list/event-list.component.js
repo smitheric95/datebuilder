@@ -18,22 +18,15 @@ var EventListComponent = (function () {
         this.eventsService = eventsService;
     }
     EventListComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this.selectedEvent = {};
-        this.singleEvent = false;
-        this.route.params.forEach(function (params) {
-            //router: search/:id=event-id
-            if (params['id'] !== undefined) {
-                _this.eventsService.getEvent(params['id']).then(function (x) {
-                    _this.selectedEvent = JSON.parse(x);
-                    _this.singleEvent = true;
-                    console.log(_this.selectedEvent);
-                });
-            }
-            // search/load
-            //this.eventsService.listEvents().then(x => this.events = x);
-        });
     };
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Array)
+    ], EventListComponent.prototype, "events", void 0);
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Boolean)
+    ], EventListComponent.prototype, "singleEvent", void 0);
     EventListComponent = __decorate([
         core_1.Component({
             selector: 'event-list',
