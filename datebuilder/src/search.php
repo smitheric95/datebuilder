@@ -1,9 +1,8 @@
 <?php
 // runs the query on yelp without applying user preferences
-
 function generic_query($query) {
     include "yelp_api.php";
-
+    var_dump($_SESSION);
     // query yelp api
     $yelp_data =  search($query, "Dallas, TX");
 

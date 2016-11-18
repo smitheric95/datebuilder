@@ -1,4 +1,5 @@
 <?php
+#session_destroy();
 // Routes
 ini_set('display_errors', 1);
 
