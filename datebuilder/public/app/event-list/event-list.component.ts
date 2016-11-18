@@ -37,6 +37,8 @@ export class EventListComponent {
             }
             // search/load
             //this.eventsService.listEvents().then(x => this.events = x);
+
+
         });
     }
 }

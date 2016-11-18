@@ -1,5 +1,5 @@
-<p>Popular Events</p>
-<ul>
+<ul *ngIf="singleEvent === false">
+    <p>Popular Events</p>
     <li *ngFor="let event of events">
         <a [routerLink]="event.id">
             <div class="panel panel-default">
@@ -16,6 +16,3 @@
         </a>
     </li>
 </ul>
-<div>
-    <p>{{selectedEvent.rating}}</p>
-</div>

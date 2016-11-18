@@ -1,3 +1,7 @@
 <h1>This is a search page.</h1>
 <search-bar></search-bar>
 <event-list></event-list>
+<div *ngIf="singleEvent === true">
+    <h2>{{selectedEvent.name}}</h2>
+    <p>{{selectedEvent.rating}}</p>
+</div>
