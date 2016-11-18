@@ -24,18 +24,15 @@ var EventsService = (function () {
         this._apiUrl = 'search';
     }
     EventsService.prototype.listEvents = function () {
-        console.log(this._apiUrl + '/load');
         return this.http.get(this._apiUrl + '/load')
             .toPromise()
             .then(function (x) { return x.json().data; });
     };
     EventsService.prototype.getEvent = function (id) {
-        var pluck = function (x) { return (x && x.length) ? x[0] : undefined; };
         return this.http
-            .get(this._apiUrl + "/business/?id=" + id)
+            .get(this._apiUrl + "/business/" + id)
             .toPromise()
-            .then(function (x) { return pluck(x.json().data); })
-            .catch(function (x) { return alert(x.json().error); });
+            .then(function (x) { return x['_body']; });
     };
     EventsService = __decorate([
         core_1.Injectable(), 

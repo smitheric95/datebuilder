@@ -20,11 +20,15 @@ var EventListComponent = (function () {
     EventListComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.selectedEvent = {};
+        this.singleEvent = false;
         this.route.params.forEach(function (params) {
             //router: search/:id=event-id
             if (params['id'] !== undefined) {
-                console.log(params['id']);
-                _this.selectedEvent = _this.eventsService.getEvent(params['id']);
+                _this.eventsService.getEvent(params['id']).then(function (x) {
+                    _this.selectedEvent = JSON.parse(x);
+                    _this.singleEvent = true;
+                    console.log(_this.selectedEvent);
+                });
             }
             // search/load
             //this.eventsService.listEvents().then(x => this.events = x);

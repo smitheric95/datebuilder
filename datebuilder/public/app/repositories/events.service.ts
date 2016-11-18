@@ -21,19 +21,16 @@ export class EventsService {
 
 
     listEvents() : Promise<any> {
-        console.log( this._apiUrl + '/load');
         return this.http.get(this._apiUrl + '/load')
 		.toPromise()
 		.then(x => x.json().data as any[]);
     }
 
-    getEvent(id : number) : Promise<any> {
-		var pluck = x => (x && x.length) ? x[0] : undefined;
+    getEvent(id : string) : Promise<any> {
 		return this.http
-			.get(`${this._apiUrl}/business/?id=${id}`)
+			.get(`${this._apiUrl}/business/${id}`)
 			.toPromise()
-			.then(x => pluck(x.json().data))
-			.catch(x => alert(x.json().error));
+		    .then(x => x['_body'] as any);
 	}
 
 }

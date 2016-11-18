@@ -15,6 +15,7 @@ export class EventListComponent {
 
     events: any[];
     selectedEvent: any;
+    singleEvent: boolean;
 
     constructor(private route: ActivatedRoute,
                 private router: Router,
@@ -22,15 +23,18 @@ export class EventListComponent {
 
     ngOnInit() {
         this.selectedEvent = {};
+        this.singleEvent = false;
 
         this.route.params.forEach((params: Params) => {
 
             //router: search/:id=event-id
             if( params['id'] !== undefined ){
-                console.log( params['id'] );
-                this.selectedEvent = this.eventsService.getEvent( params['id'] );
+                this.eventsService.getEvent(params['id']).then(x => {
+                    this.selectedEvent = JSON.parse(x); 
+                    this.singleEvent = true;
+                    console.log(this.selectedEvent);
+                });
             }
-            
             // search/load
             //this.eventsService.listEvents().then(x => this.events = x);
         });
