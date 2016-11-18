@@ -35,8 +35,9 @@ var SearchComponent = (function () {
         });
     };
     SearchComponent.prototype.onQuery = function (query) {
-        console.log('onQuery()');
-        console.log(query);
+        this.eventsService.search(query).then(function (x) {
+            console.log(x);
+        });
     };
     __decorate([
         core_1.Input(), 

@@ -41,8 +41,9 @@ export class SearchComponent {
     }
 
     onQuery(query : any){
-        console.log('onQuery()');
-        console.log(query);
+        this.eventsService.search(query).then(x => {
+            console.log(x);
+        });
     }
 
 

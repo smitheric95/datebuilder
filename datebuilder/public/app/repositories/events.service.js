@@ -34,6 +34,12 @@ var EventsService = (function () {
             .toPromise()
             .then(function (x) { return x['_body']; });
     };
+    EventsService.prototype.search = function (query) {
+        return this.http
+            .get(this._apiUrl + "/search/" + query)
+            .toPromise()
+            .then(function (x) { return x['_body']; });
+    };
     EventsService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http])

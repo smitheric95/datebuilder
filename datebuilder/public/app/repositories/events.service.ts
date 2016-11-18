@@ -20,17 +20,24 @@ export class EventsService {
     constructor(private http: Http) { }
 
 
-    listEvents() : Promise<any> {
+    listEvents(): Promise<any> {
         return this.http.get(this._apiUrl + '/load')
-		.toPromise()
-		.then(x => x.json().data as any[]);
+            .toPromise()
+            .then(x => x.json().data as any[]);
     }
 
-    getEvent(id : string) : Promise<any> {
-		return this.http
-			.get(`${this._apiUrl}/business/${id}`)
-			.toPromise()
-		    .then(x => x['_body'] as any);
-	}
+    getEvent(id : string): Promise<any> {
+        return this.http
+            .get(`${this._apiUrl}/business/${id}`)
+            .toPromise()
+            .then(x => x['_body'] as any);
+    }
+
+    search(query : string): Promise<any> {
+        return this.http
+            .get(`${this._apiUrl}/search/${query}`)
+            .toPromise()
+            .then(x => x['_body'] as any);
+    }
 
 }
