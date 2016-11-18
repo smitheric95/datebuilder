@@ -124,3 +124,15 @@ $app->post('/build/', function (Request $request, Response $response) {
     }
     return $response;
 });
+
+$app->add(function ($request, $response, $next) use ($settings) {
+    $response = $next($request, $response);
+
+    if (404 === $response->getStatusCode()) {
+        $response->getBody()->rewind();
+        $handler = $settings['notFoundHandler'];
+        return $handler($request, $response);
+    }
+
+    return $response;
+});

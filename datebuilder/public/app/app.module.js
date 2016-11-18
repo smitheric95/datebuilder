@@ -23,7 +23,7 @@ var event_list_component_1 = require('./event-list/event-list.component');
 var builder_component_1 = require('./builder/builder.component');
 var account_component_1 = require('./account/account.component');
 var login_component_1 = require('./login/login.component');
-var events_service_1 = require('./events.service');
+var events_service_1 = require('./repositories/events.service');
 var users_service_1 = require('./repositories/users.service');
 var AppModule = (function () {
     function AppModule() {

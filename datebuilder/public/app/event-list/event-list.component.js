@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
-var events_service_1 = require('./../events.service');
+var events_service_1 = require('./../repositories/events.service');
 var EventListComponent = (function () {
     function EventListComponent(route, router, eventsService) {
         this.route = route;
@@ -23,11 +23,11 @@ var EventListComponent = (function () {
         this.route.params.forEach(function (params) {
             //router: search/:id=event-id
             if (params['id'] !== undefined) {
+                console.log(params['id']);
                 _this.selectedEvent = _this.eventsService.getEvent(params['id']);
             }
-            _this.events = _this.eventsService.getEvents();
-            console.log(params);
-            console.log(_this.selectedEvent);
+            // search/load
+            //this.eventsService.listEvents().then(x => this.events = x);
         });
     };
     EventListComponent = __decorate([

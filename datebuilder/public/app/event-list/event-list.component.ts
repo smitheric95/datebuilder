@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router, Params } from '@angular/router';
-import { EventsService } from './../events.service';
+import { EventsService } from './../repositories/events.service';
 
 @Component({
     selector: 'event-list',
@@ -27,13 +27,12 @@ export class EventListComponent {
 
             //router: search/:id=event-id
             if( params['id'] !== undefined ){
+                console.log( params['id'] );
                 this.selectedEvent = this.eventsService.getEvent( params['id'] );
             }
             
-            this.events = this.eventsService.getEvents();
-
-            console.log(params);
-            console.log(this.selectedEvent);
+            // search/load
+            //this.eventsService.listEvents().then(x => this.events = x);
         });
     }
 }

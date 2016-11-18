@@ -14,7 +14,7 @@ import { EventListComponent } from './event-list/event-list.component';
 import { BuilderComponent } from './builder/builder.component';
 import { AccountComponent } from './account/account.component';
 import { LoginComponent } from './login/login.component';
-import { EventsService } from './events.service';
+import { EventsService } from './repositories/events.service';
 import { UsersService } from './repositories/users.service';
 
 @NgModule({
