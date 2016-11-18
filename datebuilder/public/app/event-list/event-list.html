@@ -1,18 +1,5 @@
 <ul *ngIf="singleEvent === false">
-    <p>Popular Events</p>
     <li *ngFor="let event of events">
-        <a [routerLink]="event.id">
-            <div class="panel panel-default">
-                <div class="panel-heading">{{ event.name }}</div>
-                <div class="panel-body">
-                    <img src='{{ event.image_url }}' />
-                    <div class='event-info' *ngIf="event.id === selectedEvent.id">
-                        <p>{{ event.location.display_address }}</p>
-                        <p>{{ event.display_phone }}</p>
-                        <p>Rating: {{ event.rating }}</p>
-                    </div>
-                </div>
-            </div>
-        </a>
+        <event [event]="event"></event>
     </li>
 </ul>

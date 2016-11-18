@@ -19,6 +19,7 @@ var SearchComponent = (function () {
     }
     SearchComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.events = [];
         this.selectedEvent = {};
         this.singleEvent = false;
         this.route.params.forEach(function (params) {
@@ -29,14 +30,14 @@ var SearchComponent = (function () {
                     _this.singleEvent = true;
                 });
             }
-            // search
-            //this.eventsService.listEvents().then(x => this.events = x);
-            //this.singleEvent = false;
         });
     };
     SearchComponent.prototype.onQuery = function (query) {
+        var _this = this;
         this.eventsService.search(query).then(function (x) {
-            console.log(x);
+            _this.events = JSON.parse(x);
+            _this.singleEvent = false;
+            console.log(_this.events);
         });
     };
     __decorate([

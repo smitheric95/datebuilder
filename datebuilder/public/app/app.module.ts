@@ -11,9 +11,11 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { SearchComponent } from './search/search.component';
 import { SearchbarComponent } from './search-bar/search-bar.component';
 import { EventListComponent } from './event-list/event-list.component';
+import { EventComponent } from './event/event.component';
 import { BuilderComponent } from './builder/builder.component';
 import { AccountComponent } from './account/account.component';
 import { LoginComponent } from './login/login.component';
+
 import { EventsService } from './repositories/events.service';
 import { UsersService } from './repositories/users.service';
 
@@ -38,6 +40,7 @@ import { UsersService } from './repositories/users.service';
     SearchComponent,
     SearchbarComponent,
     EventListComponent,
+    EventComponent,
     BuilderComponent,
     AccountComponent,
     LoginComponent

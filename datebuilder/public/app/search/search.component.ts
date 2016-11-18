@@ -23,6 +23,7 @@ export class SearchComponent {
         private eventsService: EventsService) { }
 
     ngOnInit() {
+        this.events = [];
         this.selectedEvent = {};
         this.singleEvent = false;
 
@@ -34,15 +35,14 @@ export class SearchComponent {
                     this.singleEvent = true;
                 });
             }
-            // search
-            //this.eventsService.listEvents().then(x => this.events = x);
-            //this.singleEvent = false;
         });
     }
 
     onQuery(query : any){
         this.eventsService.search(query).then(x => {
-            console.log(x);
+            this.events = JSON.parse(x);
+            this.singleEvent = false;
+            console.log(this.events);
         });
     }
 
