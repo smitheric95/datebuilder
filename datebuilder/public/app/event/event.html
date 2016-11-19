@@ -1,13 +1,11 @@
-<a [routerLink]="event.id">
-    <div class="panel panel-default">
-        <div class="panel-heading">{{ event.name }}</div>
-        <div class="panel-body">
-            <img src='{{ event.image_url }}' />
-            <div class='event-info'>
-                <p>{{ event.location.display_address }}</p>
-                <p>{{ event.display_phone }}</p>
-                <p>Rating: {{ event.rating }}</p>
-            </div>
+<div class="panel panel-default">
+    <div class="panel-heading">{{ event.name }}</div>
+    <div class="panel-body">
+        <img src='{{ event.image_url }}' />
+        <div class='event-info'>
+            <p>{{ event.location.display_address }}</p>
+            <p>{{ event.display_phone }}</p>
+            <p>Rating: {{ event.rating }}</p>
         </div>
     </div>
-</a>
+</div>

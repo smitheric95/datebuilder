@@ -17,7 +17,11 @@ var EventListComponent = (function () {
         this.router = router;
         this.eventsService = eventsService;
     }
-    EventListComponent.prototype.ngOnInit = function () {
+    EventListComponent.prototype.loadModal = function (event) {
+        var _this = this;
+        this.eventsService.getEvent(event).then(function (x) {
+            _this.selectedEvent = JSON.parse(x);
+        });
     };
     __decorate([
         core_1.Input(), 

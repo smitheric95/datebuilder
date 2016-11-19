@@ -41,10 +41,6 @@ var SearchComponent = (function () {
             console.log(_this.events);
         });
     };
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', Object)
-    ], SearchComponent.prototype, "searchQuery", void 0);
     SearchComponent = __decorate([
         core_1.Component({
             selector: 'search',

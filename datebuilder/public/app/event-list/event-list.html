@@ -1,5 +1,10 @@
+<div *ngIf="selectedEvent">
+    <event [event]="selectedEvent"></event>    
+</div>
 <ul *ngIf="singleEvent === false">
     <li *ngFor="let event of events">
-        <event [event]="event"></event>
+        <a (click)="loadModal(event.id)">
+            <event [event]="event"></event>
+        </a>
     </li>
 </ul>

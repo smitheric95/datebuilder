@@ -17,8 +17,6 @@ export class SearchComponent {
     singleEvent: boolean;
     currentQuery: string;
 
-    @Input() searchQuery: any;
-
     constructor(private route: ActivatedRoute,
         private router: Router,
         private eventsService: EventsService) { }
