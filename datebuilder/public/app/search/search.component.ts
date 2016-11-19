@@ -48,9 +48,4 @@ export class SearchComponent {
         });
     }
 
-    goBack() {
-        this.router.navigate(['/search']);
-        this.onQuery(this.currentQuery);
-        //wut
-    }
 }

@@ -41,11 +41,6 @@ var SearchComponent = (function () {
             console.log(_this.events);
         });
     };
-    SearchComponent.prototype.goBack = function () {
-        this.router.navigate(['/search']);
-        this.onQuery(this.currentQuery);
-        //wut
-    };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', Object)
