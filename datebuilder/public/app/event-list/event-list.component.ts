@@ -8,7 +8,9 @@ import { EventsService } from './../repositories/events.service';
     styleUrls: [
         './app/event-list/event-list.css',
         './node_modules/bootstrap/dist/css/bootstrap.min.css',
-        './node_modules/bootstrap-material-design/dist/css/bootstrap-material-design.min.css'
+        './node_modules/bootstrap-material-design/dist/css/bootstrap-material-design.min.css',
+        '//fonts.googleapis.com/css?family=Roboto:300,400,500,700',
+        '//fonts.googleapis.com/icon?family=Material+Icons'
     ]
 })
 export class EventListComponent {

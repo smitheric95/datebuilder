@@ -9,6 +9,21 @@ li {
     margin: 5px;
 }
 
-div.event-info {
-    
+i.close {
+    color: rgb(0, 150, 136);
+    margin-right: 10px;
+    opacity: 0.6;
+}
+
+i.close:hover {
+    color: rgb(0, 150, 136);
+    opacity: 1;
+}
+
+.close {
+    float: left !important;
+}
+
+.button-wrapper {
+    float: right;
 }

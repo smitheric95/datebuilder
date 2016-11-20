@@ -3,7 +3,14 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <div class="button-wrapper">
+                        <a 
+                            target="_blank"
+                            [routerLink]="selectedEvent.id" >
+                            <i class="material-icons close">open_in_new</i>
+                        </a>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    </div>
                     <h4 class="modal-title">{{selectedEvent.name}}</h4>
                 </div>
                 <div class="modal-body">

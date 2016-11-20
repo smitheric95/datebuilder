@@ -43,7 +43,9 @@ var EventListComponent = (function () {
             styleUrls: [
                 './app/event-list/event-list.css',
                 './node_modules/bootstrap/dist/css/bootstrap.min.css',
-                './node_modules/bootstrap-material-design/dist/css/bootstrap-material-design.min.css'
+                './node_modules/bootstrap-material-design/dist/css/bootstrap-material-design.min.css',
+                '//fonts.googleapis.com/css?family=Roboto:300,400,500,700',
+                '//fonts.googleapis.com/icon?family=Material+Icons'
             ]
         }), 
         __metadata('design:paramtypes', [router_1.ActivatedRoute, router_1.Router, events_service_1.EventsService])
