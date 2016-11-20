@@ -13,12 +13,15 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 export class EventComponent {
     @Input() event: any;
     @Input() isSelected: boolean;
-    @Output() addEvent = new EventEmitter<string>();
     @Output() eventSelected = new EventEmitter<string>();
 
+    /*
+    
+        will have to use a service
+
+    */
     onAddEvent(event: string){//parameter necessary?
         console.log('Add event!');
-        //this.addEvent.emit(this.event.id); 
     }
 
     selectEvent(){
