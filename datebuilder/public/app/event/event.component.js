@@ -16,6 +16,10 @@ var EventComponent = (function () {
         core_1.Input(), 
         __metadata('design:type', Object)
     ], EventComponent.prototype, "event", void 0);
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Boolean)
+    ], EventComponent.prototype, "isSelected", void 0);
     EventComponent = __decorate([
         core_1.Component({
             selector: 'event',

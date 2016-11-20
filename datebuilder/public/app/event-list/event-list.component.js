@@ -21,8 +21,13 @@ var EventListComponent = (function () {
         var _this = this;
         this.eventsService.getEvent(event).then(function (x) {
             _this.selectedEvent = JSON.parse(x);
+            //disgusting hack
+            $(function () {
+                $('#eventModal').modal('show');
+            });
         });
     };
+    ;
     __decorate([
         core_1.Input(), 
         __metadata('design:type', Array)

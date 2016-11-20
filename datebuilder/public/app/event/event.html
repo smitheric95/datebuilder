@@ -1,6 +1,6 @@
-<div class="panel panel-default">
-    <div class="panel-heading">{{ event.name }}</div>
-    <div class="panel-body">
+<div [ngClass]="{'panel panel-default': !isSelected }">
+    <div *ngIf="!isSelected" class="panel-heading">{{ event.name }}</div>
+    <div [ngClass]="{'panel-body': !isSelected }">
         <img src='{{ event.image_url }}' />
         <div class='event-info'>
             <p>{{ event.location.display_address }}</p>

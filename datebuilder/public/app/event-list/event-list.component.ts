@@ -23,6 +23,11 @@ export class EventListComponent {
     loadModal(event: string) {
         this.eventsService.getEvent(event).then(x => {
             this.selectedEvent = JSON.parse(x);
+
+            //disgusting hack
+            $(function(){
+                $('#eventModal').modal('show');
+            )};
         });
     }
 }
