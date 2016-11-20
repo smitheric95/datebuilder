@@ -28,9 +28,10 @@
 
 <ul *ngIf="singleEvent === false">
     <li *ngFor="let event of events">
-        <a (click)="loadModal(event.id)">
-            <event [isSelected]="false" [event]="event"></event>
-        </a>
-        <a class="btn btn-primary btn-fab"><i class="material-icons">grade</i></a>
+            <event
+                (eventSelected)="loadModal($event)"
+                [isSelected]="false" 
+                [event]="event"
+            ></event>
     </li>
 </ul>

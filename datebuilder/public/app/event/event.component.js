@@ -11,7 +11,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var EventComponent = (function () {
     function EventComponent() {
+        this.addEvent = new core_1.EventEmitter();
+        this.eventSelected = new core_1.EventEmitter();
     }
+    EventComponent.prototype.onAddEvent = function (event) {
+        console.log('Add event!');
+        //this.addEvent.emit(this.event.id); 
+    };
+    EventComponent.prototype.selectEvent = function () {
+        this.eventSelected.emit(this.event.id);
+    };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', Object)
@@ -20,6 +29,14 @@ var EventComponent = (function () {
         core_1.Input(), 
         __metadata('design:type', Boolean)
     ], EventComponent.prototype, "isSelected", void 0);
+    __decorate([
+        core_1.Output(), 
+        __metadata('design:type', Object)
+    ], EventComponent.prototype, "addEvent", void 0);
+    __decorate([
+        core_1.Output(), 
+        __metadata('design:type', Object)
+    ], EventComponent.prototype, "eventSelected", void 0);
     EventComponent = __decorate([
         core_1.Component({
             selector: 'event',

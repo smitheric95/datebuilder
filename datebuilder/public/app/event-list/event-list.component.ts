@@ -16,13 +16,15 @@ import { EventsService } from './../repositories/events.service';
 export class EventListComponent {
     @Input() events: any[];
     @Input() singleEvent: boolean;
+    
     selectedEvent : any;
+
 
     constructor(private route: ActivatedRoute,
         private router: Router,
         private eventsService: EventsService) { }
 
-    loadModal(event: string) {
+    loadModal(event: any) {
         this.eventsService.getEvent(event).then(x => {
             this.selectedEvent = JSON.parse(x);
 

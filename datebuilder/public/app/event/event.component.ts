@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
     selector: 'event',
@@ -13,4 +13,16 @@ import { Component, Input } from '@angular/core';
 export class EventComponent {
     @Input() event: any;
     @Input() isSelected: boolean;
+    @Output() addEvent = new EventEmitter<string>();
+    @Output() eventSelected = new EventEmitter<string>();
+
+    onAddEvent(event: string){//parameter necessary?
+        console.log('Add event!');
+        //this.addEvent.emit(this.event.id); 
+    }
+
+    selectEvent(){
+        this.eventSelected.emit(this.event.id); 
+    }
+
 }
