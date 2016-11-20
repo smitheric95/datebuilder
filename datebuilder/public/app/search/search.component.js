@@ -38,7 +38,6 @@ var SearchComponent = (function () {
         this.eventsService.search(query).then(function (x) {
             _this.events = JSON.parse(x);
             _this.singleEvent = false;
-            console.log(_this.events);
         });
     };
     SearchComponent = __decorate([

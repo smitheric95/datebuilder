@@ -42,7 +42,6 @@ export class SearchComponent {
         this.eventsService.search(query).then(x => {
             this.events = JSON.parse(x);
             this.singleEvent = false;
-            console.log(this.events);
         });
     }
 

@@ -27,9 +27,7 @@ export class EventListComponent {
             this.selectedEvent = JSON.parse(x);
 
             //disgusting hack
-            $(function(){
-                $('#eventModal').modal('show');
-            )};
+            eval("$(function(){$('#eventModal').modal('show')})");
         });
     }
 }
