@@ -1,4 +1,4 @@
-<div [ngClass]="{'panel panel-default': !isSelected }">
+<div class="event" [ngClass]="{'panel panel-default': !isSelected }">
     <div *ngIf="!isSelected" class="panel-heading">
         <a (click)="selectEvent()">
             {{ event.name }}

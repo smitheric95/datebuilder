@@ -4,6 +4,7 @@ import { Component, Output, EventEmitter } from '@angular/core';
     selector: 'search-bar',
     templateUrl: './app/search-bar/search-bar.html',
     styleUrls: [
+        './app/search-bar/search-bar.css',
         './node_modules/bootstrap/dist/css/bootstrap.min.css',
         './node_modules/bootstrap-material-design/dist/css/bootstrap-material-design.min.css'
     ]

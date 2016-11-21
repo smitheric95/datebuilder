@@ -26,12 +26,10 @@
 </div>
 
 
-<ul *ngIf="singleEvent === false">
-    <li *ngFor="let event of events">
-            <event
-                (eventSelected)="loadModal($event)"
-                [isSelected]="false" 
-                [event]="event"
-            ></event>
-    </li>
-</ul>
+<div *ngIf="singleEvent === false">
+    <event *ngFor="let event of events"
+        (eventSelected)="loadModal($event)"
+        [isSelected]="false" 
+        [event]="event"
+    ></event>
+</div>
