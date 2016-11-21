@@ -8,9 +8,9 @@
     color: #ffffff;
 }
 
-.event {
-    width: 300px;
-    float: left;
-    height: 250px;
-    margin: 3%;
+
+
+.col-md-4 {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
 }
