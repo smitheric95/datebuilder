@@ -1,0 +1,16 @@
+@media (max-width: 1199px) { 
+    .form-group {
+        margin-top: 55px !important;
+    }
+}
+
+@media (min-width: 1200px) { 
+    .form-group {
+        margin-top: 65px !important;
+    }
+}
+
+.btn {
+        background-color: #009688 !important;
+    color: #fff !important;
+}

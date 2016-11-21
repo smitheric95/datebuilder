@@ -1,7 +1,7 @@
-<div [ngClass]="{'panel panel-default': !isSelected }">
+<div class="event" [ngClass]="{'panel panel-default': !isSelected }">
     <div *ngIf="!isSelected" class="panel-heading">
         <a (click)="selectEvent()">
-            {{ event.name }}
+            {{ event.name | ellipsis:25 }}
         </a>
     </div>
     <div [ngClass]="{'panel-body': !isSelected }">
