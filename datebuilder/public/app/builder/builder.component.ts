@@ -3,7 +3,11 @@ import { Component, Input } from '@angular/core';
 @Component({
     selector: 'builder',
     templateUrl: './app/builder/builder.html',
-    styleUrls: ['./app/builder/builder.css']
+    styleUrls: [
+        './app/builder/builder.css',
+        './node_modules/bootstrap/dist/css/bootstrap.min.css',
+        './node_modules/bootstrap-material-design/dist/css/bootstrap-material-design.min.css',
+    ]
 })
 export class BuilderComponent {
     @Input() addedEvent: any; //event object passed from EventList

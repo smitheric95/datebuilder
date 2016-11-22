@@ -20,7 +20,7 @@ a.img-wrapper {
     height: 200px;
     display: inline-block;
     overflow: hidden;
-    background-color: #bdbdbd;
+    background-color: #eee;
 }
 
 .img-wrapper > img {

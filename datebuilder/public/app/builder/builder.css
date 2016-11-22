@@ -1,7 +1,12 @@
-div {
+.builder {
     width: 100%;
-    border: solid 1px black;
     position: fixed;
     left: 0;
     bottom: 0;
+    margin-bottom: 0 !important;
+}
+
+.panel-body {
+    height: 200px;
+    background-color: #eee;
 }

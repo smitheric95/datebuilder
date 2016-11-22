@@ -38,7 +38,11 @@ var BuilderComponent = (function () {
         core_1.Component({
             selector: 'builder',
             templateUrl: './app/builder/builder.html',
-            styleUrls: ['./app/builder/builder.css']
+            styleUrls: [
+                './app/builder/builder.css',
+                './node_modules/bootstrap/dist/css/bootstrap.min.css',
+                './node_modules/bootstrap-material-design/dist/css/bootstrap-material-design.min.css',
+            ]
         }), 
         __metadata('design:paramtypes', [])
     ], BuilderComponent);
