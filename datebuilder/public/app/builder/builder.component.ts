@@ -25,7 +25,9 @@ export class BuilderComponent {
     }
 
     addEvent(event : any) {
-        this.events.push( event ); 
-        console.log("Added event object with ID: '" + event.id + "'");
+        if(this.events.indexOf(event) === -1){
+            this.events.push( event ); 
+            console.log("Added event object with ID: '" + event.id + "'");
+        }
     }
 }

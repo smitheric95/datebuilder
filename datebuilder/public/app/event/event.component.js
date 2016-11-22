@@ -12,14 +12,10 @@ var core_1 = require('@angular/core');
 var EventComponent = (function () {
     function EventComponent() {
         this.eventSelected = new core_1.EventEmitter();
+        this.eventAdded = new core_1.EventEmitter();
     }
-    /*
-    
-        will have to use a service
-
-    */
-    EventComponent.prototype.onAddEvent = function (event) {
-        console.log('Add event!');
+    EventComponent.prototype.onAddEvent = function () {
+        this.eventAdded.emit(this.event);
     };
     EventComponent.prototype.selectEvent = function () {
         this.eventSelected.emit(this.event.id);
@@ -36,6 +32,10 @@ var EventComponent = (function () {
         core_1.Output(), 
         __metadata('design:type', Object)
     ], EventComponent.prototype, "eventSelected", void 0);
+    __decorate([
+        core_1.Output(), 
+        __metadata('design:type', Object)
+    ], EventComponent.prototype, "eventAdded", void 0);
     EventComponent = __decorate([
         core_1.Component({
             selector: 'event',

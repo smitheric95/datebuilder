@@ -32,6 +32,7 @@
 <div class="event-wrapper " *ngIf="singleEvent === false" >
     <event class="event-item col-lg-4 col-md-6" *ngFor="let event of events"
         (eventSelected)="loadModal($event)"
+        (eventAdded)="addEvent($event)"
         [isSelected]="false" 
         [event]="event"
     ></event>

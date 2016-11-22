@@ -25,8 +25,10 @@ var BuilderComponent = (function () {
             console.log(this.events[i].id);
     };
     BuilderComponent.prototype.addEvent = function (event) {
-        this.events.push(event);
-        console.log("Added event object with ID: '" + event.id + "'");
+        if (this.events.indexOf(event) === -1) {
+            this.events.push(event);
+            console.log("Added event object with ID: '" + event.id + "'");
+        }
     };
     __decorate([
         core_1.Input(), 

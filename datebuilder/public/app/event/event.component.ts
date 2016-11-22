@@ -16,14 +16,10 @@ export class EventComponent {
     @Input() event: any;
     @Input() isSelected: boolean;
     @Output() eventSelected = new EventEmitter<string>();
+    @Output() eventAdded = new EventEmitter<any>();
 
-    /*
-    
-        will have to use a service
-
-    */
-    onAddEvent(event: string){//parameter necessary?
-        console.log('Add event!');
+    onAddEvent(){
+        this.eventAdded.emit(this.event);
     }
 
     selectEvent(){

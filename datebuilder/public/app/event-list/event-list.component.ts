@@ -17,7 +17,7 @@ import { BuilderComponent } from '../builder/builder.component';
 export class EventListComponent {
     @Input() events: any[];
     @Input() singleEvent: boolean;
-    //@Output() addedEvent = new EventEmitter<string>();
+    
     addedEvent : any;
 
     selectedEvent : any;
