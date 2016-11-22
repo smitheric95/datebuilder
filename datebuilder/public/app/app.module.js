@@ -27,6 +27,7 @@ var login_component_1 = require('./login/login.component');
 var events_service_1 = require('./repositories/events.service');
 var users_service_1 = require('./repositories/users.service');
 var ellipsis_pipe_1 = require('./pipes/ellipsis.pipe');
+var image_pipe_1 = require('./pipes/image.pipe');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -55,7 +56,8 @@ var AppModule = (function () {
                 builder_component_1.BuilderComponent,
                 account_component_1.AccountComponent,
                 login_component_1.LoginComponent,
-                ellipsis_pipe_1.EllipsisPipe
+                ellipsis_pipe_1.EllipsisPipe,
+                image_pipe_1.ImagePipe
             ],
             providers: [
                 users_service_1.UsersService,

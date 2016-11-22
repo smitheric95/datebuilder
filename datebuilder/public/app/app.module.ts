@@ -19,6 +19,7 @@ import { LoginComponent } from './login/login.component';
 import { EventsService } from './repositories/events.service';
 import { UsersService } from './repositories/users.service';
 import { EllipsisPipe } from './pipes/ellipsis.pipe';
+import { ImagePipe } from './pipes/image.pipe';
 
 @NgModule({
   imports: [
@@ -45,7 +46,8 @@ import { EllipsisPipe } from './pipes/ellipsis.pipe';
     BuilderComponent,
     AccountComponent,
     LoginComponent,
-    EllipsisPipe
+    EllipsisPipe,
+    ImagePipe
   ],
   providers: [ 
     UsersService, 

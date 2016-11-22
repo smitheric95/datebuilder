@@ -1,17 +1,18 @@
 <div class="event" [ngClass]="{'panel panel-default': !isSelected }">
-    <div *ngIf="!isSelected" class="panel-heading">
-        <a (click)="selectEvent()">
-            {{ event.name | ellipsis:25 }}
+    <div *ngIf="!isSelected" >
+        <a class="img-wrapper" (click)="selectEvent()" >
+            <img src='{{ event.image_url | image:"large" }}' />
         </a>
     </div>
     <div [ngClass]="{'panel-body': !isSelected }">
         <a 
             *ngIf="!isSelected"
             (click)="onAddEvent(event.id)" 
-            class="close add-event-button btn btn-primary btn-fab"><i class="star material-icons">add</i></a>    
+            class="close add-event-button btn btn-primary btn-fab"><i class="star material-icons">add</i>
+        </a>    
         <a (click)="selectEvent()">
-            <img src='{{ event.image_url }}' />
             <div class='event-info'>
+                {{ event.name | ellipsis:25 }}
                 <p>{{ event.location.display_address }}</p>
                 <p>{{ event.display_phone }}</p>
                 <p>Rating: {{ event.rating }}</p>

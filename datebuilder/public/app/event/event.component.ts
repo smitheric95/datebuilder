@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { EllipsisPipe } from '../pipes/ellipsis.pipe';
+import { ImagePipe } from '../pipes/image.pipe';
 
 @Component({
     selector: 'event',
