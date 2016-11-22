@@ -25,6 +25,10 @@ var EventListComponent = (function () {
             eval("$(function(){$('#eventModal').modal('show')})");
         });
     };
+    EventListComponent.prototype.addEvent = function (event) {
+        this.addedEvent = event;
+        //this.addedEvent.emit(event); 
+    };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', Array)

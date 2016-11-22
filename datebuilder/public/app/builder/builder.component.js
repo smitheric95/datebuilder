@@ -12,6 +12,26 @@ var core_1 = require('@angular/core');
 var BuilderComponent = (function () {
     function BuilderComponent() {
     }
+    BuilderComponent.prototype.ngOnInit = function () {
+        this.events = [];
+    };
+    BuilderComponent.prototype.ngOnChanges = function (changes) {
+        if (changes.addedEvent.currentValue !== undefined)
+            this.addEvent(changes.addedEvent.currentValue);
+    };
+    BuilderComponent.prototype.listEvents = function () {
+        console.log("---- Event Objects by ID: ----");
+        for (var i = 0; i < this.events.length; i++)
+            console.log(this.events[i].id);
+    };
+    BuilderComponent.prototype.addEvent = function (event) {
+        this.events.push(event);
+        console.log("Added event object with ID: '" + event.id + "'");
+    };
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Object)
+    ], BuilderComponent.prototype, "addedEvent", void 0);
     BuilderComponent = __decorate([
         core_1.Component({
             selector: 'builder',
