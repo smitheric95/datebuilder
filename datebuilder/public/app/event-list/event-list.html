@@ -33,7 +33,8 @@
     <event class="event-item col-lg-4 col-md-6" *ngFor="let event of events"
         (eventSelected)="loadModal($event)"
         (eventAdded)="addEvent($event)"
-        [isSelected]="false" 
+        [isSelected]="false"
+        [isMini]="false" 
         [event]="event"
     ></event>
 </div>

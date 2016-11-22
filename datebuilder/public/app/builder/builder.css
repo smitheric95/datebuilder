@@ -4,9 +4,21 @@
     left: 0;
     bottom: 0;
     margin-bottom: 0 !important;
+
+    height: 600px;
 }
 
 .panel-body {
     height: 200px;
     background-color: #eee;
+}
+
+.panel-heading {
+    border-top-right-radius: 0 !important;
+    border-top-left-radius: 0 !important;
+}
+
+li {
+    list-style-type: none;
+    display: inline;
 }

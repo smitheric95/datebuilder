@@ -1,21 +1,28 @@
-<div class="event" [ngClass]="{'panel panel-default': !isSelected }">
+<div class="event" [ngClass]="{'panel panel-default': !isSelected, 'mini' : isMini }">
     <div *ngIf="!isSelected" >
         <a class="img-wrapper" (click)="selectEvent()" >
-            <img src='{{ event.image_url | image:"large" }}' />
+            <img
+                *ngIf="!isMini" 
+                src='{{ event.image_url | image:"large" }}' />
+            <img
+                *ngIf="isMini" 
+                src='{{ event.image_url }}' />
         </a>
     </div>
     <div [ngClass]="{'panel-body': !isSelected }">
         <a 
-            *ngIf="!isSelected"
+            *ngIf="!isSelected && !isMini"
             (click)="onAddEvent(event.id)" 
             class="close add-event-button btn btn-primary btn-fab"><i class="star material-icons">add</i>
         </a>    
         <a (click)="selectEvent()">
             <div class='event-info'>
                 {{ event.name | ellipsis:25 }}
-                <p>{{ event.location.display_address }}</p>
-                <p>{{ event.display_phone }}</p>
-                <p>Rating: {{ event.rating }}</p>
+                <div *ngIf="!isMini">
+                    <p>{{ event.location.display_address }}</p>
+                    <p>{{ event.display_phone }}</p>
+                    <p>Rating: {{ event.rating }}</p>
+                </div>
             </div>
         </a>
     </div>

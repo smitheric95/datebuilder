@@ -15,14 +15,16 @@ import { ImagePipe } from '../pipes/image.pipe';
 export class EventComponent {
     @Input() event: any;
     @Input() isSelected: boolean;
+    @Input() isMini: boolean;
+
     @Output() eventSelected = new EventEmitter<string>();
     @Output() eventAdded = new EventEmitter<any>();
 
-    onAddEvent(){
+    onAddEvent() {
         this.eventAdded.emit(this.event);
     }
 
-    selectEvent(){
+    selectEvent() {
         this.eventSelected.emit(this.event.id); 
     }
 

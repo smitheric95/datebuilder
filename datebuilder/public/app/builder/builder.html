@@ -3,6 +3,13 @@
         <h3 class="panel-title">Builder - <a (click)="listEvents()">List Events</a></h3>
     </div>
     <div class="panel-body">
-        
+        <ul>
+            <li *ngFor="let event of events">
+                <event
+                    [event]="event"
+                    [isMini]="true" 
+                ></event>
+            </li>
+        </ul>
     </div>
 </div>

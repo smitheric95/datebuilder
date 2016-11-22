@@ -29,6 +29,10 @@ var EventComponent = (function () {
         __metadata('design:type', Boolean)
     ], EventComponent.prototype, "isSelected", void 0);
     __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Boolean)
+    ], EventComponent.prototype, "isMini", void 0);
+    __decorate([
         core_1.Output(), 
         __metadata('design:type', Object)
     ], EventComponent.prototype, "eventSelected", void 0);

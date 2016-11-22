@@ -28,3 +28,16 @@ a.img-wrapper {
     max-width: 100%;
 
 }
+
+
+.mini {
+    width: 150px;
+    height: 150px;
+    margin: 5px !important;
+}
+
+.mini > div > a.img-wrapper {
+    width: 150px;
+    height: 150px;
+}
+
