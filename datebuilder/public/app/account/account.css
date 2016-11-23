@@ -1,0 +1,12 @@
+.col-md-offset-2.col-md-10 > legend {
+    margin-left: -15px;
+}
+
+ul.nav-pills {
+    margin-left: 15px;
+    margin-top: 65px;
+}
+
+.nav-pills > li.active > a {
+    background-color: #009688 !important;
+}
