@@ -42,6 +42,7 @@ a.img-wrapper {
 }
 
 .mini > .panel-body > a > div {
-    margin-top: -20px;
+    margin-top: -10px;
+    margin-left: -5px;
 }
 

@@ -18,7 +18,7 @@
         <a (click)="selectEvent()">
             <div class='event-info'>
                 <h3 *ngIf="!isMini">{{ event.name | ellipsis:25 }}</h3>
-                <h4 *ngIf="isMini">{{ event.name | ellipsis:20 }}</h4>
+                <h4 *ngIf="isMini">{{ event.name | ellipsis:13 }}</h4>
                 <div *ngIf="!isMini">
                     <p>{{ event.location.display_address }}</p>
                     <p>{{ event.display_phone }}</p>
