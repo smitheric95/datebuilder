@@ -22,7 +22,7 @@ $app->get('/hello/{name}', function (Request $request, Response $response) {
     return $response;
 });
 
-$app->get('/users', function (Request $request, Response $response) {
+$app->get('/getuser/', function (Request $request, Response $response) {
     // get user_id from session id
     $user_id = 1;
 
@@ -109,7 +109,7 @@ $app->get('/search/search/{query}', function (Request $request, Response $respon
 $app->post('/build/', function (Request $request, Response $response) {
 
     $parsed_body = $request->getParsedBody();
-    var_dump($parsed_body); 
+    var_dump($parsed_body);
     $business = $parsed_body['business'];
     $total_cost = $parsed_body['total_cost'];
     $name = $parsed_body['name'];

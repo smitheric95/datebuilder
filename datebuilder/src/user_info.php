@@ -3,8 +3,8 @@
 function get_user_info($user_id) {
 
     $db_servername = "localhost";
-    $db_username = "app";
-    $db_password = "app!db!password";
+    $db_username = "root";
+    $db_password = "pass";
     $table_name = "datebuilder_db.users";
 
     $conn = new mysqli($db_servername, $db_username, $db_password);
@@ -12,7 +12,8 @@ function get_user_info($user_id) {
     // Check connection
     if ($conn->connect_error) {
         // die and log error
-        return False;
+        echo "Could not connect to db.";
+        return "Could not connect to db.";
     }
 
     // validate user id as int
@@ -21,7 +22,7 @@ function get_user_info($user_id) {
     $id_match = preg_match($user_id_pattern, $user_id);
 
     if ($id_match == 1) {
-        $result = array();
+        $results = array();
 
         // get user specific info
         $sql = "SELECT * FROM datebuilder_db.users WHERE user_id = '$user_id'";
@@ -33,7 +34,7 @@ function get_user_info($user_id) {
 
                 $row = $result->fetch_assoc();
 //                $row["allow_loc_services"] = $row["allow_loc_services"] ? True : False;
-                $result['user'] = array(
+                $results['user'] = array(
                     "name" => $row["name"],
                     "email" => $row["email"],
                     "age" => $row["name"],
@@ -48,6 +49,8 @@ function get_user_info($user_id) {
             // log error
             return "Error getting user id from users table: " . $conn->error;
         }
+
+        // return var_dump($results);
 
         // get dates for user
         $sql = "SELECT * FROM datebuilder_db.dates WHERE user_id = '$user_id'";
@@ -75,13 +78,17 @@ function get_user_info($user_id) {
                         $businesses = array();
                         $categories = array();
 
-                        include "business_info.php";    // not yet included in src
+                        require_once("business_info.php");    // not yet included in src
 
                         while ($unique_date_elm = $date_elms->fetch_assoc()) {
                             array_push($businesses, $unique_date_elm["business_id"]);
                             // get info from yelp for business id
-                            $data = json_decode(business_info($unique_date_elm["business_id"]));
-                            array_push($categories, $data["business"]["categories"]);
+                            $data = json_decode(business_info($unique_date_elm["business_id"]), true);
+                            // return var_dump($data);
+                            foreach($data["categories"] as $category) {
+                                array_push($categories, $category);
+                            }
+                            // array_push($categories, $data["business"]["categories"]);
                         }
 
                         // compress categories down
@@ -92,13 +99,14 @@ function get_user_info($user_id) {
                     } else {
                         return "could not get date elements for date: " . $date_id;
                     }
-                    
+
                     array_push($dates, $date_to_add);
                 }
             }
 
-            $result["dates"] = $dates;
+            $results["dates"] = $dates;
 
+            return json_encode($results);
         } else {
             return "Error getting dates for user id: " . $conn->error;
         }
@@ -112,4 +120,3 @@ function get_user_info($user_id) {
 
     return "user id provided not an integer";
 }
-
