@@ -1,0 +1,23 @@
+<div class="date">
+    <div>
+        <a class="img-wrapper">
+            <img src='{{ date.image_url | image:"large" }}' />
+        </a>
+    </div>
+    <div>    
+        <a (click)="selectEvent()">
+            <div class='event-info'>
+                <h3 >{{ date.name | ellipsis:25 }}</h3>
+                <div>
+                    <p>Businesses</p>
+                    <ul>
+                        <li *ngFor="let bus of date.businesses">
+                            <p>{{ bus }}</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+

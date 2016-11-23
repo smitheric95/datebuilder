@@ -18,10 +18,18 @@ var AccountComponent = (function () {
         this.userService = userService;
     }
     AccountComponent.prototype.ngOnInit = function () {
+        /*
+            AWAITING USER ROUTE
+        */
+        this.isLoggedIn = true;
+        this.user = {};
+        this.user.id = 1;
+        /******/
         this.user = {
             allow_loc_services: false
         };
         this.years = Array(75).fill(0).map(function (x, i) { return (new Date().getFullYear() - i); });
+        this.getUser();
     };
     AccountComponent.prototype.add = function () {
         var _this = this;
@@ -39,6 +47,12 @@ var AccountComponent = (function () {
             .then(function () {
             eval("$(function(){$('#createdAccountModal').modal('show')})");
         });
+    };
+    AccountComponent.prototype.getUser = function () {
+        if (this.isLoggedIn) {
+            this.user = this.userService.get(this.user.id);
+            console.log(this.user);
+        }
     };
     AccountComponent = __decorate([
         core_1.Component({
