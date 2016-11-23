@@ -40,6 +40,9 @@ var SearchComponent = (function () {
             _this.singleEvent = false;
         });
     };
+    SearchComponent.prototype.focus = function () {
+        eval("$(function(){ $('#search').focus() });");
+    };
     SearchComponent = __decorate([
         core_1.Component({
             selector: 'search',

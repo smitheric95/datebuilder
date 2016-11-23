@@ -15,7 +15,9 @@ import { EventComponent } from './event/event.component';
 import { BuilderComponent } from './builder/builder.component';
 import { AccountComponent } from './account/account.component';
 import { LoginComponent } from './login/login.component';
+import { DateComponent } from './date/date.component';
 
+import { DatesService } from './repositories/dates.service';
 import { EventsService } from './repositories/events.service';
 import { UsersService } from './repositories/users.service';
 import { EllipsisPipe } from './pipes/ellipsis.pipe';
@@ -31,7 +33,8 @@ import { ImagePipe } from './pipes/image.pipe';
       { path: '', component: LandingComponent },
       { path: 'search', component: SearchComponent },
       { path: 'search/:id', component: SearchComponent },
-      { path: 'account', component: AccountComponent } 
+      { path: 'account', component: AccountComponent },
+      { path: 'date/:id', component: DateComponent } 
       /* { path: '**', component:  } */
     ])
   ],
@@ -46,10 +49,12 @@ import { ImagePipe } from './pipes/image.pipe';
     BuilderComponent,
     AccountComponent,
     LoginComponent,
+    DateComponent,
     EllipsisPipe,
     ImagePipe
   ],
   providers: [ 
+    DatesService,
     UsersService, 
     EventsService
   ],

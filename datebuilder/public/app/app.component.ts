@@ -9,7 +9,6 @@ import { BuilderComponent } from './builder/builder.component';
     <div class='container'>
       <navbar></navbar>
       <router-outlet></router-outlet>
-      <builder></builder>
     </div>
   `,
   styleUrls: [

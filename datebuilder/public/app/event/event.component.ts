@@ -15,18 +15,16 @@ import { ImagePipe } from '../pipes/image.pipe';
 export class EventComponent {
     @Input() event: any;
     @Input() isSelected: boolean;
+    @Input() isMini: boolean;
+
     @Output() eventSelected = new EventEmitter<string>();
+    @Output() eventAdded = new EventEmitter<any>();
 
-    /*
-    
-        will have to use a service
-
-    */
-    onAddEvent(event: string){//parameter necessary?
-        console.log('Add event!');
+    onAddEvent() {
+        this.eventAdded.emit(this.event);
     }
 
-    selectEvent(){
+    selectEvent() {
         this.eventSelected.emit(this.event.id); 
     }
 

@@ -1,7 +1,31 @@
-div {
+.builder {
     width: 100%;
-    border: solid 1px black;
     position: fixed;
     left: 0;
     bottom: 0;
+    margin-bottom: 0 !important;
+
+    height: 230px;
+}
+
+.builder > .panel-body {
+    height: 300px;
+    background-color: #eee;
+    overflow-x: scroll;
+}
+
+.panel-heading {
+    border-top-right-radius: 0 !important;
+    border-top-left-radius: 0 !important;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    white-space: nowrap;
+}
+
+li {
+   display: inline-block;
 }

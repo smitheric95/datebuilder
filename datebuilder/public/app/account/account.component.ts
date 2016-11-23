@@ -14,16 +14,28 @@ import { UsersService } from '../repositories/users.service';
 export class AccountComponent {
     years : number[];
     user: any;
-    
+    isLoggedIn : boolean;
+
     constructor(private route: ActivatedRoute,
         private router: Router,
         private userService: UsersService) { }
 
     ngOnInit() {
+        /*
+            AWAITING USER ROUTE
+        */
+        this.isLoggedIn = true;
+        this.user = {};
+        this.user.id = 1;
+        /******/
+
+
         this.user = { //defaults
             allow_loc_services : false
         }
         this.years = Array(75).fill(0).map((x, i) => (new Date().getFullYear() - i));
+
+        this.getUser();
     }
 
     add() {
@@ -35,13 +47,22 @@ export class AccountComponent {
         this.user.age = new Date().getFullYear() - this.user.age;
         console.log(this.user);
         this.userService.add(this.user)
-            .then(() => this.returnToList(`Welcome to DateBuilder, ${this.user.name}!`));
+            .then(() => this.returnToList());
             
     }
 
 
-    private returnToList(message){
+    private returnToList(){
 		this.router.navigateByUrl('search')
-			.then(() => alert(message));
+			.then(() => {
+                eval("$(function(){$('#createdAccountModal').modal('show')})");
+            });
 	}
+
+    private getUser() {
+        if(this.isLoggedIn) {
+            this.user = this.userService.get(this.user.id);
+            console.log(this.user);
+        }
+    }
 }

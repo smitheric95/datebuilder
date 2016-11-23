@@ -24,6 +24,8 @@ var event_component_1 = require('./event/event.component');
 var builder_component_1 = require('./builder/builder.component');
 var account_component_1 = require('./account/account.component');
 var login_component_1 = require('./login/login.component');
+var date_component_1 = require('./date/date.component');
+var dates_service_1 = require('./repositories/dates.service');
 var events_service_1 = require('./repositories/events.service');
 var users_service_1 = require('./repositories/users.service');
 var ellipsis_pipe_1 = require('./pipes/ellipsis.pipe');
@@ -42,7 +44,8 @@ var AppModule = (function () {
                     { path: '', component: landing_component_1.LandingComponent },
                     { path: 'search', component: search_component_1.SearchComponent },
                     { path: 'search/:id', component: search_component_1.SearchComponent },
-                    { path: 'account', component: account_component_1.AccountComponent }
+                    { path: 'account', component: account_component_1.AccountComponent },
+                    { path: 'date/:id', component: date_component_1.DateComponent }
                 ])
             ],
             declarations: [
@@ -56,10 +59,12 @@ var AppModule = (function () {
                 builder_component_1.BuilderComponent,
                 account_component_1.AccountComponent,
                 login_component_1.LoginComponent,
+                date_component_1.DateComponent,
                 ellipsis_pipe_1.EllipsisPipe,
                 image_pipe_1.ImagePipe
             ],
             providers: [
+                dates_service_1.DatesService,
                 users_service_1.UsersService,
                 events_service_1.EventsService
             ],

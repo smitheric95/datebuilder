@@ -18,7 +18,10 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="add-to-builder btn btn-primary">Add to Builder</button>
+                    <button 
+                        (click)="addEvent(selectedEvent)"
+                        type="button" 
+                        class="add-to-builder btn btn-primary">Add to Builder</button>
                 </div>
             </div>
         </div>
@@ -29,7 +32,13 @@
 <div class="event-wrapper " *ngIf="singleEvent === false" >
     <event class="event-item col-lg-4 col-md-6" *ngFor="let event of events"
         (eventSelected)="loadModal($event)"
-        [isSelected]="false" 
+        (eventAdded)="addEvent($event)"
+        [isSelected]="false"
+        [isMini]="false" 
         [event]="event"
     ></event>
 </div>
+
+<builder
+    [addedEvent]="addedEvent"
+></builder>

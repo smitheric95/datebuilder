@@ -45,4 +45,8 @@ export class SearchComponent {
         });
     }
 
+    focus() {
+        eval("$(function(){ $('#search').focus() });")
+    }
+
 }

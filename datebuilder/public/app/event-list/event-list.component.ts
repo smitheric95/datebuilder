@@ -1,6 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { EventsService } from './../repositories/events.service';
+import { BuilderComponent } from '../builder/builder.component';
 
 @Component({
     selector: 'event-list',
@@ -17,8 +18,9 @@ export class EventListComponent {
     @Input() events: any[];
     @Input() singleEvent: boolean;
     
-    selectedEvent : any;
+    addedEvent : any;
 
+    selectedEvent : any;
 
     constructor(private route: ActivatedRoute,
         private router: Router,
@@ -31,5 +33,10 @@ export class EventListComponent {
             //disgusting hack
             eval("$(function(){$('#eventModal').modal('show')})");
         });
+    }
+
+    addEvent(event: any){
+        this.addedEvent = event;
+        //this.addedEvent.emit(event); 
     }
 }

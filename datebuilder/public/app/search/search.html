@@ -3,6 +3,23 @@
     *ngIf="singleEvent === false"
 ></search-bar>
 
+<div id="createdAccountModal" class="modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">Account Created</h4>
+      </div>
+      <div class="modal-body">
+        <p>Welcome to DateBuilder.<br><br>Let's get started by building your first date.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="focus()" >Start</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <event-list 
     *ngIf="singleEvent === false"
     [events]="events"
