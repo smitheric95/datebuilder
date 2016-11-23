@@ -130,8 +130,8 @@ $app->post('/build/', function (Request $request, Response $response) {
     include 'build_date.php';
 
     $status = build_date($business, $total_cost, $name, $total_time, $image_url);
-    if ($status === TRUE) {
-        $response->getBody()->write("Date built!!!");
+    if (is_int($status)) {
+        $response->getBody()->write($status);
     } else {
         $response->getBody()->write("Error building date: ". $status);
     }
