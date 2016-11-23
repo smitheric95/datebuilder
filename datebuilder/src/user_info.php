@@ -12,7 +12,6 @@ function get_user_info($user_id) {
     // Check connection
     if ($conn->connect_error) {
         // die and log error
-        echo "Could not connect to db.";
         return "Could not connect to db.";
     }
 
@@ -32,8 +31,8 @@ function get_user_info($user_id) {
             // if a user was found with the provided user id
             if ($result->num_rows == 1) {
 
+                // add user date to results
                 $row = $result->fetch_assoc();
-//                $row["allow_loc_services"] = $row["allow_loc_services"] ? True : False;
                 $results['user'] = array(
                     "name" => $row["name"],
                     "email" => $row["email"],
@@ -50,8 +49,6 @@ function get_user_info($user_id) {
             return "Error getting user id from users table: " . $conn->error;
         }
 
-        // return var_dump($results);
-
         // get dates for user
         $sql = "SELECT * FROM datebuilder_db.dates WHERE user_id = '$user_id'";
 
@@ -59,9 +56,10 @@ function get_user_info($user_id) {
         if ($result = $conn->query($sql)) {
             $dates = array();
 
-            // if a user has dates saved, for each date id the date elements are found and the data is retrieved from yelp
+            // if a user has dates saved, for each date id the date elements
+            // are found and the data is retrieved from yelp
             if ($result->num_rows > 0) {
-                while ($row = mysqli_fetch_assoc($result)) {    // probably wont like mysqli_fetch_assoc
+                while ($row = mysqli_fetch_assoc($result)) {
                     $date_to_add = array();
 
                     $date_to_add["name"] = $row["name"];
@@ -71,6 +69,7 @@ function get_user_info($user_id) {
 
                     $date_id = $row['date_id'];
 
+                    // prepare query
                     $sql = "SELECT * FROM datebuilder_db.date_elements WHERE date_id = '$date_id'";
 
                     if ($date_elms = $conn->query($sql)) {
@@ -78,24 +77,24 @@ function get_user_info($user_id) {
                         $businesses = array();
                         $categories = array();
 
-                        require_once("business_info.php");    // not yet included in src
+                        require_once("business_info.php");
 
                         while ($unique_date_elm = $date_elms->fetch_assoc()) {
                             array_push($businesses, $unique_date_elm["business_id"]);
+
                             // get info from yelp for business id
                             $data = json_decode(business_info($unique_date_elm["business_id"]), true);
-                            // return var_dump($data);
+
+                            // add categories for date to list of all categories
                             foreach($data["categories"] as $category) {
                                 array_push($categories, $category);
                             }
-                            // array_push($categories, $data["business"]["categories"]);
                         }
-
-                        // compress categories down
 
                         // add data for date object to dates array
                         $date_to_add["businesses"] = $businesses;
                         $date_to_add["categories"] = $categories;
+
                     } else {
                         return "could not get date elements for date: " . $date_id;
                     }
@@ -106,17 +105,53 @@ function get_user_info($user_id) {
 
             $results["dates"] = $dates;
 
+            // add statistics for the users dates to the return data
+            $results["stats"] = get_stats($dates);
+
+            // json encode and return
             return json_encode($results);
+
         } else {
             return "Error getting dates for user id: " . $conn->error;
         }
-
-        // get info for businesses from yelp
-
-        // calculate statistics for user
-
-        // return json encoded result
     }
 
     return "user id provided not an integer";
+}
+
+// gets the count for each category, the overall time, the average time,
+// and the average cost
+function get_stats($dates) {
+    $overall_time = 0;
+    $overall_cost = 0;
+    $category_count = array();
+
+    // iterate over dates, incrementing total time and cost
+    foreach($dates as $date) {
+        $overall_time += $date["total_time"];
+        $overall_cost += $date["total_cost"];
+
+        // count the occurances of categories
+        foreach($date["categories"] as $cat) {
+            if (!array_key_exists($cat[0], $category_count)) {
+                $category_count[$cat[0]] = 1;
+            } else {
+                $category_count[$cat[0]] = $category_count[$cat[0]] + 1;
+            }
+        }
+    }
+
+    // take average for time and cost
+    $average_time = $overall_time / sizeof($dates);
+    $average_cost = $overall_cost / sizeof($dates);
+
+    // prepare stats array to return
+    $stats = array(
+        "categories" => $category_count,
+        "total_time" => $overall_time,
+        "average_time" => $average_time,
+        "average_cost" => $average_cost
+    );
+
+    return $stats;
 }
