@@ -1,5 +1,6 @@
 <html>
   <head>
+    <base href="/">
     <title>DateBuilder</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,10 +16,38 @@
     <script>
       System.import('app').catch(function(err){ console.error(err); });
     </script>
-    <base href="/">
+    
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="https://www.atlasestateagents.co.uk/javascript/tether.min.js"></script><!-- Tether for Bootstrap --> 
+    
+    <!-- Material Design fonts -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" type="html/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="html/css" href="node_modules/bootstrap-material-design/dist/css/bootstrap-material-design.min.css">
+
+    <script src="node_modules/bootstrap-material-design/dist/js/material.min.js"></script>
+    <script src="node_modules/bootstrap-material-design/dist/js/ripples.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
+
+    <script>
+      $(document).ready(function(){
+          $.material.init();
+      })
+    </script>
+    <style>
+    *{
+      font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+      font-weight: 300;
+    }   
+    </style>
   </head>
   <!-- 3. Display the application -->
   <body>
-    <my-app>Loading...</my-app>
+    <div class="container">
+      <my-app>Loading...</my-app>
+    </div>
+
   </body>
 </html>

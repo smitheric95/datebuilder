@@ -12,16 +12,22 @@ var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var forms_1 = require('@angular/forms');
 var router_1 = require('@angular/router');
-var events_service_1 = require('./events.service');
+var http_1 = require('@angular/http');
+var ng_bootstrap_1 = require('@ng-bootstrap/ng-bootstrap');
 var app_component_1 = require('./app.component');
 var landing_component_1 = require('./landing/landing.component');
 var navbar_component_1 = require('./navbar/navbar.component');
 var search_component_1 = require('./search/search.component');
 var search_bar_component_1 = require('./search-bar/search-bar.component');
 var event_list_component_1 = require('./event-list/event-list.component');
+var event_component_1 = require('./event/event.component');
 var builder_component_1 = require('./builder/builder.component');
 var account_component_1 = require('./account/account.component');
 var login_component_1 = require('./login/login.component');
+var events_service_1 = require('./repositories/events.service');
+var users_service_1 = require('./repositories/users.service');
+var ellipsis_pipe_1 = require('./pipes/ellipsis.pipe');
+var image_pipe_1 = require('./pipes/image.pipe');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -30,6 +36,8 @@ var AppModule = (function () {
             imports: [
                 platform_browser_1.BrowserModule,
                 forms_1.FormsModule,
+                http_1.HttpModule,
+                ng_bootstrap_1.NgbModule.forRoot(),
                 router_1.RouterModule.forRoot([
                     { path: '', component: landing_component_1.LandingComponent },
                     { path: 'search', component: search_component_1.SearchComponent },
@@ -44,11 +52,17 @@ var AppModule = (function () {
                 search_component_1.SearchComponent,
                 search_bar_component_1.SearchbarComponent,
                 event_list_component_1.EventListComponent,
+                event_component_1.EventComponent,
                 builder_component_1.BuilderComponent,
                 account_component_1.AccountComponent,
-                login_component_1.LoginComponent
+                login_component_1.LoginComponent,
+                ellipsis_pipe_1.EllipsisPipe,
+                image_pipe_1.ImagePipe
             ],
-            providers: [events_service_1.EventsService],
+            providers: [
+                users_service_1.UsersService,
+                events_service_1.EventsService
+            ],
             bootstrap: [app_component_1.AppComponent],
         }), 
         __metadata('design:paramtypes', [])

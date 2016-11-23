@@ -59,7 +59,7 @@ $app->post('/users', function (Request $request, Response $response) {
 });
 
 $app->post('/users/login', function (Request $request, Response $response) {
-   $parsed_body = $request->getParsedBody();
+    $parsed_body = $request->getParsedBody();
     $user_email = $parsed_body['email'];
     $password = $parsed_body['password'];
 
@@ -105,6 +105,18 @@ $app->get('/search/search/{query}', function (Request $request, Response $respon
     return $response;
 });
 
+$app->get('/search/business/{businessid}', function (Request $request, Response $response) {
+    $businessid = $request->getAttribute('businessid');
+
+    include "business_info.php";
+
+    $business_return = business_info($businessid);
+
+    $response->getBody()->write($business_return);
+
+    return $response;
+});
+
 
 $app->post('/build/', function (Request $request, Response $response) {
 
@@ -123,5 +135,17 @@ $app->post('/build/', function (Request $request, Response $response) {
     } else {
         $response->getBody()->write("Error building date: ". $status);
     }
+    return $response;
+});
+
+$app->add(function ($request, $response, $next) use ($settings) {
+    $response = $next($request, $response);
+
+    if (404 === $response->getStatusCode()) {
+        $response->getBody()->rewind();
+        $handler = $settings['notFoundHandler'];
+        return $handler($request, $response);
+    }
+
     return $response;
 });

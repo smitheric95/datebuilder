@@ -1,3 +1,14 @@
-<h1>This is a search page.</h1>
-<search-bar></search-bar>
-<event-list></event-list>
+<search-bar
+    (onQuery)="onQuery($event)"
+    *ngIf="singleEvent === false"
+></search-bar>
+
+<event-list 
+    *ngIf="singleEvent === false"
+    [events]="events"
+    [singleEvent]="false"
+></event-list>
+
+<div *ngIf="singleEvent === true">
+    <event [event]="selectedEvent"></event>
+</div>

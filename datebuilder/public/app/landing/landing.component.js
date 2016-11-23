@@ -15,7 +15,11 @@ var LandingComponent = (function () {
     LandingComponent = __decorate([
         core_1.Component({
             selector: 'landing',
-            template: "\n    <h1>landin page</h1>\n    \n  "
+            template: "\n    <h1>landin page</h1>\n  ",
+            styleUrls: [
+                './node_modules/bootstrap/dist/css/bootstrap.min.css',
+                './node_modules/bootstrap-material-design/dist/css/bootstrap-material-design.min.css'
+            ]
         }), 
         __metadata('design:paramtypes', [])
     ], LandingComponent);

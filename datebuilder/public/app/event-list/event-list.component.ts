@@ -1,35 +1,35 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ActivatedRoute, Router, Params } from '@angular/router';
-import { EventsService } from './../events.service';
+import { EventsService } from './../repositories/events.service';
 
 @Component({
     selector: 'event-list',
     templateUrl: './app/event-list/event-list.html',
-    styleUrls: ['./app/event-list/event-list.css']
+    styleUrls: [
+        './app/event-list/event-list.css',
+        './node_modules/bootstrap/dist/css/bootstrap.min.css',
+        './node_modules/bootstrap-material-design/dist/css/bootstrap-material-design.min.css',
+        '//fonts.googleapis.com/css?family=Roboto:300,400,500,700',
+        '//fonts.googleapis.com/icon?family=Material+Icons'
+    ]
 })
 export class EventListComponent {
+    @Input() events: any[];
+    @Input() singleEvent: boolean;
+    
+    selectedEvent : any;
 
-    events: any[];
-    selectedEvent: any;
 
     constructor(private route: ActivatedRoute,
-                private router: Router,
-                private eventsService: EventsService) { }
+        private router: Router,
+        private eventsService: EventsService) { }
 
-    ngOnInit() {
-        this.selectedEvent = {};
+    loadModal(event: any) {
+        this.eventsService.getEvent(event).then(x => {
+            this.selectedEvent = JSON.parse(x);
 
-        this.route.params.forEach((params: Params) => {
-
-            //router: search/:id=event-id
-            if( params['id'] !== undefined ){
-                this.selectedEvent = this.eventsService.getEvent( params['id'] );
-            }
-            
-            this.events = this.eventsService.getEvents();
-
-            console.log(params);
-            console.log(this.selectedEvent);
+            //disgusting hack
+            eval("$(function(){$('#eventModal').modal('show')})");
         });
     }
 }

@@ -1,1 +1,9 @@
-<input type='text' id='search-bar' placeholder="Search"/>
+<div class="form-group">
+    <div class="input-group">
+        <input [(ngModel)]="searchQuery" id="search" placeholder="Search" class="form-control" type="text">
+         <p class="help-block">Search for something fun</p>
+        <span class="input-group-btn">
+                  <button (click)="submitQuery()" class="btn btn-primary" type="button">Search<div class="ripple-container"></div></button>
+        </span>
+    </div>
+</div>

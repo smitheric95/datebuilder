@@ -153,9 +153,22 @@ function search($term, $location) {
  * @return   The JSON response from the request
  */
 function get_business($business_id) {
+
+    include "credentials.php";
+    global $CONSUMER_KEY;
+    global $CONSUMER_SECRET;
+    global $TOKEN;
+    global $TOKEN_SECRET;
+
+    $CONSUMER_KEY = $yelp_consumer_key;
+    $CONSUMER_SECRET = $yelp_consumer_secret;
+    $TOKEN = $yelp_token;
+    $TOKEN_SECRET = $yelp_token_secret;
+
     global $API_HOST;
     global $BUSINESS_PATH;
-
+    $API_HOST = 'api.yelp.com';
+    $BUSINESS_PATH = '/v2/business/';
     $business_path = $BUSINESS_PATH . urlencode($business_id);
 
     return request($API_HOST, $business_path);

@@ -1,14 +1,35 @@
-<p>Popular Events</p>
-<ul>
-    <li *ngFor="let event of events">
-        <a [routerLink]="event.id">
-            <img src='{{ event.image_url }}' />
-            <h3>{{ event.name }}</h3>
-            <div class='event-info' *ngIf="event.id === selectedEvent.id">
-                <p>{{ event.location.display_address }}</p>
-                <p>{{ event.display_phone }}</p>
-                <p>Rating: {{ event.rating }}</p>
+<div *ngIf="selectedEvent">
+    <div id="eventModal" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="button-wrapper">
+                        <a 
+                            target="_blank"
+                            [routerLink]="selectedEvent.id" >
+                            <i class="material-icons close">open_in_new</i>
+                        </a>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    </div>
+                    <h4 class="modal-title">{{selectedEvent.name}}</h4>
+                </div>
+                <div class="modal-body">
+                    <event [isSelected]="true" [event]="selectedEvent"></event>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="add-to-builder btn btn-primary">Add to Builder</button>
+                </div>
             </div>
-        </a>
-    </li>
-</ul>
+        </div>
+    </div>
+</div>
+
+
+<div class="event-wrapper " *ngIf="singleEvent === false" >
+    <event class="event-item col-lg-4 col-md-6" *ngFor="let event of events"
+        (eventSelected)="loadModal($event)"
+        [isSelected]="false" 
+        [event]="event"
+    ></event>
+</div>
