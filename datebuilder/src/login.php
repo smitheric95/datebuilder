@@ -1,13 +1,7 @@
 <?php
+
 function validate_login ($email, $password) {
-    $_SESSION['lol'] = 2;
-    $_SESSION['id'] = session_id();
-    var_dump($_SESSION);
-    if(isset($_SESSION['id']))
-    {
-        unset($_SESSION['id']);
-    }
-    var_dump($_SESSION);
+
     $db_servername = "localhost";
     $db_username = "app";
     $db_password = "app!db!password";
