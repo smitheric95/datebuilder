@@ -35,13 +35,15 @@ export class AccountComponent {
         this.user.age = new Date().getFullYear() - this.user.age;
         console.log(this.user);
         this.userService.add(this.user)
-            .then(() => this.returnToList(`Welcome to DateBuilder, ${this.user.name}!`));
+            .then(() => this.returnToList());
             
     }
 
 
-    private returnToList(message){
+    private returnToList(){
 		this.router.navigateByUrl('search')
-			.then(() => alert(message));
+			.then(() => {
+                eval("$(function(){$('#createdAccountModal').modal('show')})");
+            });
 	}
 }

@@ -32,11 +32,13 @@ var AccountComponent = (function () {
         this.user.age = new Date().getFullYear() - this.user.age;
         console.log(this.user);
         this.userService.add(this.user)
-            .then(function () { return _this.returnToList("Welcome to DateBuilder, " + _this.user.name + "!"); });
+            .then(function () { return _this.returnToList(); });
     };
-    AccountComponent.prototype.returnToList = function (message) {
+    AccountComponent.prototype.returnToList = function () {
         this.router.navigateByUrl('search')
-            .then(function () { return alert(message); });
+            .then(function () {
+            eval("$(function(){$('#createdAccountModal').modal('show')})");
+        });
     };
     AccountComponent = __decorate([
         core_1.Component({
