@@ -25,7 +25,7 @@ a.img-wrapper {
 
 .img-wrapper > img {
     margin: 0 auto;
-    max-width: 100%;
+    width: 100%;
 
 }
 
@@ -37,7 +37,11 @@ a.img-wrapper {
 }
 
 .mini > div > a.img-wrapper {
-    width: 150px;
-    height: 150px;
+    width: 100%;
+    height: 100px;
+}
+
+.mini > .panel-body > a > div {
+    margin-top: -20px;
 }
 

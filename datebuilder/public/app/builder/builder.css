@@ -5,11 +5,11 @@
     bottom: 0;
     margin-bottom: 0 !important;
 
-    height: 600px;
+    height: 230px;
 }
 
-.panel-body {
-    height: 200px;
+.builder > .panel-body {
+    height: 300px;
     background-color: #eee;
 }
 
@@ -18,7 +18,12 @@
     border-top-left-radius: 0 !important;
 }
 
-li {
+ul {
     list-style-type: none;
-    display: inline;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+   float: left;
 }
