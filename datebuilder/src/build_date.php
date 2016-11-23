@@ -34,7 +34,7 @@ function build_date($business, $total_cost, $name, $total_time, $image_url) {
         $sql = "INSERT INTO {$table_name} (date_id, user_id, name, total_cost, total_time, image_url) VALUES (NULL,1, '$name', '$total_cost', '$total_time', '$image_url')";
 
         $date_id = 1;
-        if ($conn->query($sql) === TRUE) 
+        if ($conn->query($sql) === TRUE)
         {
             $date_id = $conn->insert_id;
             #$link = mysql_connect('localhost', 'root', 'pass');
@@ -48,7 +48,7 @@ function build_date($business, $total_cost, $name, $total_time, $image_url) {
                     $sql = "INSERT INTO {$subtable_name} (date_id, business_id) VALUES ('$date_id', '$this_business')";
                     if ($conn->query($sql) === TRUE) {
                         //success
-                    }  
+                    }
                     else
                     {
                         echo("Error description: " . mysqli_error($conn));
@@ -59,9 +59,9 @@ function build_date($business, $total_cost, $name, $total_time, $image_url) {
                 {
                     return "Error adding date to db, business_id did not match format. Error: " . $conn->error;
                 }
-            }  
+            }
             $conn->close();
-            return TRUE;
+            return $date_id;
         } else {
             return "Error adding date to db: " . $conn->error;
         }
@@ -70,5 +70,3 @@ function build_date($business, $total_cost, $name, $total_time, $image_url) {
     $conn->close();
     return "Invalid input.";
 }
-
-
