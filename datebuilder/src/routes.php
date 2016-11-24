@@ -68,10 +68,6 @@ $app->post('/users/login', function (Request $request, Response $response) {
     $status = validate_login($user_email, $password);
 
     if ($status === TRUE) {
-            $id = session_id();
-            $_SESSION['user_id']= $id;  // Initializing Session with value of PHP Variable
-            $_SESSION['is_validated'] = True;
-            echo $_SESSION['user_id'];
         $response->getBody()->write("Log in confirmed.");
     } else {
         $response->getBody()->write("Error logging in user: " . $status);
@@ -86,9 +82,14 @@ $app->post('/users/logout', function (Request $request, Response $response) {
     $password = $parsed_body['password'];
     #session_destroy(); // Is Used To Destroy All Sessions
     //Or
-    echo $_SESSION['user_id'];
+    #echo $_SESSION['session'];
     if(isset($_SESSION['user_id']))
-    unset($_SESSION['user_id']);  //Is Used To Destroy Specified Session
+    {
+        unset($_SESSION['user_id']);  //Is Used To Destroy Specified Session
+        unset($_SESSION['session']);  //Is Used To Destroy Specified Session
+        unset($_SESSION['is_validated']);  //Is Used To Destroy Specified Session
+    }
+    
     
     /*
     $status = validate_login($user_email, $password);
