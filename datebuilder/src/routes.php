@@ -128,7 +128,7 @@ $app->get('/search/business/{businessid}', function (Request $request, Response 
 $app->post('/build/', function (Request $request, Response $response) {
 
     $parsed_body = $request->getParsedBody();
-    var_dump($parsed_body);
+    // var_dump($parsed_body);
     $business = $parsed_body['business'];
     $total_cost = $parsed_body['total_cost'];
     $name = $parsed_body['name'];
@@ -142,6 +142,39 @@ $app->post('/build/', function (Request $request, Response $response) {
     } else {
         $response->getBody()->write("Error building date: ". $status);
     }
+    return $response;
+});
+
+$app->get('/editdate/{date_id}', function (Request $request, Response $response) {
+    $date_id = $request->getAttribute('date_id');
+
+    include "edit_date.php";
+
+    $status = get_date($date_id);
+
+    $response->getBody()->write($status);
+
+    return $response;
+});
+
+$app->post('/updatedate', function (Request $request, Response $response){
+    $parsed_body = $request->getParsedBody();
+
+    $date_id = $parsed_body["date_id"];
+    $date_data = $parsed_body["date"];
+
+    $businesses = $date_data['business'];
+    $total_cost = $date_data['total_cost'];
+    $name = $date_data['name'];
+    $total_time = $date_data['total_time'];
+    $image_url = $date_data['image_url'];
+
+    include "edit_date.php";
+
+    $status = update_date($date_id, $businesses, $total_cost, $name, $total_time, $image_url);
+
+    $response->getBody()->write($status);
+
     return $response;
 });
 
