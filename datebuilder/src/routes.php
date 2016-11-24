@@ -70,7 +70,9 @@ $app->post('/users/login', function (Request $request, Response $response) {
     if ($status === TRUE) {
             #session_start();
             // Store Session Data
-            $_SESSION['login_user']= $user_email;  // Initializing Session with value of PHP Variable
+            $id = session_regenerate_id();
+            $id = session_id();
+            $_SESSION['login_user']= $id;  // Initializing Session with value of PHP Variable
             echo $_SESSION['login_user'];
         $response->getBody()->write("Log in confirmed.");
     } else {
@@ -86,7 +88,7 @@ $app->post('/users/logout', function (Request $request, Response $response) {
     $password = $parsed_body['password'];
     #session_destroy(); // Is Used To Destroy All Sessions
     //Or
-    if(isset($_SESSION['login_user']) and $_SESSION['login_user'] == $user_email)
+    if(isset($_SESSION['login_user']))
     unset($_SESSION['login_user']);  //Is Used To Destroy Specified Session
     echo $_SESSION['login_user'];
     /*
