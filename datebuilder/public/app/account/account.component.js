@@ -12,10 +12,10 @@ var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 var users_service_1 = require('../repositories/users.service');
 var AccountComponent = (function () {
-    function AccountComponent(route, router, userService) {
+    function AccountComponent(route, router, usersService) {
         this.route = route;
         this.router = router;
-        this.userService = userService;
+        this.usersService = usersService;
     }
     AccountComponent.prototype.ngOnInit = function () {
         /*
@@ -39,7 +39,7 @@ var AccountComponent = (function () {
             this.user.allow_loc_services = "False";
         this.user.age = new Date().getFullYear() - this.user.age;
         console.log(this.user);
-        this.userService.add(this.user)
+        this.usersService.add(this.user)
             .then(function () { return _this.returnToList(); });
     };
     AccountComponent.prototype.returnToList = function () {
@@ -49,8 +49,18 @@ var AccountComponent = (function () {
         });
     };
     AccountComponent.prototype.getUser = function () {
+        var _this = this;
         if (this.isLoggedIn) {
-            this.user = this.userService.get(this.user.id);
+            this.usersService.get(this.user.id).then(function (x) {
+                var temp = JSON.parse(x);
+                console.log(temp);
+                _this.user = temp.user;
+                _this.dates = temp.dates;
+                _this.stats = temp.stats;
+                console.log(_this.user);
+                console.log(_this.dates);
+                console.log(_this.stats);
+            });
         }
     };
     AccountComponent = __decorate([

@@ -12,13 +12,15 @@ import { UsersService } from '../repositories/users.service';
     ]
 })
 export class AccountComponent {
-    years : number[];
+    years: number[];
     user: any;
-    isLoggedIn : boolean;
+    dates: any;
+    stats: any;
+    isLoggedIn: boolean;
 
     constructor(private route: ActivatedRoute,
         private router: Router,
-        private userService: UsersService) { }
+        private usersService: UsersService) { }
 
     ngOnInit() {
         /*
@@ -31,7 +33,7 @@ export class AccountComponent {
 
 
         this.user = { //defaults
-            allow_loc_services : false
+            allow_loc_services: false
         }
         this.years = Array(75).fill(0).map((x, i) => (new Date().getFullYear() - i));
 
@@ -39,28 +41,38 @@ export class AccountComponent {
     }
 
     add() {
-        if(this.user.allow_loc_services == true)
+        if (this.user.allow_loc_services == true)
             this.user.allow_loc_services = "True";
-        else if(this.user.allow_loc_services != "True")
+        else if (this.user.allow_loc_services != "True")
             this.user.allow_loc_services = "False";
 
         this.user.age = new Date().getFullYear() - this.user.age;
         console.log(this.user);
-        this.userService.add(this.user)
+        this.usersService.add(this.user)
             .then(() => this.returnToList());
-            
+
     }
 
-    private returnToList(){
-		this.router.navigateByUrl('search')
-			.then(() => {
+    private returnToList() {
+        this.router.navigateByUrl('search')
+            .then(() => {
                 eval("$(function(){$('#createdAccountModal').modal('show')})");
             });
-	}
+    }
 
     private getUser() {
-        if(this.isLoggedIn) {
-            this.user = this.userService.get(this.user.id);
+        if (this.isLoggedIn) {
+            this.usersService.get(this.user.id).then(x => {
+                var temp = JSON.parse(x);
+                console.log(temp);
+                this.user = temp.user;
+                this.dates = temp.dates;
+                this.stats = temp.stats;
+
+                console.log(this.user);
+                console.log(this.dates);
+                console.log(this.stats);
+            });
         }
     }
 }
