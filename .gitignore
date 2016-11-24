@@ -1,3 +1,4 @@
 .DS_Store
 .vagrant/*
 datebuilder/src/credentials.php
+datebuilder/public/app/shared
