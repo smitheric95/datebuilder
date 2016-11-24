@@ -25,6 +25,7 @@ var AccountComponent = (function () {
         this.user = {};
         this.user.id = 1;
         /******/
+        this.stats = {};
         this.user = {
             allow_loc_services: false
         };

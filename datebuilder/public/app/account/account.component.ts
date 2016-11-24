@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router, Params } from '@angular/router';
+import { CategoryComponent } from '../category/category.component';
 import { UsersService } from '../repositories/users.service';
 import { ImagePipe } from '../pipes/image.pipe';
 
@@ -32,6 +33,7 @@ export class AccountComponent {
         this.user.id = 1;
         /******/
 
+        this.stats = {};
 
         this.user = { //defaults
             allow_loc_services: false

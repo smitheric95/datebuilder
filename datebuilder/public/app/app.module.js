@@ -25,6 +25,7 @@ var builder_component_1 = require('./builder/builder.component');
 var account_component_1 = require('./account/account.component');
 var login_component_1 = require('./login/login.component');
 var date_component_1 = require('./date/date.component');
+var category_component_1 = require('./category/category.component');
 var dates_service_1 = require('./repositories/dates.service');
 var events_service_1 = require('./repositories/events.service');
 var users_service_1 = require('./repositories/users.service');
@@ -60,6 +61,7 @@ var AppModule = (function () {
                 account_component_1.AccountComponent,
                 login_component_1.LoginComponent,
                 date_component_1.DateComponent,
+                category_component_1.CategoryComponent,
                 ellipsis_pipe_1.EllipsisPipe,
                 image_pipe_1.ImagePipe
             ],

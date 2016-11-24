@@ -16,6 +16,7 @@ import { BuilderComponent } from './builder/builder.component';
 import { AccountComponent } from './account/account.component';
 import { LoginComponent } from './login/login.component';
 import { DateComponent } from './date/date.component';
+import { CategoryComponent } from './category/category.component';
 
 import { DatesService } from './repositories/dates.service';
 import { EventsService } from './repositories/events.service';
@@ -50,6 +51,7 @@ import { ImagePipe } from './pipes/image.pipe';
     AccountComponent,
     LoginComponent,
     DateComponent,
+    CategoryComponent,
     EllipsisPipe,
     ImagePipe
   ],
