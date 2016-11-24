@@ -51,7 +51,6 @@ export class AccountComponent {
             
     }
 
-
     private returnToList(){
 		this.router.navigateByUrl('search')
 			.then(() => {
@@ -62,7 +61,6 @@ export class AccountComponent {
     private getUser() {
         if(this.isLoggedIn) {
             this.user = this.userService.get(this.user.id);
-            console.log(this.user);
         }
     }
 }

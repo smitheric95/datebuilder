@@ -51,7 +51,6 @@ var AccountComponent = (function () {
     AccountComponent.prototype.getUser = function () {
         if (this.isLoggedIn) {
             this.user = this.userService.get(this.user.id);
-            console.log(this.user);
         }
     };
     AccountComponent = __decorate([
