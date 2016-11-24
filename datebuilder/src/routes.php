@@ -81,8 +81,9 @@ $app->post('/users/login', function (Request $request, Response $response) {
 // The "businesses" key maps to a list of recomended businesses, ranked for the user.
 $app->get('/search/load', function (Request $request, Response $response) {
     include "search.php";
+    $user_id = 1;
 
-    $search_return = default_search();
+    $search_return = default_search($user_id);
 
     $response->getBody()->write($search_return);
 
