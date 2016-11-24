@@ -77,11 +77,16 @@ $app->post('/users/login', function (Request $request, Response $response) {
 });
 
 
-// Returns a JSON object that contains the site logo, the user's account pic.
+// Returns a JSON object that contains top rated restaurants in the users area
 // The "businesses" key maps to a list of recomended businesses, ranked for the user.
 $app->get('/search/load', function (Request $request, Response $response) {
+    include "search.php";
 
+    $search_return = default_search();
 
+    $response->getBody()->write($search_return);
+
+    return $response;
 });
 
 
@@ -116,6 +121,7 @@ $app->get('/search/business/{businessid}', function (Request $request, Response 
 
     return $response;
 });
+
 
 
 $app->post('/build/', function (Request $request, Response $response) {
