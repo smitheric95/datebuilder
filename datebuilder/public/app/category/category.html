@@ -1,0 +1,14 @@
+<table class="table table-striped table-hover ">
+  <thead>
+  <tr>
+    <th>Category</th>
+    <th>Count</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let k of keys; let i = index">
+    <td>{{k}}</td>
+    <td>{{values[i]}}</td>
+  </tr>
+  </tbody>
+</table>

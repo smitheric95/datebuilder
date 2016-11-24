@@ -67,14 +67,9 @@ export class AccountComponent {
         if (this.isLoggedIn) {
             this.usersService.get(this.user.id).then(x => {
                 var temp = JSON.parse(x);
-                console.log(temp);
                 this.user = temp.user;
                 this.dates = temp.dates;
                 this.stats = temp.stats;
-
-                console.log(this.user);
-                console.log(this.dates);
-                console.log(this.stats);
             });
         }
     }

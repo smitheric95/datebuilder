@@ -54,13 +54,9 @@ var AccountComponent = (function () {
         if (this.isLoggedIn) {
             this.usersService.get(this.user.id).then(function (x) {
                 var temp = JSON.parse(x);
-                console.log(temp);
                 _this.user = temp.user;
                 _this.dates = temp.dates;
                 _this.stats = temp.stats;
-                console.log(_this.user);
-                console.log(_this.dates);
-                console.log(_this.stats);
             });
         }
     };
