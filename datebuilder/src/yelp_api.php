@@ -21,7 +21,7 @@
 // Enter the path that the oauth library is in relation to the php file
 require_once('OAuth2.php');
 
-// Set your OAuth credentials here  
+// Set your OAuth credentials here
 // These credentials can be obtained from the 'Manage API Access' page in the
 // developers documentation (http://www.yelp.com/developers)
 include "credentials.php";
@@ -49,10 +49,16 @@ function request($host, $path) {
     $unsigned_url = "https://" . $host . $path;
 //    $unsigned_url = "https://api.yelp.com/v2/search" . $path;
 
+    include "credentials.php";
     global $CONSUMER_KEY;
     global $CONSUMER_SECRET;
     global $TOKEN;
     global $TOKEN_SECRET;
+
+    $CONSUMER_KEY = $yelp_consumer_key;
+    $CONSUMER_SECRET = $yelp_consumer_secret;
+    $TOKEN = $yelp_token;
+    $TOKEN_SECRET = $yelp_token_secret;
 
 //    echo "cons_key: " . $CONSUMER_KEY . "</br>";
 //    echo "cons_sec: " . $CONSUMER_SECRET . "</br>";
