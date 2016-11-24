@@ -76,6 +76,38 @@ $app->post('/users/login', function (Request $request, Response $response) {
     return $response;
 });
 
+$app->post('/users/logout', function (Request $request, Response $response) {
+    $parsed_body = $request->getParsedBody();
+    $user_email = $parsed_body['email'];
+    $password = $parsed_body['password'];
+    #session_destroy(); // Is Used To Destroy All Sessions
+    //Or
+    #echo $_SESSION['session'];
+    if(isset($_SESSION['user_id']))
+    {
+        unset($_SESSION['user_id']);  //Is Used To Destroy Specified Session
+        unset($_SESSION['session']);  //Is Used To Destroy Specified Session
+        unset($_SESSION['is_validated']);  //Is Used To Destroy Specified Session
+    }
+    
+    
+    /*
+    $status = validate_login($user_email, $password);
+
+    if ($status === TRUE) {
+            #session_start();
+            // Store Session Data
+            $_SESSION['login_user']= $user_email;  // Initializing Session with value of PHP Variable
+            echo $_SESSION['login_user'];
+        $response->getBody()->write("Log in confirmed.");
+    } else {
+        $response->getBody()->write("Error logging in user: " . $status);
+    }
+
+    return $response;
+    */
+});
+
 
 // Returns a JSON object that contains top rated restaurants in the users area
 // The "businesses" key maps to a list of recomended businesses, ranked for the user.
@@ -128,7 +160,7 @@ $app->get('/search/business/{businessid}', function (Request $request, Response 
 $app->post('/build/', function (Request $request, Response $response) {
 
     $parsed_body = $request->getParsedBody();
-    var_dump($parsed_body);
+    // var_dump($parsed_body);
     $business = $parsed_body['business'];
     $total_cost = $parsed_body['total_cost'];
     $name = $parsed_body['name'];
@@ -142,6 +174,39 @@ $app->post('/build/', function (Request $request, Response $response) {
     } else {
         $response->getBody()->write("Error building date: ". $status);
     }
+    return $response;
+});
+
+$app->get('/editdate/{date_id}', function (Request $request, Response $response) {
+    $date_id = $request->getAttribute('date_id');
+
+    include "edit_date.php";
+
+    $status = get_date($date_id);
+
+    $response->getBody()->write($status);
+
+    return $response;
+});
+
+$app->post('/updatedate', function (Request $request, Response $response){
+    $parsed_body = $request->getParsedBody();
+
+    $date_id = $parsed_body["date_id"];
+    $date_data = $parsed_body["date"];
+
+    $businesses = $date_data['business'];
+    $total_cost = $date_data['total_cost'];
+    $name = $date_data['name'];
+    $total_time = $date_data['total_time'];
+    $image_url = $date_data['image_url'];
+
+    include "edit_date.php";
+
+    $status = update_date($date_id, $businesses, $total_cost, $name, $total_time, $image_url);
+
+    $response->getBody()->write($status);
+
     return $response;
 });
 
