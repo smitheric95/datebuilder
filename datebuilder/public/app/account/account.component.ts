@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { UsersService } from '../repositories/users.service';
+import { ImagePipe } from '../pipes/image.pipe';
 
 @Component({
     selector: 'account',

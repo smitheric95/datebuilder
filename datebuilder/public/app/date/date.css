@@ -26,3 +26,7 @@ a.img-wrapper {
 li {
     list-style-type: none;
 }
+
+.list-group-separator:last {
+    display: none;
+}

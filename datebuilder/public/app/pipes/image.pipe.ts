@@ -13,7 +13,7 @@ export class ImagePipe {
       return val.substring(0, val.length-6) + "l.jpg"
     } 
     else if (arg == "original") {
-      return val.substring(0, val.length-6) + "o.jpg"
+      return val.substring(0, val.length-6) + "/o.jpg"
     } 
     else {
       return val;
