@@ -1,7 +1,5 @@
 <?php
-
 function validate_login ($email, $password) {
-
     $db_servername = "localhost";
     $db_username = "app";
     $db_password = "app!db!password";

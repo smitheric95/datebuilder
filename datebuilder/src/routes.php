@@ -68,12 +68,42 @@ $app->post('/users/login', function (Request $request, Response $response) {
     $status = validate_login($user_email, $password);
 
     if ($status === TRUE) {
+            #session_start();
+            // Store Session Data
+            $_SESSION['login_user']= $user_email;  // Initializing Session with value of PHP Variable
+            echo $_SESSION['login_user'];
         $response->getBody()->write("Log in confirmed.");
     } else {
         $response->getBody()->write("Error logging in user: " . $status);
     }
 
     return $response;
+});
+
+$app->post('/users/logout', function (Request $request, Response $response) {
+    $parsed_body = $request->getParsedBody();
+    $user_email = $parsed_body['email'];
+    $password = $parsed_body['password'];
+    #session_destroy(); // Is Used To Destroy All Sessions
+    //Or
+    if(isset($_SESSION['login_user']) and $_SESSION['login_user'] == $user_email)
+    unset($_SESSION['login_user']);  //Is Used To Destroy Specified Session
+    echo $_SESSION['login_user'];
+    /*
+    $status = validate_login($user_email, $password);
+
+    if ($status === TRUE) {
+            #session_start();
+            // Store Session Data
+            $_SESSION['login_user']= $user_email;  // Initializing Session with value of PHP Variable
+            echo $_SESSION['login_user'];
+        $response->getBody()->write("Log in confirmed.");
+    } else {
+        $response->getBody()->write("Error logging in user: " . $status);
+    }
+
+    return $response;
+    */
 });
 
 
