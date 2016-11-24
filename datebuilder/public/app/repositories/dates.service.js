@@ -22,7 +22,7 @@ var DatesService = (function () {
 
     */
     DatesService.prototype.get = function (date) {
-        return '{ "businesses": [ "b_id1", "b_id2", "b_id3" ], "distances": [ 2.5, 3.4 ], "total_cost": 85.00, "name": "My Awesome Date", "total_time": 60, "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/_D1VLvf3VdvDJWddTIShFA/ms.jpg", "categories": [ ["category1", 12], ["category2", 8], ["category3", 4] ] }';
+        return '{ "businesses": [ "sewell-cadillac-of-dallas-dallas", "any-lab-test-now-dallas-dallas", "park-lane-allergy-and-asthma-center-dallas" ], "distances": [ 2.5, 3.4 ], "total_cost": 85.00, "name": "My Awesome Date", "total_time": 60, "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/_D1VLvf3VdvDJWddTIShFA/ms.jpg", "categories": [ ["category1", 12], ["category2", 8], ["category3", 4] ] }';
     };
     DatesService = __decorate([
         core_1.Injectable(), 

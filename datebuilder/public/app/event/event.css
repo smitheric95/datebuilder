@@ -8,8 +8,6 @@
     color: #ffffff;
 }
 
-
-
 .col-md-4 {
     padding-right: 0 !important;
     padding-left: 0 !important;
@@ -26,9 +24,7 @@ a.img-wrapper {
 .img-wrapper > img {
     margin: 0 auto;
     width: 100%;
-
 }
-
 
 .mini {
     width: 150px;
@@ -46,3 +42,14 @@ a.img-wrapper {
     margin-left: -5px;
 }
 
+a:hover {
+    text-decoration: none !important;
+}
+
+h3 {
+    color: #212121 !important;
+}
+
+h3:hover {
+    text-decoration: underline !important;
+}

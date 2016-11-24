@@ -8,7 +8,7 @@ export class ImagePipe {
     if (arg === undefined) {
       return val;
     }
-    console.log(val);
+    
     if (arg == "large") {
       return val.substring(0, val.length-6) + "l.jpg"
     } 
