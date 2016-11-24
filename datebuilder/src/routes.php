@@ -145,6 +145,33 @@ $app->post('/build/', function (Request $request, Response $response) {
     return $response;
 });
 
+$app->get('/editdate/{date_id}', function (Request $request, Response $response) {
+    $date_id = $request->getAttribute('date_id');
+
+    include "edit_date.php";
+
+    $status = get_date($date_id);
+
+    $response->getBody()->write($status);
+
+    return $response;
+});
+
+$app->post('/updatedate', function (Request $request, Response $response){
+    $parsed_body = $request->getParsedBody();
+
+    $date_id = $parsed_body["date_id"];
+    $date_data = $parsed_body["date"];
+
+    include "edit_date.php";
+
+    $status = update_date($date_id, $data_data);
+
+    $response->getBody()->write($status);
+
+    return $response;
+});
+
 $app->add(function ($request, $response, $next) use ($settings) {
     $response = $next($request, $response);
 
