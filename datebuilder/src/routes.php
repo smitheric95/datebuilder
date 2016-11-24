@@ -76,6 +76,38 @@ $app->post('/users/login', function (Request $request, Response $response) {
     return $response;
 });
 
+$app->post('/users/logout', function (Request $request, Response $response) {
+    $parsed_body = $request->getParsedBody();
+    $user_email = $parsed_body['email'];
+    $password = $parsed_body['password'];
+    #session_destroy(); // Is Used To Destroy All Sessions
+    //Or
+    #echo $_SESSION['session'];
+    if(isset($_SESSION['user_id']))
+    {
+        unset($_SESSION['user_id']);  //Is Used To Destroy Specified Session
+        unset($_SESSION['session']);  //Is Used To Destroy Specified Session
+        unset($_SESSION['is_validated']);  //Is Used To Destroy Specified Session
+    }
+    
+    
+    /*
+    $status = validate_login($user_email, $password);
+
+    if ($status === TRUE) {
+            #session_start();
+            // Store Session Data
+            $_SESSION['login_user']= $user_email;  // Initializing Session with value of PHP Variable
+            echo $_SESSION['login_user'];
+        $response->getBody()->write("Log in confirmed.");
+    } else {
+        $response->getBody()->write("Error logging in user: " . $status);
+    }
+
+    return $response;
+    */
+});
+
 
 // Returns a JSON object that contains top rated restaurants in the users area
 // The "businesses" key maps to a list of recomended businesses, ranked for the user.

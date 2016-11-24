@@ -1,7 +1,5 @@
 <?php
-
 function validate_login ($email, $password) {
-
     $db_servername = "localhost";
     $db_username = "app";
     $db_password = "app!db!password";
@@ -41,6 +39,15 @@ function validate_login ($email, $password) {
                 if ($result = $conn->query($sql)) {
                     // if a user was found with that email and password the login is confirmed
                     if ($result->num_rows == 1) {
+                        $row = $result->fetch_assoc();
+                        $user_id = $row["user_id"];
+                        #$user_id = 
+                        $session_id = session_id();
+                        $_SESSION['session'] = $session_id;
+                        $_SESSION['user_id']= $user_id;  // Initializing Session with value of PHP Variable
+                        $_SESSION['is_validated'] = True;
+                        #echo $_SESSION['user_id'];
+                        #echo $_SESSION['session'];
                         return True;
                     }
                 } else {
