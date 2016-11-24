@@ -26,7 +26,7 @@ export class AccountComponent {
 
     ngOnInit() {
         /*
-            AWAITING USER ROUTE
+            AWAITING PARAMETERIZED USER ROUTE
         */
         this.isLoggedIn = true;
         this.user = {};
@@ -50,7 +50,6 @@ export class AccountComponent {
             this.user.allow_loc_services = "False";
 
         this.user.age = new Date().getFullYear() - this.user.age;
-        console.log(this.user);
         this.usersService.add(this.user)
             .then(() => this.returnToList());
 

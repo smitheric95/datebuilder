@@ -19,7 +19,7 @@ var AccountComponent = (function () {
     }
     AccountComponent.prototype.ngOnInit = function () {
         /*
-            AWAITING USER ROUTE
+            AWAITING PARAMETERIZED USER ROUTE
         */
         this.isLoggedIn = true;
         this.user = {};
@@ -39,7 +39,6 @@ var AccountComponent = (function () {
         else if (this.user.allow_loc_services != "True")
             this.user.allow_loc_services = "False";
         this.user.age = new Date().getFullYear() - this.user.age;
-        console.log(this.user);
         this.usersService.add(this.user)
             .then(function () { return _this.returnToList(); });
     };

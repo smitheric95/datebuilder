@@ -66,8 +66,9 @@ function get_user_info($user_id) {
                     $date_to_add["total_cost"] = $row["total_cost"];
                     $date_to_add["total_time"] = $row["total_time"];
                     $date_to_add["image_url"] = $row["image_url"];
-
+                    
                     $date_id = $row['date_id'];
+                    $date_to_add["id"] = $date_id;
 
                     // prepare query
                     $sql = "SELECT * FROM datebuilder_db.date_elements WHERE date_id = '$date_id'";

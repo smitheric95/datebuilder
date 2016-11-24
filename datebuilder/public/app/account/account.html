@@ -77,16 +77,18 @@
                 <h1>Your Dates</h1>
                 <div class="list-group">
                     <div class="list-group-item" *ngFor="let date of dates">
-                        <div class="row-picture">
-                            <img class="circle" src='{{ date.image_url | image:"original" }}' alt="icon">
-                        </div>
-                        <div class="row-content">
-                            <h4 class="list-group-item-heading">{{ date.name }}</h4>
+                        <a [routerLink]="['../date/' + date.id]" target="_blank">
+                            <div class="row-picture">
+                                <img class="circle" src='{{ date.image_url | image:"original" }}' alt="icon">
+                            </div>
+                            <div class="row-content">
+                                <h4 class="list-group-item-heading">{{ date.name }}</h4>
 
-                            <p class="list-group-item-text">Total cost: ${{ date.total_cost }} Total time: {{ date.total_time }} minutes.</p>
-                        </div>
+                                <p class="list-group-item-text">Total cost: ${{ date.total_cost }} Total time: {{ date.total_time }} minutes.</p>
+                            </div>
+                        </a>
+                        <div class="list-group-separator"></div>
                     </div>
-                    <div class="list-group-separator"></div>
                 </div>
             </div>
             <div class="tab-pane fade" id="stats">
