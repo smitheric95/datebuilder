@@ -31,6 +31,11 @@ var SearchComponent = (function () {
                 });
             }
             else {
+                _this.eventsService.load().then(function (x) {
+                    _this.events = JSON.parse(x);
+                    _this.events = _this.shuffleArray(_this.events);
+                    _this.singleEvent = false;
+                });
             }
         });
     };
@@ -44,6 +49,15 @@ var SearchComponent = (function () {
     };
     SearchComponent.prototype.focus = function () {
         eval("$(function(){ $('#search').focus() });");
+    };
+    SearchComponent.prototype.shuffleArray = function (array) {
+        for (var i = array.length - 1; i > 0; i--) {
+            var j = Math.floor(Math.random() * (i + 1));
+            var temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+        }
+        return array;
     };
     SearchComponent = __decorate([
         core_1.Component({

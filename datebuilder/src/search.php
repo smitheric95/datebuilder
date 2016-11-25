@@ -81,7 +81,10 @@ function default_search($user_id) {
     // filter returned data
     $yelp_data = $yelp_data["businesses"];
     $yelp_data = filter_data($yelp_data);
-
+    
+    // randomize businesses
+    shuffle($yelp_data);
+    
     // json encode and return
     return json_encode($yelp_data);
 }

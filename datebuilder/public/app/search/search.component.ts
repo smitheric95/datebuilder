@@ -35,12 +35,11 @@ export class SearchComponent {
                 });
             }
             else {
-                /*
                 this.eventsService.load().then(x => {
                     this.events = JSON.parse(x);
+                    this.events = this.shuffleArray(this.events);
                     this.singleEvent = false;        
                 });
-                */
             }
         });
     }
@@ -56,5 +55,14 @@ export class SearchComponent {
     focus() {
         eval("$(function(){ $('#search').focus() });")
     }
-
+    
+    private shuffleArray(array : any[]) {
+        for (var i = array.length - 1; i > 0; i--) {
+            var j = Math.floor(Math.random() * (i + 1));
+            var temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+        }
+        return array;   
+    }   
 }
