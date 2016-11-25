@@ -31,3 +31,24 @@ function business_info($businessid) {
   return json_encode($saved_data);
 
 }
+
+function parse_business($business_data) {
+	$desired_keys = array("categories", "display_phone", "id", "image_url", "location", "name", "rating", "url", "snippet_text");
+	// parse yelp_data by key
+	$saved_data = array();
+	foreach ($business_data as $key => $val)
+	{
+	  if (in_array($key, $desired_keys))
+	  {
+		if($key == "location")
+		{
+		  $saved_data[$key] = $val["display_address"];
+		}
+		else
+		{
+			$saved_data[$key] = $val;
+		}
+	  }
+	}
+	return $saved_data;
+}
