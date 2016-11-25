@@ -28,6 +28,7 @@ export class DateComponent {
 
     ngOnInit() {
         this.date = {};
+        this.date.image_url = "";
         this.businessNames = [];
         this.businessUrls = [];
         this.distances = [];
@@ -37,7 +38,6 @@ export class DateComponent {
             if (params['id'] !== undefined) {
                 this.datesService.get(params['id']).then(x => {
                     this.date = JSON.parse(x);
-                    console.log("this.date: " + this.date);
 
                     for(var i=0;i<this.date.businesses.length;i++){
                         var curBusUrl = this.date.businesses[i];

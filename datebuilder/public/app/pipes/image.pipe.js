@@ -16,11 +16,12 @@ var ImagePipe = (function () {
         if (arg === undefined) {
             return val;
         }
+        val = val.split("/").slice(0, -1).join('/');
         if (arg == "large") {
-            return val.substring(0, val.length - 6) + "l.jpg";
+            return val + "/l.jpg";
         }
         else if (arg == "original") {
-            return val.substring(0, val.length - 6) + "/o.jpg";
+            return val + "/o.jpg";
         }
         else {
             return val;

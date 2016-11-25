@@ -22,6 +22,7 @@ var DateComponent = (function () {
     DateComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.date = {};
+        this.date.image_url = "";
         this.businessNames = [];
         this.businessUrls = [];
         this.distances = [];
@@ -30,7 +31,6 @@ var DateComponent = (function () {
             if (params['id'] !== undefined) {
                 _this.datesService.get(params['id']).then(function (x) {
                     _this.date = JSON.parse(x);
-                    console.log("this.date: " + _this.date);
                     for (var i = 0; i < _this.date.businesses.length; i++) {
                         var curBusUrl = _this.date.businesses[i];
                         _this.eventsService.getEvent(curBusUrl).then(function (x) {

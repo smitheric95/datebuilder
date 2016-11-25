@@ -1,4 +1,4 @@
-<div class="panel panel-default date">
+<div *ngIf="date.name" class="panel panel-default date">
     <div>
         <a class="img-wrapper">
             <img src='{{ date.image_url | image:"large" }}' />
@@ -17,7 +17,9 @@
                             target="_blank"
                             [routerLink]="businessUrls[i]"
                         >{{ bus }}</a><br>
-                        <p *ngIf="i != businessNames.length-1">--> {{ distances[i] }} miles</p>
+                    <!--
+                        <p *ngIf="i != businessNames.length-1">-> {{ distances[i] }} miles</p>
+                    -->
                     </li>
                 </ul>
             </div>
