@@ -41,14 +41,21 @@ function get_date($date_id) {
 
                     $businesses = array();
                     $categories = array();
+                    $locations = array();
 
                     require_once("business_info.php");
+                    require_once("yelp_api.php");
+                    // require_once("search.php");
 
                     while ($unique_date_elm = $date_elms->fetch_assoc()) {
                         array_push($businesses, $unique_date_elm["business_id"]);
 
                         // get info from yelp for business id
-                        $data = json_decode(business_info($unique_date_elm["business_id"]), true);
+                        $data = json_decode(get_business($unique_date_elm["business_id"]), true);
+                        $location_data = $data["location"];
+                        array_push($locations, $location_data["coordinate"]);
+                        $data = parse_business($data);
+                        // return var_dump($data);
 
                         // add categories for date to list of all categories
                         foreach($data["categories"] as $category) {
@@ -59,6 +66,7 @@ function get_date($date_id) {
                     // add data for date object to date array
                     $date["businesses"] = $businesses;
                     $date["categories"] = $categories;
+                    $date["distances"] = calc_distances($locations);
 
                 } else {
                     return "could not get date elements for date id: " . $date_id;
@@ -78,6 +86,26 @@ function get_date($date_id) {
         return "Date id is not an integer";
     }
 
+}
+
+// uses the haversine formula to calculate the distances between gps coordinates
+function calc_distances($coord_array) {
+    $distances = array();
+
+    for ($i = 0; $i < sizeof($coord_array) - 1; $i++) {
+        $lat1 = $coord_array[$i]["latitude"];
+        $lon1 = $coord_array[$i]["longitude"];
+        $lat2 = $coord_array[$i + 1]["latitude"];
+        $lon2 = $coord_array[$i + 1]["longitude"];
+
+        $delLat = deg2rad($lat2-$lat1);
+        $delLon = deg2rad($lon2-$lon1);
+        $a = sin($delLat/2) * sin($delLat/2) + cos(deg2rad($lat1)) *
+             cos(deg2rad($lat2)) * sin($delLon/2) * sin($delLon/2);
+        $c = 2 * atan2(sqrt($a), sqrt(1-$a));
+        array_push($distances, (3961*$c));
+    }
+    return $distances;
 }
 
 function update_date($date_id, $businesses, $total_cost, $name, $total_time, $image_url) {
