@@ -31,10 +31,6 @@ var SearchComponent = (function () {
                 });
             }
             else {
-                _this.eventsService.load().then(function (x) {
-                    _this.events = JSON.parse(x);
-                    _this.singleEvent = false;
-                });
             }
         });
     };

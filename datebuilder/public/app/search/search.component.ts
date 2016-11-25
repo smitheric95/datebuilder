@@ -35,10 +35,12 @@ export class SearchComponent {
                 });
             }
             else {
+                /*
                 this.eventsService.load().then(x => {
                     this.events = JSON.parse(x);
                     this.singleEvent = false;        
                 });
+                */
             }
         });
     }
