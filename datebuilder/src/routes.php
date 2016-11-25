@@ -89,8 +89,8 @@ $app->post('/users/logout', function (Request $request, Response $response) {
         unset($_SESSION['session']);  //Is Used To Destroy Specified Session
         unset($_SESSION['is_validated']);  //Is Used To Destroy Specified Session
     }
-    
-    
+
+
     /*
     $status = validate_login($user_email, $password);
 
@@ -106,6 +106,29 @@ $app->post('/users/logout', function (Request $request, Response $response) {
 
     return $response;
     */
+});
+
+$app->post('/users/updatesettings', function (Request $request, Response $response) {
+    $parsed_body = $request->getParsedBody();
+    $name = $parsed_body['name'];
+    $email = $parsed_body['email'];
+    $password = $parsed_body['password'];
+    $age = $parsed_body['age'];
+    $loc_serv = $parsed_body['allow_loc_services'];
+
+    $user_id = 1;
+
+    include "update_user.php";
+
+    $status = update_user($user_id, $name, $password, $email, $age, $loc_serv);
+
+    if ($status === TRUE) {
+        $response->getBody()->write("Account updated successfully.");
+    } else {
+        $response->getBody()->write("Error updating account: ". $status);
+    }
+
+    return $response;
 });
 
 
