@@ -76,14 +76,20 @@ function get_user_info($user_id) {
 
                         $businesses = array();
                         $categories = array();
+                        $locations = array();
 
                         require_once("business_info.php");
+                        require_once("edit_date.php");
+                        require_once("yelp_api.php");
 
                         while ($unique_date_elm = $date_elms->fetch_assoc()) {
                             array_push($businesses, $unique_date_elm["business_id"]);
 
                             // get info from yelp for business id
-                            $data = json_decode(business_info($unique_date_elm["business_id"]), true);
+                            $data = json_decode(get_business($unique_date_elm["business_id"]), true);
+                            $location_data = $data["location"];
+                            array_push($locations, $location_data["coordinate"]);
+                            $data = parse_business($data);
 
                             // add categories for date to list of all categories
                             foreach($data["categories"] as $category) {
@@ -94,6 +100,7 @@ function get_user_info($user_id) {
                         // add data for date object to dates array
                         $date_to_add["businesses"] = $businesses;
                         $date_to_add["categories"] = $categories;
+                        $date_to_add["distances"] = calc_distances($locations);
 
                     } else {
                         return "could not get date elements for date: " . $date_id;
