@@ -66,7 +66,12 @@ function default_search($user_id) {
     }
 
     // path for yelp api call
-    $path = "/v2/search?sort=2&term=food&limit=20&location=" . (string)$zipcode;
+    $url_params = array();
+    $url_params['term'] = "food";
+    $url_params['location'] = $zipcode?: "Dallas, TX";
+    $url_params['limit'] = 20;
+    $path = "/v2/search" . "?" . http_build_query($url_params);
+    // $path = "/v2/search?sort=2&term=food&limit=20&location=" . (string)$zipcode;
     // $query = "sort=2&term=food&limit=20";
 
     // query yelp api
