@@ -19,7 +19,8 @@ export class AccountComponent {
     dates: any;
     stats: any;
     isLoggedIn: boolean;
-
+    settings : any;
+    
     constructor(private route: ActivatedRoute,
         private router: Router,
         private usersService: UsersService) { }
@@ -69,7 +70,13 @@ export class AccountComponent {
                 this.user = temp.user;
                 this.dates = temp.dates;
                 this.stats = temp.stats;
+                console.log(this.user);
             });
         }
+    }
+
+    changeSettings() {
+        console.log("changing to");
+        console.log(this.user);
     }
 }

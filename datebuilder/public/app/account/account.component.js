@@ -56,8 +56,13 @@ var AccountComponent = (function () {
                 _this.user = temp.user;
                 _this.dates = temp.dates;
                 _this.stats = temp.stats;
+                console.log(_this.user);
             });
         }
+    };
+    AccountComponent.prototype.changeSettings = function () {
+        console.log("changing to");
+        console.log(this.user);
     };
     AccountComponent = __decorate([
         core_1.Component({

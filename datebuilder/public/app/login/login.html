@@ -6,29 +6,15 @@
                     <legend>Log in</legend>
                     <div class="form-group label-floating is-empty">
                         <label class="control-label" for="email">Your email</label>
-                        <input 
-                            [(ngModel)]="user.email"
-                            name="email" 
-                            class="form-control" 
-                            id="email" 
-                            type="email">
+                        <input [(ngModel)]="user.email" name="email" class="form-control" id="email" type="email">
                         <span class="help-block">Please enter a valid email address</span>
                     </div>
 
                     <div class="form-group label-floating is-empty">
                         <label for="password" class="control-label">Password</label>
-                        <input 
-                            [(ngModel)]="user.password"
-                            name="password" 
-                            class="form-control" 
-                            id="password" 
-                            type="password">
+                        <input [(ngModel)]="user.password" name="password" class="form-control" id="password" type="password">
                     </div>
-                    <button 
-                        type="submit" 
-                        class="btn btn-primary"
-                        (click)="logIn()"
-                        >LOGIN<div class="ripple-container"></div></button>
+                    <button type="submit" class="btn btn-primary" (click)="logIn()">LOGIN<div class="ripple-container"></div></button>
                 </div>
             </fieldset>
         </form>
