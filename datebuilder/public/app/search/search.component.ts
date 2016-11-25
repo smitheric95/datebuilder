@@ -34,6 +34,12 @@ export class SearchComponent {
                     this.singleEvent = true;
                 });
             }
+            else {
+                this.eventsService.load().then(x => {
+                    this.events = JSON.parse(x);
+                    this.singleEvent = false;        
+                });
+            }
         });
     }
 

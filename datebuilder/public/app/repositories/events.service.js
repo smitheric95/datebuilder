@@ -40,6 +40,12 @@ var EventsService = (function () {
             .toPromise()
             .then(function (x) { return x['_body']; });
     };
+    EventsService.prototype.load = function () {
+        return this.http
+            .get(this._apiUrl + "/load")
+            .toPromise()
+            .then(function (x) { return x['_body']; });
+    };
     EventsService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http])

@@ -40,4 +40,11 @@ export class EventsService {
             .then(x => x['_body'] as any);
     }
 
+    load() : Promise<any> {
+        return this.http
+            .get(`${this._apiUrl}/load`)
+            .toPromise()
+            .then(x => x['_body'] as any);
+    }
+
 }
