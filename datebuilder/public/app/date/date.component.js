@@ -28,15 +28,18 @@ var DateComponent = (function () {
         this.route.params.forEach(function (params) {
             //router: date/:id=date-id
             if (params['id'] !== undefined) {
-                _this.date = JSON.parse(_this.datesService.get(params['id']));
-                for (var i = 0; i < _this.date.businesses.length; i++) {
-                    var curBusUrl = _this.date.businesses[i];
-                    _this.eventsService.getEvent(curBusUrl).then(function (x) {
-                        var curBus = JSON.parse(x);
-                        _this.businessNames.push(curBus.name);
-                        _this.businessUrls.push("/search/" + curBusUrl);
-                    });
-                }
+                _this.datesService.get(params['id']).then(function (x) {
+                    _this.date = JSON.parse(x);
+                    console.log("this.date: " + _this.date);
+                    for (var i = 0; i < _this.date.businesses.length; i++) {
+                        var curBusUrl = _this.date.businesses[i];
+                        _this.eventsService.getEvent(curBusUrl).then(function (x) {
+                            var curBus = JSON.parse(x);
+                            _this.businessNames.push(curBus.name);
+                            _this.businessUrls.push("/search/" + curBusUrl);
+                        });
+                    }
+                });
                 _this.distances = _this.date.distances;
             }
         });

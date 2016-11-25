@@ -35,17 +35,20 @@ export class DateComponent {
         this.route.params.forEach((params: Params) => {
             //router: date/:id=date-id
             if (params['id'] !== undefined) {
-                this.date = JSON.parse(this.datesService.get(params['id'])); 
+                this.datesService.get(params['id']).then(x => {
+                    this.date = JSON.parse(x);
+                    console.log("this.date: " + this.date);
 
-                for(var i=0;i<this.date.businesses.length;i++){
-                    var curBusUrl = this.date.businesses[i];
+                    for(var i=0;i<this.date.businesses.length;i++){
+                        var curBusUrl = this.date.businesses[i];
 
-                    this.eventsService.getEvent(curBusUrl).then(x => {
-                        var curBus = JSON.parse(x);
-                        this.businessNames.push( curBus.name );
-                        this.businessUrls.push( "/search/" + curBusUrl );
-                    });
-                }
+                        this.eventsService.getEvent(curBusUrl).then(x => {
+                            var curBus = JSON.parse(x);
+                            this.businessNames.push( curBus.name );
+                            this.businessUrls.push( "/search/" + curBusUrl );
+                        });
+                    }
+                }); 
 
                 this.distances = this.date.distances;
             }
