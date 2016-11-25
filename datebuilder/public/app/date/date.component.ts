@@ -46,11 +46,11 @@ export class DateComponent {
                             var curBus = JSON.parse(x);
                             this.businessNames.push( curBus.name );
                             this.businessUrls.push( "/search/" + curBusUrl );
+                            this.distances = this.date.distances;
                         });
                     }
                 }); 
 
-                this.distances = this.date.distances;
             }
         });
     }

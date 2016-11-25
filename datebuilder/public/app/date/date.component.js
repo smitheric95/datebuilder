@@ -37,10 +37,10 @@ var DateComponent = (function () {
                             var curBus = JSON.parse(x);
                             _this.businessNames.push(curBus.name);
                             _this.businessUrls.push("/search/" + curBusUrl);
+                            _this.distances = _this.date.distances;
                         });
                     }
                 });
-                _this.distances = _this.date.distances;
             }
         });
     };
