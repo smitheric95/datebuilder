@@ -14,6 +14,7 @@ var forms_1 = require('@angular/forms');
 var router_1 = require('@angular/router');
 var http_1 = require('@angular/http');
 var ng_bootstrap_1 = require('@ng-bootstrap/ng-bootstrap');
+var ng2_popover_1 = require('ng2-popover');
 var app_component_1 = require('./app.component');
 var landing_component_1 = require('./landing/landing.component');
 var navbar_component_1 = require('./navbar/navbar.component');
@@ -38,6 +39,7 @@ var AppModule = (function () {
         core_1.NgModule({
             imports: [
                 platform_browser_1.BrowserModule,
+                ng2_popover_1.PopoverModule,
                 forms_1.FormsModule,
                 http_1.HttpModule,
                 ng_bootstrap_1.NgbModule.forRoot(),

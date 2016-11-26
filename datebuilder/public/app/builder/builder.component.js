@@ -29,6 +29,7 @@ var BuilderComponent = (function () {
             this.events.push(event);
             console.log("Added event object with ID: '" + event.id + "'");
         }
+        //eval("$(function(){$('.btn-popover').popover()})");
     };
     __decorate([
         core_1.Input(), 

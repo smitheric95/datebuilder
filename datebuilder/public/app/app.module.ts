@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { PopoverModule } from 'ng2-popover'
 
 import { AppComponent } from './app.component';
 import { LandingComponent } from './landing/landing.component';
@@ -27,6 +28,7 @@ import { ImagePipe } from './pipes/image.pipe';
 @NgModule({
   imports: [
     BrowserModule,
+    PopoverModule,
     FormsModule,
     HttpModule,
     NgbModule.forRoot(),
