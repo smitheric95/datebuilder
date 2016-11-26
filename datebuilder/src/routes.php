@@ -112,9 +112,14 @@ $app->post('/users/updatesettings', function (Request $request, Response $respon
     $parsed_body = $request->getParsedBody();
     $name = $parsed_body['name'];
     $email = $parsed_body['email'];
-    $password = $parsed_body['password'];
+    // $password = $parsed_body['password'];
     $age = $parsed_body['age'];
     $loc_serv = $parsed_body['allow_loc_services'];
+    $password = NULL;
+
+    if (isset($parsed_body['password'])) {
+        $password = $parsed_body['password'];
+    }
 
     $user_id = 1;
 

@@ -28,32 +28,55 @@ function update_user($user_id, $name, $password, $email, $age, $loc_serv) {
 
     if ($n_match == 1 && $e_match == 1 && $a_match == 1 && $l_match == 1) {
         // salt password
-        include "salty.php";
-        $salt = get_new_salt();
-        $password = salt_password($password, $salt);
-        if ($loc_serv == "True") {
-            $loc_serv = 1;
+        if ($password === NULL) {
+            if ($loc_serv == "True") {
+                $loc_serv = 1;
+            } else {
+                $loc_serv = 0;
+            }
+            // prepare query
+            $sql = "UPDATE {$table_name} SET
+                name = '$name', email = '$email',
+                age = '$age', allow_loc_services = '$loc_serv'
+                WHERE user_id = '$user_id'";
+
+            // execute query
+            if ($conn->query($sql)) {
+                // echo "User account successfully created";
+                $conn->close();
+                return TRUE;
+            } else {
+                $conn->close();
+                return "Error updating user account: " . $conn->error;
+            }
+
         } else {
-            $loc_serv = 0;
+            include "salty.php";
+            $salt = get_new_salt();
+            $password = salt_password($password, $salt);
+            if ($loc_serv == "True") {
+                $loc_serv = 1;
+            } else {
+                $loc_serv = 0;
+            }
+
+            // prepare query
+            $sql = "UPDATE {$table_name} SET
+                name = '$name', email = '$email',
+                age = '$age', allow_loc_services = '$loc_serv',
+                password = '$password', salt = '$salt'
+                WHERE user_id = '$user_id'";
+
+            // execute query
+            if ($conn->query($sql)) {
+                // echo "User account successfully created";
+                $conn->close();
+                return TRUE;
+            } else {
+                $conn->close();
+                return "Error updating user account: " . $conn->error;
+            }
         }
-
-        // prepare query
-        $sql = "UPDATE {$table_name} SET
-            name = '$name', email = '$email',
-            age = '$age', allow_loc_services = '$loc_serv',
-            password = '$password', salt = '$salt'
-            WHERE user_id = '$user_id'";
-
-        // execute query
-        if ($conn->query($sql)) {
-            // echo "User account successfully created";
-            $conn->close();
-            return TRUE;
-        } else {
-            $conn->close();
-            return "Error updating user account: " . $conn->error;
-        }
-
     } else {
         return "Invalid parameters";
     }
