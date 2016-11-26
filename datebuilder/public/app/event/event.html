@@ -7,7 +7,7 @@
                     src='{{ event.image_url | image:"large" }}' />
                 <img
                     *ngIf="isMini" 
-                    src='{{ event.image_url }}' />
+                    src='{{ event.image_url | image:"medium" }}' />
             </div>
             <div *ngIf="event.image_url !== undefined">
                 <p style="margin:10px">No image available</p>

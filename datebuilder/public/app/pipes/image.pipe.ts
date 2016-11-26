@@ -16,6 +16,9 @@ export class ImagePipe {
     else if (arg == "original") {
       return val + "/o.jpg"
     } 
+    else if (arg == "medium") {
+      return val + "/ms.jpg"
+    } 
     else {
       return val;
     }
