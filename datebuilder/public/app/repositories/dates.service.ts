@@ -1,24 +1,30 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, Response } from '@angular/http';
+import { Http, Headers, Response, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class DatesService {
     private _apiUrl = 'date';
 
-    constructor(private http: Http){}
+    constructor(private http: Http) { }
 
-    /*
-
-    AWAITING DATE ROUTE
-
-    */
-    get(date) : Promise<any> {
+    get(date): Promise<any> {
         return this.http
             .get(`editdate/${date}`)
             .toPromise()
             .then(x => x['_body'] as any);
-        // return '{ "businesses": [ "sewell-cadillac-of-dallas-dallas", "any-lab-test-now-dallas-dallas", "park-lane-allergy-and-asthma-center-dallas" ], "distances": [ 2.5, 3.4 ], "total_cost": 85.00, "name": "My Awesome Date", "total_time": 60, "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/_D1VLvf3VdvDJWddTIShFA/ms.jpg", "categories": [ ["category1", 12], ["category2", 8], ["category3", 4] ] }';
+    }
+
+    build(date): Promise<any> {
+        return this.http
+            .post('/build/', date)
+            .toPromise()
+            .then(this.extractData);
+    }
+
+    private extractData(res: Response) {
+        let body = res['_body'];
+        return body || {};
     }
 
 }

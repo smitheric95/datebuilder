@@ -21,7 +21,7 @@ function build_date($business, $total_cost, $name, $total_time, $image_url) {
     $total_cost_pattern = "/\d+(.\d+)?/";
     $name_pattern = "/[\w\s\-\d]+/";
     $total_time_pattern = "/\d+/";
-    $image_url_pattern = "/\bhttps:\/\/s3-media1\S*\/l.jpg\b/";
+    $image_url_pattern = "/\bhttps:\/\/s3-media\S*\/l.jpg\b/";
 
     $tc_match = preg_match($total_cost_pattern, $total_cost);
     $n_match = preg_match($name_pattern, $name);
