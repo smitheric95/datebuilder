@@ -17,6 +17,7 @@ var EventListComponent = (function () {
         this.router = router;
         this.eventsService = eventsService;
     }
+    EventListComponent.prototype.ngOnChanges = function () { console.log(this.events); };
     EventListComponent.prototype.loadModal = function (event) {
         var _this = this;
         this.eventsService.getEvent(event).then(function (x) {

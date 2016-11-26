@@ -73,7 +73,6 @@ export class AccountComponent {
                 this.user = temp.user;
                 this.dates = temp.dates;
                 this.stats = temp.stats;
-                console.log(this.user);
             });
         }
     }

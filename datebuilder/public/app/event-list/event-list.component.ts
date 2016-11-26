@@ -25,7 +25,7 @@ export class EventListComponent {
     constructor(private route: ActivatedRoute,
         private router: Router,
         private eventsService: EventsService) { }
-
+ngOnChanges(){console.log(this.events)}
     loadModal(event: any) {
         this.eventsService.getEvent(event).then(x => {
             this.selectedEvent = JSON.parse(x);

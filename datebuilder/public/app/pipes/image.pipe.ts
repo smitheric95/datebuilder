@@ -5,7 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class ImagePipe {
   transform(val, arg) {
-    if (arg === undefined) {
+    if (val === undefined) {
       return val;
     }
       val = val.split("/").slice(0,-1).join('/'); 

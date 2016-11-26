@@ -1,12 +1,17 @@
 <div class="event" [ngClass]="{'panel panel-default': !isSelected, 'mini' : isMini }">
     <div *ngIf="!isSelected" >
         <a class="img-wrapper" (click)="selectEvent()" >
-            <img
-                *ngIf="!isMini" 
-                src='{{ event.image_url | image:"large" }}' />
-            <img
-                *ngIf="isMini" 
-                src='{{ event.image_url }}' />
+            <div *ngIf="event.image_url !== undefined">
+                <img
+                    *ngIf="!isMini" 
+                    src='{{ event.image_url | image:"large" }}' />
+                <img
+                    *ngIf="isMini" 
+                    src='{{ event.image_url }}' />
+            </div>
+            <div *ngIf="event.image_url !== undefined">
+                <p style="margin:10px">No image available</p>
+            </div> 
         </a>
     </div>
     <div [ngClass]="{'panel-body': !isSelected }">
@@ -21,8 +26,11 @@
                 <h4 *ngIf="isMini">{{ event.name | ellipsis:13 }}</h4>
                 <div *ngIf="!isMini">
                     <p>{{ event.location.display_address }}</p>
-                    <p>{{ event.display_phone }}</p>
-                    <p>Rating: {{ event.rating }}</p>
+                    <p *ngIf="event.display_phone">{{ event.display_phone }}</p>
+                    <p *ngIf="!event.display_phone">No phone number available</p>
+
+                    <p *ngIf="event.rating">Rating: {{ event.rating }}</p>
+                    <p *ngIf="!event.rating">No rating available</p>
                 </div>
             </div>
         </a>
