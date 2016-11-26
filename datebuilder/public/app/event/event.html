@@ -29,25 +29,25 @@
                         <label class="small-label control-label">Cost:</label>
                         <div class="input-group">
                             <span class="input-group-addon">$</span>
-                            <input type="number" min="0.01" step="0.01" max="2500" class="cost form-control">
+                            <input [(ngModel)]="event.cost" type="number" min="0.01" step="0.01" max="2500" class="cost form-control" required>
                         </div>
                     </div>
                     <div class="form-group form-group-sm is-empty">
                         <label class="small-label control-label">Time:</label>
                         <div class="input-group">
                             <span class="clock-span input-group-addon"><i class="clock material-icons">access_time</i></span>
-                            <select name="time" class="form-control">
-                                <option value="00:30">00:30</option>
-                                <option value="01:00">01:00</option>
-                                <option value="01:30">01:30</option>
-                                <option value="02:00">02:00</option>
-                                <option value="02:30">02:30</option>
-                                <option value="03:00">03:00</option>
-                                <option value="03:30">03:30</option>
-                                <option value="04:00">04:00</option>
-                                <option value="04:30">04:30</option>
-                                <option value="05:00">05:00</option>
-                                
+                            <select [(ngModel)]="event.time" name="time" class="form-control" required>
+                                <option></option>
+                                <option value=30>00:30</option>
+                                <option value=60>01:00</option>
+                                <option value=90>01:30</option>
+                                <option value=120>02:00</option>
+                                <option value=150>02:30</option>
+                                <option value=180>03:00</option>
+                                <option value=210>03:30</option>
+                                <option value=240>04:00</option>
+                                <option value=270>04:30</option>
+                                <option value=300>05:00</option>
                             </select>
                         </div>
                     </div>

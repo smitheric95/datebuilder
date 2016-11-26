@@ -13,9 +13,12 @@ export class BuilderComponent {
     @Input() addedEvent: any; //event object passed from EventList
     events: any[];
     popover: boolean;
+    date: any;
 
     ngOnInit() {
         this.events = [];
+        this.date = {};
+        this.date.name = "My Awesome Date";
     }
 
     ngOnChanges(changes: any) {
@@ -33,7 +36,28 @@ export class BuilderComponent {
         if (this.events.indexOf(event) === -1) {
             this.events.push(event);
             console.log("Added event object with ID: '" + event.id + "'");
-        } 
+        }
         //eval("$(function(){$('.btn-popover').popover()})");
+    }
+
+    buildDate() {
+        var hasImage = false;
+        this.date.businesses = [];
+        this.date.total_cost = 0;
+        this.date.total_time = 0;
+
+        for (var i = 0; i < this.events.length; i++) {
+            var curEvent = this.events[i];
+            this.date.businesses.push(curEvent.id);
+            this.date.total_cost += curEvent.cost;
+            this.date.total_time += parseInt(curEvent.time);
+            
+            if (!hasImage && curEvent.image_url != undefined) {
+                this.date.image_url = curEvent.image_url;
+                hasImage = true;
+            }
+        }
+
+        console.log(this.date);
     }
 }

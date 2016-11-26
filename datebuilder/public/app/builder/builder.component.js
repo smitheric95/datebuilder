@@ -14,6 +14,8 @@ var BuilderComponent = (function () {
     }
     BuilderComponent.prototype.ngOnInit = function () {
         this.events = [];
+        this.date = {};
+        this.date.name = "My Awesome Date";
     };
     BuilderComponent.prototype.ngOnChanges = function (changes) {
         if (changes.addedEvent.currentValue !== undefined)
@@ -30,6 +32,23 @@ var BuilderComponent = (function () {
             console.log("Added event object with ID: '" + event.id + "'");
         }
         //eval("$(function(){$('.btn-popover').popover()})");
+    };
+    BuilderComponent.prototype.buildDate = function () {
+        var hasImage = false;
+        this.date.businesses = [];
+        this.date.total_cost = 0;
+        this.date.total_time = 0;
+        for (var i = 0; i < this.events.length; i++) {
+            var curEvent = this.events[i];
+            this.date.businesses.push(curEvent.id);
+            this.date.total_cost += curEvent.cost;
+            this.date.total_time += parseInt(curEvent.time);
+            if (!hasImage && curEvent.image_url != undefined) {
+                this.date.image_url = curEvent.image_url;
+                hasImage = true;
+            }
+        }
+        console.log(this.date);
     };
     __decorate([
         core_1.Input(), 
