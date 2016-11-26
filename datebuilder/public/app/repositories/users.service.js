@@ -36,6 +36,13 @@ var UsersService = (function () {
             .toPromise()
             .then(function (x) { return x['_body']; });
     };
+    UsersService.prototype.update = function (user) {
+        return this.http
+            .post(this._apiUrl + '/updatesettings', user)
+            .toPromise()
+            .then(function () { return user; })
+            .catch(function (x) { return alert(x.json().error); });
+    };
     UsersService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http])

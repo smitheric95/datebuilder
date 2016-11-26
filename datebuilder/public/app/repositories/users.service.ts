@@ -30,5 +30,13 @@ export class UsersService {
             .toPromise()
             .then(x => x['_body'] as any);
     }
+
+    update(user) : Promise<any> {
+       return this.http
+            .post(this._apiUrl + '/updatesettings', user)
+            .toPromise()
+            .then(() => user)
+            .catch(x => alert(x.json().error));
+    }
 }
 

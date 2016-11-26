@@ -40,12 +40,15 @@ var AccountComponent = (function () {
             this.user.allow_loc_services = "False";
         this.user.age = new Date().getFullYear() - this.user.age;
         this.usersService.add(this.user)
-            .then(function () { return _this.returnToList(); });
+            .then(function () { return _this.returnToList(false); });
     };
-    AccountComponent.prototype.returnToList = function () {
+    AccountComponent.prototype.returnToList = function (settings) {
         this.router.navigateByUrl('search')
             .then(function () {
-            eval("$(function(){$('#createdAccountModal').modal('show')})");
+            if (settings)
+                eval("$(function(){$('#settingsChangedModal').modal('show')})");
+            else
+                eval("$(function(){$('#createdAccountModal').modal('show')})");
         });
     };
     AccountComponent.prototype.getUser = function () {
@@ -61,8 +64,15 @@ var AccountComponent = (function () {
         }
     };
     AccountComponent.prototype.changeSettings = function () {
-        console.log("changing to");
-        console.log(this.user);
+        // console.log(JSON.stringify(this.user));
+        var _this = this;
+        /*
+
+            AWAITING /users/updatesettings to optionally take $password
+        
+        */
+        this.usersService.update(this.user)
+            .then(function () { return _this.returnToList(true); });
     };
     AccountComponent = __decorate([
         core_1.Component({

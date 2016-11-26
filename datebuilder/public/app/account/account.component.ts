@@ -52,14 +52,17 @@ export class AccountComponent {
 
         this.user.age = new Date().getFullYear() - this.user.age;
         this.usersService.add(this.user)
-            .then(() => this.returnToList());
+            .then(() => this.returnToList(false));
 
     }
 
-    private returnToList() {
+    private returnToList(settings : boolean) {
         this.router.navigateByUrl('search')
             .then(() => {
-                eval("$(function(){$('#createdAccountModal').modal('show')})");
+                if(settings)
+                    eval("$(function(){$('#settingsChangedModal').modal('show')})");
+                else
+                    eval("$(function(){$('#createdAccountModal').modal('show')})");
             });
     }
 
@@ -76,7 +79,14 @@ export class AccountComponent {
     }
 
     changeSettings() {
-        console.log("changing to");
-        console.log(this.user);
+        // console.log(JSON.stringify(this.user));
+
+        /*
+
+            AWAITING /users/updatesettings to optionally take $password
+        
+        */
+        this.usersService.update(this.user)
+            .then(() => this.returnToList(true));
     }
 }
