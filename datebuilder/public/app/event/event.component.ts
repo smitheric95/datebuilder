@@ -1,6 +1,7 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { EllipsisPipe } from '../pipes/ellipsis.pipe';
 import { ImagePipe } from '../pipes/image.pipe';
+import { PopoverContent } from 'ng2-popover';
 
 @Component({
     selector: 'event',
@@ -25,7 +26,8 @@ export class EventComponent {
     }
 
     selectEvent() {
-        this.eventSelected.emit(this.event.id); 
+        this.eventSelected.emit(this.event.id);
     }
+
 
 }

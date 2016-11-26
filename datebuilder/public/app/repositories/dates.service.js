@@ -16,17 +16,21 @@ var DatesService = (function () {
         this.http = http;
         this._apiUrl = 'date';
     }
-    /*
-
-    AWAITING DATE ROUTE
-
-    */
     DatesService.prototype.get = function (date) {
         return this.http
             .get("editdate/" + date)
             .toPromise()
             .then(function (x) { return x['_body']; });
-        // return '{ "businesses": [ "sewell-cadillac-of-dallas-dallas", "any-lab-test-now-dallas-dallas", "park-lane-allergy-and-asthma-center-dallas" ], "distances": [ 2.5, 3.4 ], "total_cost": 85.00, "name": "My Awesome Date", "total_time": 60, "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/_D1VLvf3VdvDJWddTIShFA/ms.jpg", "categories": [ ["category1", 12], ["category2", 8], ["category3", 4] ] }';
+    };
+    DatesService.prototype.build = function (date) {
+        return this.http
+            .post('/build/', date)
+            .toPromise()
+            .then(this.extractData);
+    };
+    DatesService.prototype.extractData = function (res) {
+        var body = res['_body'];
+        return body || {};
     };
     DatesService = __decorate([
         core_1.Injectable(), 

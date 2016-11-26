@@ -49,6 +49,18 @@ i.close:hover {
     }
 }
 
+@media (min-width: 650px) { /* see builder.css and event.css */
+    li {
+        display: inline-block;
+    }
+}
+
+@media (max-width: 649px) { 
+    li {
+        display: block;
+    }
+}
+
 .add-to-builder {
     margin: 0 !important;
 }

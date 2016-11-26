@@ -59,7 +59,6 @@ var AccountComponent = (function () {
                 _this.user = temp.user;
                 _this.dates = temp.dates;
                 _this.stats = temp.stats;
-                console.log(_this.user);
             });
         }
     };

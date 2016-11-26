@@ -13,7 +13,7 @@ var ImagePipe = (function () {
     function ImagePipe() {
     }
     ImagePipe.prototype.transform = function (val, arg) {
-        if (arg === undefined) {
+        if (val === undefined) {
             return val;
         }
         val = val.split("/").slice(0, -1).join('/');
@@ -22,6 +22,9 @@ var ImagePipe = (function () {
         }
         else if (arg == "original") {
             return val + "/o.jpg";
+        }
+        else if (arg == "medium") {
+            return val + "/ms.jpg";
         }
         else {
             return val;
