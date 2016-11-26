@@ -5,7 +5,7 @@
     bottom: 0;
     margin-bottom: 0 !important;
 
-    height: 230px;
+    height: 275px;
 }
 
 .builder > .panel-body {
@@ -26,6 +26,14 @@ ul {
     white-space: nowrap;
 }
 
-li {
-   display: inline-block;
+@media (min-width: 650px) { /* see event.css */
+    li {
+        display: inline-block;
+    }
+}
+
+@media (max-width: 649px) { 
+    li {
+        display: block;
+    }
 }

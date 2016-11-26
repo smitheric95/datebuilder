@@ -28,11 +28,22 @@ a.img-wrapper {
     margin-right: auto 
 }
 
-.mini {
-    width: 150px;
-    height: 150px;
-    margin: 5px !important;
+@media (min-width: 650px) { /* see builder.css and event-list.css */
+    .mini {
+        width: 300px;
+        height: 210px;
+        margin: 0 5px !important;
+    }
 }
+
+@media (max-width: 649px) { 
+    .mini {
+        width: 85%;
+        height: 250px;
+        margin: 0 auto;
+    }
+}
+
 
 .mini > div > a.img-wrapper {
     width: 100%;

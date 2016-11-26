@@ -2,12 +2,7 @@
     <div *ngIf="!isSelected" >
         <a class="img-wrapper" (click)="selectEvent()" >
             <div *ngIf="event.image_url !== undefined">
-                <img
-                    *ngIf="!isMini" 
-                    src='{{ event.image_url | image:"large" }}' />
-                <img
-                    *ngIf="isMini" 
-                    src='{{ event.image_url | image:"medium" }}' />
+                <img src='{{ event.image_url | image:"large" }}' />
             </div>
             <div *ngIf="event.image_url !== undefined">
                 <p style="margin:10px">No image available</p>
@@ -31,6 +26,9 @@
 
                     <p *ngIf="event.rating">Rating: {{ event.rating }}</p>
                     <p *ngIf="!event.rating">No rating available</p>
+                </div>
+                <div *ngIf="isMini">
+                    <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-html='true' data-placement="top" data-content='<form ><input type="text"/></form>'>Top</button>
                 </div>
             </div>
         </a>
