@@ -33,11 +33,12 @@ var DateComponent = (function () {
                     _this.date = JSON.parse(x);
                     for (var i = 0; i < _this.date.businesses.length; i++) {
                         var curBusUrl = _this.date.businesses[i];
+                        if (i < _this.date.businesses.length - 1)
+                            _this.distances.push(parseFloat(_this.date.distances[i]));
                         _this.eventsService.getEvent(curBusUrl).then(function (x) {
                             var curBus = JSON.parse(x);
                             _this.businessNames.push(curBus.name);
                             _this.businessUrls.push("/search/" + curBusUrl);
-                            _this.distances = _this.date.distances;
                         });
                     }
                 });

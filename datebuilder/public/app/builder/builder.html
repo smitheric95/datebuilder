@@ -1,10 +1,10 @@
 <div class="builder panel panel-primary">
-    <a id="show-builder" class="btn btn-default btn-fab"><i class="material-icons">keyboard_arrow_up</i><div class="ripple-container"></div></a>
+    <a id="show-builder" (click)="slideBuilder()" class="btn btn-default btn-fab"><i class="material-icons">keyboard_arrow_down</i><div class="ripple-container"></div></a>
     <div class="panel-heading">
         <div class="form-group label-floating form-group is-empty">
             <input [(ngModel)]="date.name" class="form-control" type="text" id="input-small" value="My Awesome Date" required>
         </div>
-        <a (click)="buildDate()" class="btn-done btn btn-primary btn-fab"><i class="star material-icons">done</i></a>
+        <a (click)="buildDate()" id='build-date' class="btn-done btn btn-primary btn-fab"><i class="star material-icons">done</i></a>
     </div>
     <div class="panel-body">
         <ul>

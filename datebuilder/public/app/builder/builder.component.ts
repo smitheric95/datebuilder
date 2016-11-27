@@ -16,6 +16,7 @@ export class BuilderComponent {
     events: any[];
     popover: boolean;
     date: any;
+    builderUp: boolean;
 
     constructor(private route: ActivatedRoute,
         private router: Router,
@@ -25,6 +26,9 @@ export class BuilderComponent {
         this.events = [];
         this.date = {};
         this.date.name = "My Awesome Date";
+        this.builderUp = true;
+        this.date.total_cost = 0;
+        this.date.total_time = 0;
     }
 
     ngOnChanges(changes: any) {
@@ -48,8 +52,6 @@ export class BuilderComponent {
     buildDate() {
         var hasImage = false;
         this.date.business = [];
-        this.date.total_cost = 0;
-        this.date.total_time = 0;
 
         for (var i = 0; i < this.events.length; i++) {
             var curEvent = this.events[i];
@@ -75,6 +77,19 @@ export class BuilderComponent {
         var index = this.events.indexOf(event);
         if (index >= 0) {
             this.events.splice(index, 1);
+        }
+    }
+
+    slideBuilder() {
+        if( this.builderUp ){
+            eval("$('.builder').animate({height:'55px'},200); $('#build-date').fadeOut();");
+            eval("$('#show-builder').css('transform','rotate(180deg)')");
+            this.builderUp = false;
+        }
+        else {
+            eval("$('.builder').animate({height:'295px'},200); $('#build-date').fadeIn();");
+            eval("$('#show-builder').css('transform','rotate(0deg)')");
+            this.builderUp = true;
         }
     }
 }

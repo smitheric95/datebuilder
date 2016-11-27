@@ -24,7 +24,7 @@ $app->get('/hello/{name}', function (Request $request, Response $response) {
 
 $app->get('/getuser/', function (Request $request, Response $response) {
     // get user_id from session id
-    $user_id = $_SESSION["user_id"];
+    $user_id = 1;
 
     include "user_info.php";
 

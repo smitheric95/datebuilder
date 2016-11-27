@@ -3,6 +3,7 @@ import { ActivatedRoute, Router, Params } from '@angular/router';
 import { CategoryComponent } from '../category/category.component';
 import { UsersService } from '../repositories/users.service';
 import { ImagePipe } from '../pipes/image.pipe';
+import { HoursPipe } from '../pipes/hours.pipe';
 
 @Component({
     selector: 'account',
@@ -42,6 +43,12 @@ export class AccountComponent {
         this.years = Array(75).fill(0).map((x, i) => (new Date().getFullYear() - i));
 
         this.getUser();
+
+        var loc = window.location.pathname.substring(9, window.location.pathname.length);
+        if( loc != ''){
+            var clicker = "$(function(){ $('." + loc + "').click()})";
+            eval(clicker);
+        }
     }
 
     add() {

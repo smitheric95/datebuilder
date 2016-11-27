@@ -17,6 +17,7 @@ var AppComponent = (function () {
             selector: 'my-app',
             template: "\n    <div class='container'>\n      <navbar></navbar>\n      <router-outlet></router-outlet>\n    </div>\n  ",
             styleUrls: [
+                './app/app.css',
                 './node_modules/bootstrap/dist/css/bootstrap.min.css',
                 './node_modules/bootstrap-material-design/dist/css/bootstrap-material-design.min.css'
             ]

@@ -1,0 +1,62 @@
+.jumbotron {
+    background-color: #fff !important;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    padding: 5px 30px !important;
+    width: 90%;
+    margin: 150px auto;
+    position: relative !important;
+}
+
+.modal-footer {
+    border-top: none !important;
+}
+
+.container {
+    width: 100% !important;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: #eee;
+}
+
+h1 {
+    color: #009688 !important;
+}
+
+.btn-primary {
+    margin-top: 0 !important;
+}
+
+.btn {
+    font-size: 18px !important;
+}
+
+@font-face {
+    font-family: 'entypo';
+    src: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-90/entypo.woff") format("woff");
+}
+.entypo-heart:before {
+    content: "\2665";
+}
+
+[class*="entypo-"]:before {
+    font-family: 'entypo', sans-serif;
+    color: #ff4081;
+    font-size: 128px;
+    top: -62px;
+    position: absolute;
+    right: 35px !important;
+    transform: rotate(25deg);
+}
+
+#yelp {
+    float: left;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    margin-left: -15px
+}
+
+#yelp > img {
+    margin-top: -10px;
+}

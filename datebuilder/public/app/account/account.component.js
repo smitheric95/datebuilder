@@ -31,6 +31,11 @@ var AccountComponent = (function () {
         };
         this.years = Array(75).fill(0).map(function (x, i) { return (new Date().getFullYear() - i); });
         this.getUser();
+        var loc = window.location.pathname.substring(9, window.location.pathname.length);
+        if (loc != '') {
+            var clicker = "$(function(){ $('." + loc + "').click()})";
+            eval(clicker);
+        }
     };
     AccountComponent.prototype.add = function () {
         var _this = this;
