@@ -238,7 +238,7 @@ $app->post('/updatedate', function (Request $request, Response $response){
     if(!isset($_SESSION['is_validated']) or $_SESSION['is_validated'] == False)
     {
         header("Location:index.php"); //Do not allow him to access.
-        #echo "Unauthorized";
+        #echo "Unauthorized"; 
         exit;
     }
     $parsed_body = $request->getParsedBody();
