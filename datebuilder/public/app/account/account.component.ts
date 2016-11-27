@@ -45,7 +45,7 @@ export class AccountComponent {
 
         var loc = window.location.pathname.substring(9, window.location.pathname.length);
         if( loc != ''){
-            var clicker = "$(function(){ $('#" + loc + "').click()})";
+            var clicker = "$(function(){ $('." + loc + "').click()})";
             eval(clicker);
         }
     }
