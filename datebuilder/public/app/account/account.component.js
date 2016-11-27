@@ -21,6 +21,7 @@ var AccountComponent = (function () {
         this.isLoggedIn = document.cookie.includes("isLoggedIn=true;");
         this.user = {};
         this.stats = {};
+        this.datesLoaded = false;
         this.user = {
             allow_loc_services: false
         };
@@ -58,6 +59,7 @@ var AccountComponent = (function () {
                 var temp = JSON.parse(x);
                 _this.user = temp.user;
                 _this.dates = temp.dates;
+                _this.datesLoaded = true;
                 _this.stats = temp.stats;
             });
         }

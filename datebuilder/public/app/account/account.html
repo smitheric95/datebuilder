@@ -75,6 +75,8 @@
         <div id="myTabContent" class="tab-content">
             <div class="tab-pane fade active in" id="mydates">
                 <h1>Your Dates</h1>
+                <p *ngIf="datesLoaded">You don't have any dates.<br><br><a routerLink="/search">Build one now.</a></p>
+                <p *ngIf="!datesLoaded">Loading your dates...</p>
                 <div class="list-group">
                     <div class="list-group-item" *ngFor="let date of dates">
                         <a [routerLink]="['../date/' + date.id]" target="_blank">
@@ -93,9 +95,12 @@
             </div>
             <div class="tab-pane fade" id="stats">
                 <h1>Your Date Statistics</h1>
-                <p>Average cost: ${{ stats.average_cost }}</p>
-                <p>Average time: {{ stats.average_time | hours}}</p>
-                <category [categories]="stats.categories"></category>
+                <p *ngIf="datesLoaded">You don't have any dates.<br><br><a routerLink="/search">Build one now.</a></p>
+                <div *ngIf="dates?.length > 0">
+                    <p>Average cost: ${{ stats.average_cost }}</p>
+                    <p>Average time: {{ stats.average_time | hours}}</p>
+                    <category [categories]="stats.categories"></category>
+                </div>
             </div>
             <div class="tab-pane fade" id="settings">
                 <form class="form-horizontal">

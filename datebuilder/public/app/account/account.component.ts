@@ -21,6 +21,7 @@ export class AccountComponent {
     stats: any;
     isLoggedIn: boolean;
     settings : any;
+    datesLoaded : boolean;
     
     constructor(private route: ActivatedRoute,
         private router: Router,
@@ -32,7 +33,8 @@ export class AccountComponent {
         this.user = {};
 
         this.stats = {};
-
+        this.datesLoaded = false;
+        
         this.user = { //defaults
             allow_loc_services: false
         }
@@ -75,6 +77,7 @@ export class AccountComponent {
                 var temp = JSON.parse(x);
                 this.user = temp.user;
                 this.dates = temp.dates;
+                this.datesLoaded = true;
                 this.stats = temp.stats;
             });
         }

@@ -18,7 +18,7 @@ export class NavbarComponent {
         
     logout() {
         this.usersService.logout();
-        document.cookie = "isLoggedIn=;";
+        document.cookie = "isLoggedIn=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
         this.router.navigateByUrl('/'); 
     }
 }
