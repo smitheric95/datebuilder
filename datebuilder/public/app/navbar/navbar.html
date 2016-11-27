@@ -24,11 +24,10 @@
             <li><a routerLink="account/" href='#'>My Dates</a></li>
             <li><a routerLink="account/" [routerLink]="['/account', 'settings']" href='#'>Settings</a></li>
             <li role='separator' class='divider'></li>
-            <li><a routerLink="account/" href='#'>Logout</a></li>
+            <li><a (click)="logout()">Logout</a></li>
           </ul>
         </li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-

@@ -21,7 +21,11 @@ var LoginComponent = (function () {
         this.user = {};
     };
     LoginComponent.prototype.logIn = function () {
-        this.userService.logIn(this.user);
+        var _this = this;
+        this.userService.logIn(this.user).then(function (x) {
+            document.cookie = "isLoggedIn=true";
+            _this.router.navigateByUrl('/search');
+        });
     };
     LoginComponent = __decorate([
         core_1.Component({

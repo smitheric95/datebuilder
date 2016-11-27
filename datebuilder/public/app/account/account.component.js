@@ -18,13 +18,8 @@ var AccountComponent = (function () {
         this.usersService = usersService;
     }
     AccountComponent.prototype.ngOnInit = function () {
-        /*
-            AWAITING PARAMETERIZED USER ROUTE
-        */
-        this.isLoggedIn = true;
+        this.isLoggedIn = document.cookie.includes("isLoggedIn=true;");
         this.user = {};
-        this.user.id = 1;
-        /******/
         this.stats = {};
         this.user = {
             allow_loc_services: false
@@ -59,7 +54,7 @@ var AccountComponent = (function () {
     AccountComponent.prototype.getUser = function () {
         var _this = this;
         if (this.isLoggedIn) {
-            this.usersService.get(this.user.id).then(function (x) {
+            this.usersService.get().then(function (x) {
                 var temp = JSON.parse(x);
                 _this.user = temp.user;
                 _this.dates = temp.dates;

@@ -24,7 +24,7 @@ export class UsersService {
             .catch(x => alert(x.json().error));
     }
 
-    get(id) : Promise<any> {
+    get() : Promise<any> {
         return this.http
             .get(`/getuser/`)
             .toPromise()
@@ -36,6 +36,13 @@ export class UsersService {
             .post(this._apiUrl + '/updatesettings', user)
             .toPromise()
             .then(() => user)
+            .catch(x => alert(x.json().error));
+    }
+
+    logout() : Promise<any> {
+        return this.http
+            .post(this._apiUrl + '/logout', "logging out")
+            .toPromise()
             .catch(x => alert(x.json().error));
     }
 }

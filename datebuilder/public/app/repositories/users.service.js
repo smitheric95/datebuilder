@@ -30,7 +30,7 @@ var UsersService = (function () {
             .then(function () { return user; })
             .catch(function (x) { return alert(x.json().error); });
     };
-    UsersService.prototype.get = function (id) {
+    UsersService.prototype.get = function () {
         return this.http
             .get("/getuser/")
             .toPromise()
@@ -41,6 +41,12 @@ var UsersService = (function () {
             .post(this._apiUrl + '/updatesettings', user)
             .toPromise()
             .then(function () { return user; })
+            .catch(function (x) { return alert(x.json().error); });
+    };
+    UsersService.prototype.logout = function () {
+        return this.http
+            .post(this._apiUrl + '/logout', "logging out")
+            .toPromise()
             .catch(function (x) { return alert(x.json().error); });
     };
     UsersService = __decorate([

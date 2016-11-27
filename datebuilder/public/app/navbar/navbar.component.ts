@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute, Router, Params } from '@angular/router';
+import { UsersService } from '../repositories/users.service';
 
 @Component({
     selector: 'navbar',
@@ -10,4 +12,13 @@ import { Component } from '@angular/core';
     ]
 })
 export class NavbarComponent {
+    constructor(private route: ActivatedRoute,
+        private router: Router,
+        private usersService: UsersService) { }
+        
+    logout() {
+        this.usersService.logout();
+        document.cookie = "isLoggedIn=;";
+        this.router.navigateByUrl('/'); 
+    }
 }

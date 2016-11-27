@@ -44,7 +44,7 @@ export class DateComponent {
                         var curBusUrl = this.date.businesses[i];
 
                         if (i < this.date.businesses.length - 1)
-                            this.distances.push( parseFloat(this.date.distances[i]) );
+                            this.distances.push( this.date.distances[i].toFixed(2) );
 
                         this.eventsService.getEvent(curBusUrl).then(x => {
                             var curBus = JSON.parse(x);

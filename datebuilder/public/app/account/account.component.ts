@@ -27,13 +27,9 @@ export class AccountComponent {
         private usersService: UsersService) { }
 
     ngOnInit() {
-        /*
-            AWAITING PARAMETERIZED USER ROUTE
-        */
-        this.isLoggedIn = true;
+
+        this.isLoggedIn = document.cookie.includes("isLoggedIn=true;");
         this.user = {};
-        this.user.id = 1;
-        /******/
 
         this.stats = {};
 
@@ -75,7 +71,7 @@ export class AccountComponent {
 
     private getUser() {
         if (this.isLoggedIn) {
-            this.usersService.get(this.user.id).then(x => {
+            this.usersService.get().then(x => {
                 var temp = JSON.parse(x);
                 this.user = temp.user;
                 this.dates = temp.dates;

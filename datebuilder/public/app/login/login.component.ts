@@ -23,6 +23,9 @@ export class LoginComponent {
     }
 
     logIn() {
-        this.userService.logIn(this.user);
+        this.userService.logIn(this.user).then(x => {
+            document.cookie = "isLoggedIn=true";
+            this.router.navigateByUrl('/search');
+        });
     }
 }
