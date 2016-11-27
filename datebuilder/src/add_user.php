@@ -45,7 +45,10 @@ function add_user($name, $password, $email, $age, $allow_loc_services) {
 
         // execute query
         if ($conn->query($sql) === TRUE) {
+            $user_id = $conn->insert_id;
             echo "New user successfully created";
+            $_SESSION['user_id']= $user_id;  // Initializing Session with value of PHP Variable
+            $_SESSION['is_validated'] = True;
             $conn->close();
             return TRUE;
         } else {

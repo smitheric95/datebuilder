@@ -41,9 +41,9 @@ function validate_login ($email, $password) {
                     if ($result->num_rows == 1) {
                         $row = $result->fetch_assoc();
                         $user_id = $row["user_id"];
-                        #$user_id = 
+                        #$user_id =
                         $session_id = session_id();
-                        $_SESSION['session'] = $session_id;
+                        // $_SESSION['session'] = $session_id;
                         $_SESSION['user_id']= $user_id;  // Initializing Session with value of PHP Variable
                         $_SESSION['is_validated'] = True;
                         #echo $_SESSION['user_id'];
@@ -53,7 +53,7 @@ function validate_login ($email, $password) {
                 } else {
                     return "Error getting username and email from users table: " . $conn->error;
                 }
-                
+
             } else {
                 return "Email not found in users table";
             }
