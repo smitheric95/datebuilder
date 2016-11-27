@@ -24,7 +24,7 @@ $app->get('/hello/{name}', function (Request $request, Response $response) {
 
 $app->get('/getuser/', function (Request $request, Response $response) {
     // get user_id from session id
-    $user_id = 1;
+    $user_id = $_SESSION["user_id"];
 
     include "user_info.php";
 
@@ -121,7 +121,7 @@ $app->post('/users/updatesettings', function (Request $request, Response $respon
         $password = $parsed_body['password'];
     }
 
-    $user_id = 1;
+    $user_id = $_SESSION["user_id"];
 
     include "update_user.php";
 
@@ -141,7 +141,7 @@ $app->post('/users/updatesettings', function (Request $request, Response $respon
 // The "businesses" key maps to a list of recomended businesses, ranked for the user.
 $app->get('/search/load', function (Request $request, Response $response) {
     include "search.php";
-    $user_id = 1;
+    $user_id = $_SESSION["user_id"];
 
     $search_return = default_search($user_id);
 
