@@ -22,7 +22,7 @@
           <a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>Account <span class='caret'></span></a>
           <ul class='dropdown-menu'>
             <li><a routerLink="account/" href='#'>My Dates</a></li>
-            <li><a routerLink="account/" href='#'>Settings</a></li>
+            <li><a routerLink="account/" [routerLink]="['/account', 'settings']" href='#'>Settings</a></li>
             <li role='separator' class='divider'></li>
             <li><a routerLink="account/" href='#'>Logout</a></li>
           </ul>

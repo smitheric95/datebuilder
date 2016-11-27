@@ -37,6 +37,7 @@ import { ImagePipe } from './pipes/image.pipe';
       { path: 'search', component: SearchComponent },
       { path: 'search/:id', component: SearchComponent },
       { path: 'account', component: AccountComponent },
+      { path: 'account/:link', component: AccountComponent },
       { path: 'date/:id', component: DateComponent }
     ])
   ],
