@@ -13,6 +13,7 @@ import { UsersService } from '../repositories/users.service';
 })
 export class LoginComponent {
     user: any;
+    incorrect: boolean;
 
     constructor(private route: ActivatedRoute,
         private router: Router,
@@ -20,12 +21,18 @@ export class LoginComponent {
 
     ngOnInit() {
         this.user = {};
+        this.incorrect = false;
     }
 
     logIn() {
         this.userService.logIn(this.user).then(x => {
-            document.cookie = "isLoggedIn=true";
-            this.router.navigateByUrl('/search');
+            if( x == "Log in confirmed." ){
+                document.cookie = "isLoggedIn=true";
+                this.router.navigateByUrl('/search');
+            }
+            else {
+                this.incorrect = true;
+            }
         });
     }
 }

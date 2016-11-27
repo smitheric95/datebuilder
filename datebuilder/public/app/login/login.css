@@ -5,3 +5,7 @@
 .btn {
     font-size: 18px !important;
 }
+
+p.text-danger {
+    margin-left: -15px !important;
+}

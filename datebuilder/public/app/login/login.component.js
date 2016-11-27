@@ -19,12 +19,18 @@ var LoginComponent = (function () {
     }
     LoginComponent.prototype.ngOnInit = function () {
         this.user = {};
+        this.incorrect = false;
     };
     LoginComponent.prototype.logIn = function () {
         var _this = this;
         this.userService.logIn(this.user).then(function (x) {
-            document.cookie = "isLoggedIn=true";
-            _this.router.navigateByUrl('/search');
+            if (x == "Log in confirmed.") {
+                document.cookie = "isLoggedIn=true";
+                _this.router.navigateByUrl('/search');
+            }
+            else {
+                _this.incorrect = true;
+            }
         });
     };
     LoginComponent = __decorate([

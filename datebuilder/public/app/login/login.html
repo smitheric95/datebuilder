@@ -4,6 +4,7 @@
             <fieldset>
                 <div class="col-md-offset-2 col-md-10">
                     <legend>Log in</legend>
+                    <p *ngIf="incorrect" class="text-danger">Incorrect email or password.</p>
                     <div class="form-group label-floating is-empty">
                         <label class="control-label" for="email">Your email</label>
                         <input [(ngModel)]="user.email" name="email" class="form-control" id="email" type="email">

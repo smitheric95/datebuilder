@@ -27,8 +27,7 @@ var UsersService = (function () {
         return this.http
             .post(this._apiUrl + '/login', user)
             .toPromise()
-            .then(function () { return user; })
-            .catch(function (x) { return alert(x.json().error); });
+            .then(this.extractData);
     };
     UsersService.prototype.get = function () {
         return this.http
@@ -48,6 +47,10 @@ var UsersService = (function () {
             .post(this._apiUrl + '/logout', "logging out")
             .toPromise()
             .catch(function (x) { return alert(x.json().error); });
+    };
+    UsersService.prototype.extractData = function (res) {
+        var body = res['_body'];
+        return body || {};
     };
     UsersService = __decorate([
         core_1.Injectable(), 

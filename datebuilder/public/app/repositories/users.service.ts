@@ -20,8 +20,7 @@ export class UsersService {
         return this.http
             .post(this._apiUrl + '/login', user)
             .toPromise()
-            .then(() => user)
-            .catch(x => alert(x.json().error));
+            .then(this.extractData);
     }
 
     get() : Promise<any> {
@@ -44,6 +43,11 @@ export class UsersService {
             .post(this._apiUrl + '/logout', "logging out")
             .toPromise()
             .catch(x => alert(x.json().error));
+    }
+
+    private extractData(res: Response) {
+        let body = res['_body'];
+        return body || {};
     }
 }
 
