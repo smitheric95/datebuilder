@@ -21,6 +21,7 @@ var BuilderComponent = (function () {
         this.events = [];
         this.date = {};
         this.date.name = "My Awesome Date";
+        this.builderUp = true;
     };
     BuilderComponent.prototype.ngOnChanges = function (changes) {
         if (changes.addedEvent.currentValue !== undefined)
@@ -63,6 +64,18 @@ var BuilderComponent = (function () {
         var index = this.events.indexOf(event);
         if (index >= 0) {
             this.events.splice(index, 1);
+        }
+    };
+    BuilderComponent.prototype.slideBuilder = function () {
+        if (this.builderUp) {
+            eval("$('.builder').animate({height:'55px'},200); $('#build-date').fadeOut();");
+            eval("$('#show-builder').css('transform','rotate(180deg)')");
+            this.builderUp = false;
+        }
+        else {
+            eval("$('.builder').animate({height:'295px'},200); $('#build-date').fadeIn();");
+            eval("$('#show-builder').css('transform','rotate(0deg)')");
+            this.builderUp = true;
         }
     };
     __decorate([
