@@ -85,11 +85,6 @@ $app->post('/users/login', function (Request $request, Response $response) {
 
 $app->post('/users/logout', function (Request $request, Response $response) {
     $parsed_body = $request->getParsedBody();
-    $user_email = $parsed_body['email'];
-    $password = $parsed_body['password'];
-    #session_destroy(); // Is Used To Destroy All Sessions
-    //Or
-    #echo $_SESSION['session'];
     if(isset($_SESSION['user_id']))
     {
         unset($_SESSION['user_id']);  //Is Used To Destroy Specified Session
