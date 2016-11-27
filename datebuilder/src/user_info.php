@@ -36,7 +36,7 @@ function get_user_info($user_id) {
                 $results['user'] = array(
                     "name" => $row["name"],
                     "email" => $row["email"],
-                    "age" => $row["name"],
+                    "age" => $row["age"],
                     "allow_loc_services" => $row["allow_loc_services"]
                 );
 

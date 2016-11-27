@@ -78,13 +78,11 @@ export class AccountComponent {
     }
 
     changeSettings() {
-        // console.log(JSON.stringify(this.user));
-
-        /*
-
-            AWAITING /users/updatesettings to optionally take $password
-        
-        */
+        if (this.user.allow_loc_services == true)
+            this.user.allow_loc_services = "True";
+        else if (this.user.allow_loc_services != "True")
+            this.user.allow_loc_services = "False";
+            
         this.usersService.update(this.user)
             .then(() => this.returnToList(true));
     }

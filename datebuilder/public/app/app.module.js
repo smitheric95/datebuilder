@@ -48,7 +48,8 @@ var AppModule = (function () {
                     { path: 'search', component: search_component_1.SearchComponent },
                     { path: 'search/:id', component: search_component_1.SearchComponent },
                     { path: 'account', component: account_component_1.AccountComponent },
-                    { path: 'date/:id', component: date_component_1.DateComponent }
+                    { path: 'date/:id', component: date_component_1.DateComponent },
+                    { path: '**', component: landing_component_1.LandingComponent }
                 ])
             ],
             declarations: [
