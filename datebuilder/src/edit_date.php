@@ -1,6 +1,6 @@
 <?php
 
-function get_date($date_id) {
+function get_date($date_id, $user_id) {
 
     $db_servername = "localhost";
     $db_username = "root";
@@ -23,7 +23,7 @@ function get_date($date_id) {
 
     if ($date_id_match == 1) {
         // query dates table for provided date id
-        $stmt = "SELECT * FROM {$table_name} WHERE date_id = '$date_id'";
+        $stmt = "SELECT * FROM {$table_name} WHERE date_id = '$date_id' AND user_id = '$user_id'";
 
         if ($result = $conn->query($stmt)) {
             $date = array();
@@ -38,7 +38,6 @@ function get_date($date_id) {
                 $stmt = "SELECT * FROM {$subtable_name} WHERE date_id = '$date_id'";
 
                 if ($date_elms = $conn->query($stmt)) {
-
                     $businesses = array();
                     $categories = array();
                     $locations = array();
@@ -73,7 +72,7 @@ function get_date($date_id) {
                 }
 
             } else {
-                return "No dates found with provided date ID.";
+                return "Date ID provided not accessible or does not exist for this user.";
             }
 
             return json_encode($date);

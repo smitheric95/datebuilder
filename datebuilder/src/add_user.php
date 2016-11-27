@@ -46,6 +46,27 @@ function add_user($name, $password, $email, $age, $allow_loc_services) {
         // execute query
         if ($conn->query($sql) === TRUE) {
             echo "New user successfully created";
+            $sql = "SELECT * FROM {$table_name} WHERE email = '$email' AND password = '$password'";
+
+                if ($result = $conn->query($sql)) {
+                    // if a user was found with that email and password the login is confirmed
+                    if ($result->num_rows == 1) {
+                        $row = $result->fetch_assoc();
+                        $user_id = $row["user_id"];
+                        #$user_id = 
+                        $session_id = session_id();
+                        $_SESSION['session'] = $session_id;
+                        $_SESSION['user_id']= $user_id;  // Initializing Session with value of PHP Variable
+                        $_SESSION['is_validated'] = True;
+                        #echo $_SESSION['user_id'];
+                        #echo $_SESSION['session'];
+                        echo "successfully logged in";
+                        return True;
+                    }
+                } else {
+                    return "Error getting username and email from users table: " . $conn->error;
+                }
+
             $conn->close();
             return TRUE;
         } else {
