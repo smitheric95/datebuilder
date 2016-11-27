@@ -27,6 +27,8 @@ export class BuilderComponent {
         this.date = {};
         this.date.name = "My Awesome Date";
         this.builderUp = true;
+        this.date.total_cost = 0;
+        this.date.total_time = 0;
     }
 
     ngOnChanges(changes: any) {
@@ -50,8 +52,6 @@ export class BuilderComponent {
     buildDate() {
         var hasImage = false;
         this.date.business = [];
-        this.date.total_cost = 0;
-        this.date.total_time = 0;
 
         for (var i = 0; i < this.events.length; i++) {
             var curEvent = this.events[i];

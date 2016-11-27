@@ -32,6 +32,7 @@ var events_service_1 = require('./repositories/events.service');
 var users_service_1 = require('./repositories/users.service');
 var ellipsis_pipe_1 = require('./pipes/ellipsis.pipe');
 var image_pipe_1 = require('./pipes/image.pipe');
+var hours_pipe_1 = require('./pipes/hours.pipe');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -66,7 +67,8 @@ var AppModule = (function () {
                 date_component_1.DateComponent,
                 category_component_1.CategoryComponent,
                 ellipsis_pipe_1.EllipsisPipe,
-                image_pipe_1.ImagePipe
+                image_pipe_1.ImagePipe,
+                hours_pipe_1.HoursPipe
             ],
             providers: [
                 dates_service_1.DatesService,

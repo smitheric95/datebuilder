@@ -24,6 +24,7 @@ import { EventsService } from './repositories/events.service';
 import { UsersService } from './repositories/users.service';
 import { EllipsisPipe } from './pipes/ellipsis.pipe';
 import { ImagePipe } from './pipes/image.pipe';
+import { HoursPipe } from './pipes/hours.pipe';
 
 @NgModule({
   imports: [
@@ -55,7 +56,8 @@ import { ImagePipe } from './pipes/image.pipe';
     DateComponent,
     CategoryComponent,
     EllipsisPipe,
-    ImagePipe
+    ImagePipe,
+    HoursPipe
   ],
   providers: [ 
     DatesService,

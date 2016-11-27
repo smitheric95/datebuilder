@@ -9,7 +9,7 @@
             <h3>{{ date.name | ellipsis:25 }}</h3>
             <div>
                 <b>Total Cost: ${{ date.total_cost }}</b><br>
-                <b>Total Time: {{ date.total_time }} minutes</b><br><br>
+                <b>Total Time: {{ date.total_time | hours }}</b><br><br>
                 <p>Your plans: </p>
                 <ul>
                     <li *ngFor="let bus of businessNames; let i = index;">
@@ -17,9 +17,11 @@
                             target="_blank"
                             [routerLink]="businessUrls[i]"
                         >{{ bus }}</a><br>
-                    
-                        <p *ngIf="i != businessNames.length-1">-> {{ distances[i] }} miles</p>
-                    
+                        
+                        <div *ngIf="i != businessNames.length-1">
+                            <p *ngIf="distances[i] < 2"><i class="material-icons">directions_walk</i>{{ distances[i] }} miles</p>
+                            <p *ngIf="distances[i] > 2"><i class="material-icons">directions_car</i>{{ distances[i] }} miles</p>
+                        </div>
                     </li>
                 </ul>
             </div>
