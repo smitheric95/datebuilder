@@ -13,12 +13,16 @@ var EventComponent = (function () {
     function EventComponent() {
         this.eventSelected = new core_1.EventEmitter();
         this.eventAdded = new core_1.EventEmitter();
+        this.eventRemoved = new core_1.EventEmitter();
     }
     EventComponent.prototype.onAddEvent = function () {
         this.eventAdded.emit(this.event);
     };
     EventComponent.prototype.selectEvent = function () {
         this.eventSelected.emit(this.event.id);
+    };
+    EventComponent.prototype.removeEvent = function () {
+        this.eventRemoved.emit(this.event);
     };
     __decorate([
         core_1.Input(), 
@@ -40,6 +44,10 @@ var EventComponent = (function () {
         core_1.Output(), 
         __metadata('design:type', Object)
     ], EventComponent.prototype, "eventAdded", void 0);
+    __decorate([
+        core_1.Output(), 
+        __metadata('design:type', Object)
+    ], EventComponent.prototype, "eventRemoved", void 0);
     EventComponent = __decorate([
         core_1.Component({
             selector: 'event',

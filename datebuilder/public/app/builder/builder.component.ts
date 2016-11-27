@@ -19,7 +19,7 @@ export class BuilderComponent {
 
     constructor(private route: ActivatedRoute,
         private router: Router,
-        private datesService: DatesService){}
+        private datesService: DatesService) { }
 
     ngOnInit() {
         this.events = [];
@@ -56,10 +56,10 @@ export class BuilderComponent {
             this.date.business.push(curEvent.id);
             this.date.total_cost += curEvent.cost;
             this.date.total_time += parseInt(curEvent.time);
-            
+
             if (!hasImage && curEvent.image_url != undefined) {
                 this.date.image_url = curEvent.image_url;
-                this.date.image_url = this.date.image_url.split("/").slice(0,-1).join('/'); 
+                this.date.image_url = this.date.image_url.split("/").slice(0, -1).join('/');
                 this.date.image_url += "/l.jpg";
                 hasImage = true;
             }
@@ -68,6 +68,13 @@ export class BuilderComponent {
         this.datesService.build(this.date).then(x => {
             this.router.navigateByUrl('date/' + x);
         });
-        
+
+    }
+
+    removeEvent(event: any) {
+        var index = this.events.indexOf(event);
+        if (index >= 0) {
+            this.events.splice(index, 1);
+        }
     }
 }

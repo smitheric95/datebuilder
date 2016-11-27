@@ -1,6 +1,7 @@
 <div class="event" [ngClass]="{'panel panel-default': !isSelected, 'mini' : isMini }">
     <div *ngIf="!isSelected">
         <a class="img-wrapper" (click)="selectEvent()">
+            <a *ngIf="isMini" (click)="removeEvent()" class="btn btn-fab btn-fab-mini"><i class="material-icons">close</i><div class="ripple-container"></div></a>
             <div *ngIf="event.image_url !== undefined">
                 <img src='{{ event.image_url | image:"large" }}' />
             </div>

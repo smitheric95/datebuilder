@@ -9,7 +9,11 @@
     <div class="panel-body">
         <ul>
             <li *ngFor="let event of events">
-                <event [event]="event" [isMini]="true"></event>
+                <event
+                    (eventRemoved)="removeEvent($event)" 
+                    [event]="event" 
+                    [isMini]="true"
+                ></event>
             </li>
         </ul>
     </div>

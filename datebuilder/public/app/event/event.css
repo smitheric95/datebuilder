@@ -92,3 +92,14 @@ i.clock {
 h4 {
     margin-top: 5px !important;
 }
+
+.img-wrapper {
+    position: relative !important;
+}
+
+.btn-fab-mini {
+    position: absolute !important;
+    right: 3px !important;
+    top: 3px !important;
+
+}

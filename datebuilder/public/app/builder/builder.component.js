@@ -59,6 +59,12 @@ var BuilderComponent = (function () {
             _this.router.navigateByUrl('date/' + x);
         });
     };
+    BuilderComponent.prototype.removeEvent = function (event) {
+        var index = this.events.indexOf(event);
+        if (index >= 0) {
+            this.events.splice(index, 1);
+        }
+    };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', Object)

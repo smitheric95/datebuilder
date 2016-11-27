@@ -20,6 +20,7 @@ export class EventComponent {
 
     @Output() eventSelected = new EventEmitter<string>();
     @Output() eventAdded = new EventEmitter<any>();
+    @Output() eventRemoved = new EventEmitter<any>();
 
     onAddEvent() {
         this.eventAdded.emit(this.event);
@@ -29,5 +30,7 @@ export class EventComponent {
         this.eventSelected.emit(this.event.id);
     }
 
-
+    removeEvent() {
+        this.eventRemoved.emit(this.event);
+    }
 }

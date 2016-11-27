@@ -19,7 +19,6 @@ export class EventListComponent {
     @Input() singleEvent: boolean;
     
     addedEvent : any;
-
     selectedEvent : any;
 
     constructor(private route: ActivatedRoute,
