@@ -84,7 +84,7 @@
                             <div class="row-content">
                                 <h4 class="list-group-item-heading">{{ date.name }}</h4>
 
-                                <p class="list-group-item-text">Total cost: ${{ date.total_cost }} Total time: {{ date.total_time }} minutes.</p>
+                                <p class="list-group-item-text">Total cost: ${{ date.total_cost }} Total time: {{ date.total_time | hours }}.</p>
                             </div>
                         </a>
                         <div class="list-group-separator"></div>
@@ -94,7 +94,7 @@
             <div class="tab-pane fade" id="stats">
                 <h1>Your Date Statistics</h1>
                 <p>Average cost: ${{ stats.average_cost }}</p>
-                <p>Average time: {{ stats.average_time }} minutes</p>
+                <p>Average time: {{ stats.average_time | hours}}</p>
                 <category [categories]="stats.categories"></category>
             </div>
             <div class="tab-pane fade" id="settings">

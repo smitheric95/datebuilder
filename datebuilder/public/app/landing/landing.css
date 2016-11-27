@@ -50,3 +50,13 @@ h1 {
     transform: rotate(25deg);
 }
 
+#yelp {
+    float: left;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    margin-left: -15px
+}
+
+#yelp > img {
+    margin-top: -10px;
+}

@@ -3,6 +3,7 @@ import { ActivatedRoute, Router, Params } from '@angular/router';
 import { CategoryComponent } from '../category/category.component';
 import { UsersService } from '../repositories/users.service';
 import { ImagePipe } from '../pipes/image.pipe';
+import { HoursPipe } from '../pipes/hours.pipe';
 
 @Component({
     selector: 'account',
