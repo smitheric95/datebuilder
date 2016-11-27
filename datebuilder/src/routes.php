@@ -235,17 +235,16 @@ $app->get('/editdate/{date_id}', function (Request $request, Response $response)
 });
 
 $app->post('/updatedate', function (Request $request, Response $response){
-    if(!isset($_SESSION['is_validated']) or $_SESSION['is_validated'] == False)
+    if(!isset($_SESSION['is_validated']) or $_SESSION['is_validated'] == False or !isset($_SESSION['user_id']))
     {
         header("Location:index.php"); //Do not allow him to access.
         #echo "Unauthorized"; 
         exit;
     }
     $parsed_body = $request->getParsedBody();
-
+    $user_id = $_SESSION['user_id'];
     $date_id = $parsed_body["date_id"];
     $date_data = $parsed_body["date"];
-
     $businesses = $date_data['business'];
     $total_cost = $date_data['total_cost'];
     $name = $date_data['name'];
@@ -254,7 +253,7 @@ $app->post('/updatedate', function (Request $request, Response $response){
 
     include "edit_date.php";
 
-    $status = update_date($date_id, $businesses, $total_cost, $name, $total_time, $image_url);
+    $status = update_date($user_id, $date_id, $businesses, $total_cost, $name, $total_time, $image_url);
 
     $response->getBody()->write($status);
 

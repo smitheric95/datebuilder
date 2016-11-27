@@ -107,7 +107,7 @@ function calc_distances($coord_array) {
     return $distances;
 }
 
-function update_date($date_id, $businesses, $total_cost, $name, $total_time, $image_url) {
+function update_date($user_id, $date_id, $businesses, $total_cost, $name, $total_time, $image_url) {
 
     $db_servername = "localhost";
     $db_username = "root";
@@ -148,7 +148,7 @@ function update_date($date_id, $businesses, $total_cost, $name, $total_time, $im
 
     if ($d_id_match == 1 && $c_match == 1 && $n_match == 1 && $t_match == 1 && $i_u_match == 1 && $b_match == 1) {
         // update name, total cost, total time, and image url in dates table where date_id matches
-        $stmt = "UPDATE {$table_name} SET name = '$name', total_cost = '$total_cost', total_time = '$total_time', image_url = '$image_url' WHERE date_id = '$date_id'";
+        $stmt = "UPDATE {$table_name} SET name = '$name', total_cost = '$total_cost', total_time = '$total_time', image_url = '$image_url' WHERE date_id = '$date_id' AND user_id = '$user_id'";
 
         if ($conn->query($stmt)) {
             // drop all date elements from date elements table where date id matches
@@ -172,6 +172,6 @@ function update_date($date_id, $businesses, $total_cost, $name, $total_time, $im
         }
 
     } else {
-        return "Input parameters are in valid";
+        return "Input parameters are invalid";
     }
 }
