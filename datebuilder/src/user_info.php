@@ -150,9 +150,16 @@ function get_stats($dates) {
     }
 
     // take average for time and cost
-    $average_time = $overall_time / sizeof($dates);
-    $average_cost = $overall_cost / sizeof($dates);
-
+    if(sizeof($dates) > 0)
+    {
+        $average_time = $overall_time / sizeof($dates);
+        $average_cost = $overall_cost / sizeof($dates);
+    }
+    else
+    {
+        $average_time = 0;
+        $average_cost = 0;
+    }
     // prepare stats array to return
     $stats = array(
         "categories" => $category_count,

@@ -24,15 +24,22 @@ $app->get('/hello/{name}', function (Request $request, Response $response) {
 
 $app->get('/getuser/', function (Request $request, Response $response) {
     // get user_id from session id
-    $user_id = 1;
+    if(isset($_SESSION['user_id']))
+    {
+        $user_id = $_SESSION['user_id'];
 
-    include "user_info.php";
+        include "user_info.php";
 
-    $data_return = get_user_info($user_id);
+        $data_return = get_user_info($user_id);
 
-    $response->getBody()->write($data_return);
+        $response->getBody()->write($data_return);
 
-    return $response;
+        return $response;
+    }
+    else
+    {
+        echo "not valid";
+    }
 });
 
 // Request to create an account comes in the form of a JSON object that
