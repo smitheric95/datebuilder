@@ -5,8 +5,10 @@
 function add_user($name, $password, $email, $age, $allow_loc_services) {
 
     $db_servername = "localhost";
-    $db_username = "app";
-    $db_password = "app!db!password";
+    // $db_username = "app";
+    // $db_password = "app!db!password";
+    $db_username = "root";
+    $db_password = "pass";
     $table_name = "datebuilder_db.users";
 
     $conn = new mysqli($db_servername, $db_username, $db_password);
@@ -40,38 +42,50 @@ function add_user($name, $password, $email, $age, $allow_loc_services) {
             $allow_loc_services = 0;
         }
 
-        // prepare query
-        $sql = "INSERT INTO {$table_name} (name, email, age, allow_loc_services, password, salt) VALUES ('$name', '$email', '$age', '$allow_loc_services', '$password', '$salt')";
+        // check that the provided email is not taken
+        $sql = "SELECT * FROM {$table_name} WHERE email = '$email'";
 
         // execute query
-        if ($conn->query($sql) === TRUE) {
-            echo "New user successfully created";
-            $sql = "SELECT * FROM {$table_name} WHERE email = '$email' AND password = '$password'";
+        if ($result = $conn->query($sql)) {
+            // there must be 0 entries
+            if ($result->num_rows > 0) {
+                return "That email is already taken.";
+            }
+            // prepare query
+            $sql = "INSERT INTO {$table_name} (name, email, age, allow_loc_services, password, salt) VALUES ('$name', '$email', '$age', '$allow_loc_services', '$password', '$salt')";
 
-                if ($result = $conn->query($sql)) {
-                    // if a user was found with that email and password the login is confirmed
-                    if ($result->num_rows == 1) {
-                        $row = $result->fetch_assoc();
-                        $user_id = $row["user_id"];
-                        #$user_id = 
-                        $session_id = session_id();
-                        $_SESSION['session'] = $session_id;
-                        $_SESSION['user_id']= $user_id;  // Initializing Session with value of PHP Variable
-                        $_SESSION['is_validated'] = True;
-                        #echo $_SESSION['user_id'];
-                        #echo $_SESSION['session'];
-                        echo "successfully logged in";
-                        return True;
+            // execute query
+            if ($conn->query($sql) === TRUE) {
+                echo "New user successfully created";
+                $sql = "SELECT * FROM {$table_name} WHERE email = '$email' AND password = '$password'";
+
+                    if ($result = $conn->query($sql)) {
+                        // if a user was found with that email and password the login is confirmed
+                        if ($result->num_rows == 1) {
+                            $row = $result->fetch_assoc();
+                            $user_id = $row["user_id"];
+                            #$user_id =
+                            $session_id = session_id();
+                            $_SESSION['session'] = $session_id;
+                            $_SESSION['user_id']= $user_id;  // Initializing Session with value of PHP Variable
+                            $_SESSION['is_validated'] = True;
+                            #echo $_SESSION['user_id'];
+                            #echo $_SESSION['session'];
+                            echo "successfully logged in";
+                            return True;
+                        }
+                    } else {
+                        return "Error getting username and email from users table: " . $conn->error;
                     }
-                } else {
-                    return "Error getting username and email from users table: " . $conn->error;
-                }
 
-            $conn->close();
-            return TRUE;
+                $conn->close();
+                return TRUE;
+            } else {
+                $conn->close();
+                return "Error adding new user: " . $conn->error;
+            }
         } else {
-            $conn->close();
-            return "Error adding new user: " . $conn->error;
+            return "Error checking for email:" . $conn->error;
         }
     }
     $conn->close();
