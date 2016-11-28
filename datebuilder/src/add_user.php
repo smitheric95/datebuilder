@@ -5,8 +5,6 @@
 function add_user($name, $password, $email, $age, $allow_loc_services) {
 
     $db_servername = "localhost";
-    // $db_username = "app";
-    // $db_password = "app!db!password";
     $db_username = "root";
     $db_password = "pass";
     $table_name = "datebuilder_db.users";
@@ -20,7 +18,7 @@ function add_user($name, $password, $email, $age, $allow_loc_services) {
     }
 
     // regex check input
-    $name_pattern = "/^[a-z ,.'-]+$/i";
+    $name_pattern = "/^[a-zA-Z ,\.'-]+$/i";
     $email_pattern = "/^\w+@\w+\.\w{3}$/";
     $age_pattern = "/^\d{1,3}$/";
     $loc_serv_pattern = "/^(True|False)$/";
@@ -51,6 +49,7 @@ function add_user($name, $password, $email, $age, $allow_loc_services) {
             if ($result->num_rows > 0) {
                 return "That email is already taken.";
             }
+            $name = $conn->real_escape_string($name);
             // prepare query
             $sql = "INSERT INTO {$table_name} (name, email, age, allow_loc_services, password, salt) VALUES ('$name', '$email', '$age', '$allow_loc_services', '$password', '$salt')";
 
@@ -81,13 +80,13 @@ function add_user($name, $password, $email, $age, $allow_loc_services) {
                 $conn->close();
                 return TRUE;
             } else {
-                $conn->close();
+                // $conn->close();
                 return "Error adding new user: " . $conn->error;
             }
         } else {
             return "Error checking for email:" . $conn->error;
         }
     }
-    $conn->close();
+    // $conn->close();
     return "Invalid input.";
 }
