@@ -126,10 +126,10 @@ function update_date($user_id, $date_id, $businesses, $total_cost, $name, $total
     // regex check inputs
     $date_id_pattern = "/^\d+$/";
     $business_pattern = "/^[\w-]+$/";
-    $cost_pattern = "/^\d+(.\d+)?$/";
-    $name_pattern = "/^[\w\s\d-]+$/";
+    $cost_pattern = "/^\d+(\.\d+)?$/";
+    $name_pattern = "/[\w\s\' -\d]+/";
     $time_pattern = "/^\d+$/";
-    $image_url_pattern = "/^(http:\/\/|https:\/\/|http:\/\/www\.|https:\/\/www\.)[\w]+\.[\w]{3}(\/\w+)*(\/[\w]+\.[a-zA-Z]{3})?$/";
+    $image_url_pattern = "/^(http:\/\/|https:\/\/)[\.\w-]+\.[\w-]+(\/\w+)*(\/[\w]+\.[a-zA-Z]{3})?$/";
 
     $d_id_match = preg_match($date_id_pattern, $date_id);
     $c_match = preg_match($cost_pattern, $total_cost);
@@ -147,6 +147,8 @@ function update_date($user_id, $date_id, $businesses, $total_cost, $name, $total
     }
 
     if ($d_id_match == 1 && $c_match == 1 && $n_match == 1 && $t_match == 1 && $i_u_match == 1 && $b_match == 1) {
+        $name = $conn->real_escape_string($name);
+        $image_url = $conn->real_escape_string($image_url);
         // update name, total cost, total time, and image url in dates table where date_id matches
         $stmt = "UPDATE {$table_name} SET name = '$name', total_cost = '$total_cost', total_time = '$total_time', image_url = '$image_url' WHERE date_id = '$date_id' AND user_id = '$user_id'";
 

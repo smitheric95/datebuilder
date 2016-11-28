@@ -14,11 +14,11 @@ function build_date($business, $total_cost, $name, $total_time, $image_url) {
 
     // Check connection
     if ($conn->connect_error) {
-
+        return "could not connect to database.";
     }
 
     // regex check input
-    $total_cost_pattern = "/\d+(.\d+)?/";
+    $total_cost_pattern = "/\d+(\.\d+)?/";
     $name_pattern = "/[\w\s\' -\d]+/";
     $total_time_pattern = "/\d+/";
     // $image_url_pattern = "/\bhttps:\/\/s3-media\S*\/l\.jpg\b/";

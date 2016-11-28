@@ -176,7 +176,7 @@ $app->get('/search/search/{query}', function (Request $request, Response $respon
     $search_return = generic_query($query);
 
     $response->getBody()->write($search_return);
-    
+
     if ( $search_return == "[]" )
         return "no results";
     else
@@ -243,7 +243,7 @@ $app->post('/updatedate', function (Request $request, Response $response){
     if(!isset($_SESSION['is_validated']) or $_SESSION['is_validated'] == False or !isset($_SESSION['user_id']))
     {
         header("Location:index.php"); //Do not allow him to access.
-        #echo "Unauthorized"; 
+        #echo "Unauthorized";
         exit;
     }
     $parsed_body = $request->getParsedBody();
@@ -261,6 +261,30 @@ $app->post('/updatedate', function (Request $request, Response $response){
     $status = update_date($user_id, $date_id, $businesses, $total_cost, $name, $total_time, $image_url);
 
     $response->getBody()->write($status);
+
+    return $response;
+});
+
+$app->post('/deletedate', function (Request $request, Response $response) {
+    if(!isset($_SESSION['is_validated']) or $_SESSION['is_validated'] == False or !isset($_SESSION['user_id']))
+    {
+        header("Location:index.php"); //Do not allow him to access.
+        #echo "Unauthorized";
+        exit;
+    }
+    $parsed_body = $request->getParsedBody();
+    $date_id = $parsed_body["date_id"];
+    $user_id = $_SESSION["user_id"];
+
+    include "remove_date.php";
+
+    $status = delete_date($user_id, $date_id);
+
+    if ($status === TRUE) {
+        $response->getBody()->write("Date successfully deleted.");
+    } else {
+        $response->getBody()->write("Error deleting date: " . $status);
+    }
 
     return $response;
 });
