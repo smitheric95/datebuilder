@@ -21,7 +21,7 @@ var EventsService = (function () {
        */
     function EventsService(http) {
         this.http = http;
-        this._apiUrl = 'search';
+        this._apiUrl = 'index.php/search';
     }
     EventsService.prototype.listEvents = function () {
         return this.http.get(this._apiUrl + '/load')

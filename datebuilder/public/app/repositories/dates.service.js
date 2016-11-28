@@ -14,19 +14,26 @@ require('rxjs/add/operator/toPromise');
 var DatesService = (function () {
     function DatesService(http) {
         this.http = http;
-        this._apiUrl = 'date';
+        this._apiUrl = '';
     }
     DatesService.prototype.get = function (date) {
         return this.http
-            .get("editdate/" + date)
+            .get(this._apiUrl + ("editdate/" + date))
             .toPromise()
             .then(function (x) { return x['_body']; });
     };
     DatesService.prototype.build = function (date) {
         return this.http
-            .post('/build/', date)
+            .post(this._apiUrl + '/build/', date)
             .toPromise()
             .then(this.extractData);
+    };
+    DatesService.prototype.delete = function (date) {
+        return this.http
+            .post(this._apiUrl + '/deletedate', date)
+            .toPromise()
+            .then(function () { return date; })
+            .catch(function (x) { return alert(x.json().error); });
     };
     DatesService.prototype.extractData = function (res) {
         var body = res['_body'];

@@ -22,6 +22,7 @@ var DateComponent = (function () {
     DateComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.date = {};
+        this.deleteDate = {};
         this.date.image_url = "";
         this.businessNames = [];
         this.businessUrls = [];
@@ -49,6 +50,19 @@ var DateComponent = (function () {
                     _this.dateLoaded = true;
                 });
             }
+        });
+    };
+    DateComponent.prototype.openModal = function () {
+        eval("$(function(){$('#dateModal').modal('show')})");
+    };
+    DateComponent.prototype.delete = function () {
+        var _this = this;
+        this.route.params.forEach(function (params) {
+            _this.deleteDate.date_id = params['id'];
+            _this.datesService.delete(_this.deleteDate).then(function (x) {
+                console.log(x);
+                //this.router.navigateByUrl('account#mydates');
+            });
         });
     };
     DateComponent = __decorate([

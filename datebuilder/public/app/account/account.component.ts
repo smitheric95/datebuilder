@@ -4,6 +4,7 @@ import { CategoryComponent } from '../category/category.component';
 import { UsersService } from '../repositories/users.service';
 import { ImagePipe } from '../pipes/image.pipe';
 import { HoursPipe } from '../pipes/hours.pipe';
+import { EllipsisPipe } from '../pipes/ellipsis.pipe';
 
 @Component({
     selector: 'account',

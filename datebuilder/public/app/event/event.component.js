@@ -9,14 +9,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
 var EventComponent = (function () {
-    function EventComponent() {
+    function EventComponent(route, router) {
+        this.route = route;
+        this.router = router;
         this.eventSelected = new core_1.EventEmitter();
         this.eventAdded = new core_1.EventEmitter();
         this.eventRemoved = new core_1.EventEmitter();
     }
     EventComponent.prototype.onAddEvent = function () {
-        this.eventAdded.emit(this.event);
+        if (document.cookie.includes("isLoggedIn=true;"))
+            this.eventAdded.emit(this.event);
+        else
+            this.router.navigateByUrl('account');
     };
     EventComponent.prototype.selectEvent = function () {
         this.eventSelected.emit(this.event.id);
@@ -58,7 +64,7 @@ var EventComponent = (function () {
                 './node_modules/bootstrap-material-design/dist/css/bootstrap-material-design.min.css'
             ]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [router_1.ActivatedRoute, router_1.Router])
     ], EventComponent);
     return EventComponent;
 }());
