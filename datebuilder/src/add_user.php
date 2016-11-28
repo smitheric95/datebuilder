@@ -18,7 +18,7 @@ function add_user($name, $password, $email, $age, $allow_loc_services) {
     }
 
     // regex check input
-    $name_pattern = "/^\w+$/";
+    $name_pattern = "/^[a-z ,.'-]+$/i";
     $email_pattern = "/^\w+@\w+\.\w{3}$/";
     $age_pattern = "/^\d{1,3}$/";
     $loc_serv_pattern = "/^(True|False)$/";

@@ -20,9 +20,12 @@ export class AccountComponent {
     dates: any;
     stats: any;
     isLoggedIn: boolean;
-    settings : any;
-    datesLoaded : boolean;
-    datesEmpty : boolean;
+    settings: any;
+    datesLoaded: boolean;
+    datesEmpty: boolean;
+    confirmPassword: string;
+    passwordsDontMatch: boolean;
+    accountCreatedLoginUser: any;
 
     constructor(private route: ActivatedRoute,
         private router: Router,
@@ -32,10 +35,12 @@ export class AccountComponent {
 
         this.isLoggedIn = document.cookie.includes("isLoggedIn=true;");
         this.user = {};
+        this.accountCreatedLoginUser = {};
 
         this.stats = {};
         this.datesLoaded = false;
         this.datesLoaded = true;
+        this.confirmPassword = "";
 
         this.user = { //defaults
             allow_loc_services: false
@@ -45,28 +50,40 @@ export class AccountComponent {
         this.getUser();
 
         var loc = window.location.pathname.substring(9, window.location.pathname.length);
-        if( loc != ''){
+        if (loc != '') {
             var clicker = "$(function(){ $('." + loc + "').click()})";
             eval(clicker);
         }
     }
 
     add() {
-        if (this.user.allow_loc_services == true)
-            this.user.allow_loc_services = "True";
-        else if (this.user.allow_loc_services != "True")
-            this.user.allow_loc_services = "False";
+        if (this.confirmPassword === this.user.password) {
+            if (this.user.allow_loc_services == true)
+                this.user.allow_loc_services = "True";
+            else if (this.user.allow_loc_services != "True")
+                this.user.allow_loc_services = "False";
 
-        this.user.age = new Date().getFullYear() - this.user.age;
-        this.usersService.add(this.user)
-            .then(() => this.returnToList(false));
-
+            this.user.age = new Date().getFullYear() - this.user.age;
+            this.usersService.add(this.user);
+            this.accountCreatedLoginUser.email = this.user.email;
+            this.accountCreatedLoginUser.password = this.user.password;
+                    
+            this.usersService.logIn(this.accountCreatedLoginUser)
+                .then(() => {
+                    document.cookie = "isLoggedIn=true";
+                    window.location.reload();
+                    this.returnToList(false)
+                });
+        }
+        else {
+            this.passwordsDontMatch = true;
+        }
     }
 
-    private returnToList(settings : boolean) {
+    private returnToList(settings: boolean) {
         this.router.navigateByUrl('search')
             .then(() => {
-                if(settings)
+                if (settings)
                     eval("$(function(){$('#settingsChangedModal').modal('show')})");
                 else
                     eval("$(function(){$('#createdAccountModal').modal('show')})");
@@ -78,24 +95,29 @@ export class AccountComponent {
             this.usersService.get().then(x => {
                 var temp = JSON.parse(x);
                 this.user = temp.user;
-                
+
                 this.dates = temp.dates;
                 this.datesLoaded = true;
-                if ( this.dates.length > 0)
+                if (this.dates.length > 0)
                     this.datesEmpty = false;
 
                 this.stats = temp.stats;
-                
+
             });
         }
     }
+
+    private hasClass(element, cls) {
+        return (' ' + element.className + ' ').indexOf(' ' + cls + ' ') > -1;
+    }
+
 
     changeSettings() {
         if (this.user.allow_loc_services == true)
             this.user.allow_loc_services = "True";
         else if (this.user.allow_loc_services != "True")
             this.user.allow_loc_services = "False";
-            
+
         this.usersService.update(this.user)
             .then(() => this.returnToList(true));
     }

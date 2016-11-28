@@ -20,9 +20,11 @@ var AccountComponent = (function () {
     AccountComponent.prototype.ngOnInit = function () {
         this.isLoggedIn = document.cookie.includes("isLoggedIn=true;");
         this.user = {};
+        this.accountCreatedLoginUser = {};
         this.stats = {};
         this.datesLoaded = false;
         this.datesLoaded = true;
+        this.confirmPassword = "";
         this.user = {
             allow_loc_services: false
         };
@@ -36,13 +38,25 @@ var AccountComponent = (function () {
     };
     AccountComponent.prototype.add = function () {
         var _this = this;
-        if (this.user.allow_loc_services == true)
-            this.user.allow_loc_services = "True";
-        else if (this.user.allow_loc_services != "True")
-            this.user.allow_loc_services = "False";
-        this.user.age = new Date().getFullYear() - this.user.age;
-        this.usersService.add(this.user)
-            .then(function () { return _this.returnToList(false); });
+        if (this.confirmPassword === this.user.password) {
+            if (this.user.allow_loc_services == true)
+                this.user.allow_loc_services = "True";
+            else if (this.user.allow_loc_services != "True")
+                this.user.allow_loc_services = "False";
+            this.user.age = new Date().getFullYear() - this.user.age;
+            this.usersService.add(this.user);
+            this.accountCreatedLoginUser.email = this.user.email;
+            this.accountCreatedLoginUser.password = this.user.password;
+            this.usersService.logIn(this.accountCreatedLoginUser)
+                .then(function () {
+                document.cookie = "isLoggedIn=true";
+                window.location.reload();
+                _this.returnToList(false);
+            });
+        }
+        else {
+            this.passwordsDontMatch = true;
+        }
     };
     AccountComponent.prototype.returnToList = function (settings) {
         this.router.navigateByUrl('search')
@@ -66,6 +80,9 @@ var AccountComponent = (function () {
                 _this.stats = temp.stats;
             });
         }
+    };
+    AccountComponent.prototype.hasClass = function (element, cls) {
+        return (' ' + element.className + ' ').indexOf(' ' + cls + ' ') > -1;
     };
     AccountComponent.prototype.changeSettings = function () {
         var _this = this;
