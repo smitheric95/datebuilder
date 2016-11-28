@@ -9,3 +9,23 @@
 p.text-danger {
     margin-left: -15px !important;
 }
+
+.btn.btn-primary {
+    position: absolute;
+    right: 0px;
+    bottom: -15px;
+}
+
+#password {
+    margin-bottom: 50px;
+}
+
+@media (min-width: 992px){
+    .col-md-6 {
+        width: 690px !important;
+    }
+    .col-md-offset-2.col-md-10 {
+        width: 100% !important;
+        margin-left: 0 !important;
+    }
+}

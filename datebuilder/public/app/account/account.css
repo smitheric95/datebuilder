@@ -10,3 +10,9 @@ ul.nav-pills {
 .nav-pills > li.active > a {
     background-color: #009688 !important;
 }
+
+fieldset > div > label {
+    margin-left: -15px;
+    margin-top: 5px;
+}
+

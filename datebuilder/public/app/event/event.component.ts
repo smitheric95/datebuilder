@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter, ViewChild } from '@angular/core';
+import { ActivatedRoute, Router, Params } from '@angular/router';
 import { EllipsisPipe } from '../pipes/ellipsis.pipe';
 import { ImagePipe } from '../pipes/image.pipe';
 import { PopoverContent } from 'ng2-popover';
@@ -22,8 +23,14 @@ export class EventComponent {
     @Output() eventAdded = new EventEmitter<any>();
     @Output() eventRemoved = new EventEmitter<any>();
 
+    constructor(private route: ActivatedRoute,
+        private router: Router){}
+
     onAddEvent() {
-        this.eventAdded.emit(this.event);
+        if ( document.cookie.includes("isLoggedIn=true;") )
+            this.eventAdded.emit(this.event);
+        else 
+            this.router.navigateByUrl('account')
     }
 
     selectEvent() {
