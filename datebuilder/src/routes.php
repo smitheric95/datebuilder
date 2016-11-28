@@ -90,7 +90,9 @@ $app->post('/users/logout', function (Request $request, Response $response) {
         unset($_SESSION['user_id']);  //Is Used To Destroy Specified Session
         unset($_SESSION['session']);  //Is Used To Destroy Specified Session
         unset($_SESSION['is_validated']);  //Is Used To Destroy Specified Session
-        echo "Logout confirmed";
+        // echo "Logout confirmed";
+        $response->getBody()->write("Log in confirmed.");
+        return $response;
     }
 
 
@@ -115,8 +117,7 @@ $app->post('/users/updatesettings', function (Request $request, Response $respon
     if(!isset($_SESSION['is_validated']) or $_SESSION['is_validated'] == False)
     {
         header("Location:index.php"); //Do not allow him to access.
-        #echo "Unauthorized";
-        exit;
+        return $response->withStatus(403);
     }
     $parsed_body = $request->getParsedBody();
     $name = $parsed_body['name'];
@@ -201,8 +202,7 @@ $app->post('/build/', function (Request $request, Response $response) {
     if(!isset($_SESSION['is_validated']) or $_SESSION['is_validated'] == False)
     {
         header("Location:index.php"); //Do not allow him to access.
-        #echo "Unauthorized";
-        exit;
+        return $response->withStatus(403);
     }
     $parsed_body = $request->getParsedBody();
     // var_dump($parsed_body);
@@ -226,8 +226,7 @@ $app->get('/editdate/{date_id}', function (Request $request, Response $response)
     if(!isset($_SESSION['is_validated']) or $_SESSION['is_validated'] == False or !isset($_SESSION['user_id']))
     {
         header("Location:index.php"); //Do not allow him to access.
-        #echo "Unauthorized";
-        exit;
+        return $response->withStatus(403);
     }
     $date_id = $request->getAttribute('date_id');
     $user_id = $_SESSION['user_id'];
@@ -243,8 +242,7 @@ $app->post('/updatedate', function (Request $request, Response $response){
     if(!isset($_SESSION['is_validated']) or $_SESSION['is_validated'] == False or !isset($_SESSION['user_id']))
     {
         header("Location:index.php"); //Do not allow him to access.
-        #echo "Unauthorized";
-        exit;
+        return $response->withStatus(403);
     }
     $parsed_body = $request->getParsedBody();
     $user_id = $_SESSION['user_id'];
@@ -269,8 +267,7 @@ $app->post('/deletedate', function (Request $request, Response $response) {
     if(!isset($_SESSION['is_validated']) or $_SESSION['is_validated'] == False or !isset($_SESSION['user_id']))
     {
         header("Location:index.php"); //Do not allow him to access.
-        #echo "Unauthorized";
-        exit;
+        return $response->withStatus(403);
     }
     $parsed_body = $request->getParsedBody();
     $date_id = $parsed_body["date_id"];
