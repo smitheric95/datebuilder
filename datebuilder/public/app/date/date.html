@@ -6,7 +6,7 @@
     </div>
     <div class="panel-body">
         <div class='event-info'>
-            <h3>{{ date.name | ellipsis:25 }}</h3>
+            <h3>{{ date.name }}</h3>
             <div>
                 <b>Total Cost: ${{ date.total_cost }}</b><br>
                 <b>Total Time: {{ date.total_time | hours }}</b><br><br>
@@ -27,4 +27,9 @@
             </div>
         </div>
     </div>
+</div>
+
+<div *ngIf="dateLoaded && dateNotFound"
+>
+<p style="margin-top: 100px" target="_blank">Date not found, but <a href="http://manninghamvet.com.au/sites/default/files/styles/large/public/images/article/cats.jpg">here's a cat picture.</a></p>
 </div>

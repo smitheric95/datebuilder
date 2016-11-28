@@ -29,7 +29,7 @@
 </div>
 
 
-<div class="event-wrapper " *ngIf="singleEvent === false" >
+<div class="event-wrapper " *ngIf="noResults === false && singleEvent === false" >
     <event class="event-item col-lg-4 col-md-6" *ngFor="let event of events"
         (eventSelected)="loadModal($event)"
         (eventAdded)="addEvent($event)"

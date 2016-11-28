@@ -16,6 +16,7 @@ export class SearchComponent {
     selectedEvent: any;
     singleEvent: boolean;
     currentQuery: string;
+    noResults: boolean;
 
     constructor(private route: ActivatedRoute,
         private router: Router,
@@ -25,6 +26,10 @@ export class SearchComponent {
         this.events = [];
         this.selectedEvent = {};
         this.singleEvent = false;
+        this.noResults = false;
+
+        //jQuery > Angular
+        eval("$(function() { $(window).scroll(function() { if($(window).scrollTop() > 0) { $('search-bar').addClass('shadow'); } else { $('search-bar').removeClass('shadow'); } }); });");
 
         this.route.params.forEach((params: Params) => {
             //router: search/:id=event-id
@@ -47,8 +52,14 @@ export class SearchComponent {
         this.currentQuery = query;
         if (query != "") {
             this.eventsService.search(query).then(x => {
-                this.events = JSON.parse(x);
-                this.singleEvent = false;
+                if (x != "[]no results") {
+                    this.events = JSON.parse(x);
+                    this.singleEvent = false;
+                    this.noResults = false;
+                }
+                else {
+                    this.noResults = true;
+                }
             });
         }
     }

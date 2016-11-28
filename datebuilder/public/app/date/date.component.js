@@ -30,17 +30,23 @@ var DateComponent = (function () {
             //router: date/:id=date-id
             if (params['id'] !== undefined) {
                 _this.datesService.get(params['id']).then(function (x) {
-                    _this.date = JSON.parse(x);
-                    for (var i = 0; i < _this.date.businesses.length; i++) {
-                        var curBusUrl = _this.date.businesses[i];
-                        if (i < _this.date.businesses.length - 1)
-                            _this.distances.push(_this.date.distances[i].toFixed(2));
-                        _this.eventsService.getEvent(curBusUrl).then(function (x) {
-                            var curBus = JSON.parse(x);
-                            _this.businessNames.push(curBus.name);
-                            _this.businessUrls.push("/search/" + curBusUrl);
-                        });
+                    if (x !== "Date ID provided not accessible or does not exist for this user.") {
+                        _this.date = JSON.parse(x);
+                        for (var i = 0; i < _this.date.businesses.length; i++) {
+                            var curBusUrl = _this.date.businesses[i];
+                            if (i < _this.date.businesses.length - 1)
+                                _this.distances.push(_this.date.distances[i].toFixed(2));
+                            _this.eventsService.getEvent(curBusUrl).then(function (x) {
+                                var curBus = JSON.parse(x);
+                                _this.businessNames.push(curBus.name);
+                                _this.businessUrls.push("/search/" + curBusUrl);
+                            });
+                        }
                     }
+                    else {
+                        _this.dateNotFound = true;
+                    }
+                    _this.dateLoaded = true;
                 });
             }
         });

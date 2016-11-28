@@ -176,8 +176,11 @@ $app->get('/search/search/{query}', function (Request $request, Response $respon
     $search_return = generic_query($query);
 
     $response->getBody()->write($search_return);
-
-    return $response;
+    
+    if ( $search_return == "[]" )
+        return "no results";
+    else
+        return $response;
 });
 
 $app->get('/search/business/{businessid}', function (Request $request, Response $response) {

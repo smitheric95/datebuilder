@@ -5,7 +5,7 @@
             <div *ngIf="event.image_url !== undefined">
                 <img src='{{ event.image_url | image:"large" }}' />
             </div>
-            <div *ngIf="event.image_url !== undefined">
+            <div *ngIf="event.image_url === undefined">
                 <p style="margin:10px">No image available</p>
             </div>
         </a>
@@ -15,7 +15,7 @@
         </a>
         <a (click)="selectEvent()">
             <div class='event-info'>
-                <h3 *ngIf="!isMini">{{ event.name | ellipsis:25 }}</h3>
+                <h3 *ngIf="!isMini">{{ event.name | ellipsis:23 }}</h3>
                 <h4 *ngIf="isMini">{{ event.name | ellipsis:30 }}</h4>
                 <div *ngIf="!isMini">
                     <p>{{ event.location.display_address }}</p>

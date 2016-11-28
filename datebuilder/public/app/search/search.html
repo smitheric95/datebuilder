@@ -41,7 +41,10 @@
     *ngIf="singleEvent === false"
     [events]="events"
     [singleEvent]="false"
+    [noResults]="noResults"
 ></event-list>
+
+<p *ngIf="noResults"style="margin-top: 200px">No results. :(</p>
 
 <div *ngIf="singleEvent === true">
     <event [event]="selectedEvent"></event>

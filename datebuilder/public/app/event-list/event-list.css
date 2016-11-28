@@ -35,17 +35,18 @@ i.close:hover {
     right: 0;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 400px;
 }
 
 @media (max-width: 989px) { 
     .event-wrapper {
-        top: 100px;
+        top: 145px;
     }
 }
 
 @media (min-width: 990px) { 
     .event-wrapper {
-        top: 130px;
+        top: 190px;
     }
 }
 

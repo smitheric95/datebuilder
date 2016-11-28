@@ -37,6 +37,10 @@ var EventListComponent = (function () {
         core_1.Input(), 
         __metadata('design:type', Boolean)
     ], EventListComponent.prototype, "singleEvent", void 0);
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Boolean)
+    ], EventListComponent.prototype, "noResults", void 0);
     EventListComponent = __decorate([
         core_1.Component({
             selector: 'event-list',

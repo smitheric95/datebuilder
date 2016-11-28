@@ -21,6 +21,8 @@ export class DateComponent {
     businessNames: string[];
     businessUrls: string[];
     distances: number[];
+    dateNotFound: boolean;
+    dateLoaded: boolean;
 
     constructor(private route: ActivatedRoute,
         private router: Router,
@@ -38,20 +40,26 @@ export class DateComponent {
             //router: date/:id=date-id
             if (params['id'] !== undefined) {
                 this.datesService.get(params['id']).then(x => {
-                    this.date = JSON.parse(x);
+                    if (x !== "Date ID provided not accessible or does not exist for this user."){
+                        this.date = JSON.parse(x);
+                        for (var i = 0; i < this.date.businesses.length; i++) {
+                            var curBusUrl = this.date.businesses[i];
 
-                    for (var i = 0; i < this.date.businesses.length; i++) {
-                        var curBusUrl = this.date.businesses[i];
+                            if (i < this.date.businesses.length - 1)
+                                this.distances.push( this.date.distances[i].toFixed(2) );
 
-                        if (i < this.date.businesses.length - 1)
-                            this.distances.push( this.date.distances[i].toFixed(2) );
-
-                        this.eventsService.getEvent(curBusUrl).then(x => {
-                            var curBus = JSON.parse(x);
-                            this.businessNames.push(curBus.name);
-                            this.businessUrls.push("/search/" + curBusUrl);
-                        });
+                            this.eventsService.getEvent(curBusUrl).then(x => {
+                                var curBus = JSON.parse(x);
+                                this.businessNames.push(curBus.name);
+                                this.businessUrls.push("/search/" + curBusUrl);
+                            });
+                        }
                     }
+                    else {
+                        this.dateNotFound = true;
+                    }
+                    
+                    this.dateLoaded = true;
                 });
 
             }

@@ -22,6 +22,9 @@ var SearchComponent = (function () {
         this.events = [];
         this.selectedEvent = {};
         this.singleEvent = false;
+        this.noResults = false;
+        //jQuery > Angular
+        eval("$(function() { $(window).scroll(function() { if($(window).scrollTop() > 0) { $('search-bar').addClass('shadow'); } else { $('search-bar').removeClass('shadow'); } }); });");
         this.route.params.forEach(function (params) {
             //router: search/:id=event-id
             if (params['id'] !== undefined) {
@@ -43,8 +46,14 @@ var SearchComponent = (function () {
         this.currentQuery = query;
         if (query != "") {
             this.eventsService.search(query).then(function (x) {
-                _this.events = JSON.parse(x);
-                _this.singleEvent = false;
+                if (x != "[]no results") {
+                    _this.events = JSON.parse(x);
+                    _this.singleEvent = false;
+                    _this.noResults = false;
+                }
+                else {
+                    _this.noResults = true;
+                }
             });
         }
     };
