@@ -22,6 +22,14 @@ export class DatesService {
             .then(this.extractData);
     }
 
+    delete(date): Promise<any> {
+        return this.http
+            .post('/deletedate', date)
+            .toPromise()
+            .then(() => date)
+            .catch(x => alert(x.json().error));
+    }
+
     private extractData(res: Response) {
         let body = res['_body'];
         return body || {};

@@ -23,6 +23,7 @@ export class DateComponent {
     distances: number[];
     dateNotFound: boolean;
     dateLoaded: boolean;
+    deleteDate: any;
 
     constructor(private route: ActivatedRoute,
         private router: Router,
@@ -31,6 +32,7 @@ export class DateComponent {
 
     ngOnInit() {
         this.date = {};
+        this.deleteDate = {};
         this.date.image_url = "";
         this.businessNames = [];
         this.businessUrls = [];
@@ -63,6 +65,20 @@ export class DateComponent {
                 });
 
             }
+        });
+    }
+
+    openModal() {
+        eval("$(function(){$('#dateModal').modal('show')})");
+    }
+
+    delete() {
+        this.route.params.forEach((params: Params) => {            
+            this.deleteDate.date_id = params['id'];
+            this.datesService.delete(this.deleteDate).then(x => {
+                console.log(x);
+                //this.router.navigateByUrl('account#mydates');
+            });
         });
     }
 }

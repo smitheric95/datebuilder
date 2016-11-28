@@ -28,6 +28,13 @@ var DatesService = (function () {
             .toPromise()
             .then(this.extractData);
     };
+    DatesService.prototype.delete = function (date) {
+        return this.http
+            .post('/deletedate', date)
+            .toPromise()
+            .then(function () { return date; })
+            .catch(function (x) { return alert(x.json().error); });
+    };
     DatesService.prototype.extractData = function (res) {
         var body = res['_body'];
         return body || {};
