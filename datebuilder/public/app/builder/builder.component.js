@@ -37,28 +37,32 @@ var BuilderComponent = (function () {
     BuilderComponent.prototype.addEvent = function (event) {
         if (this.events.indexOf(event) === -1) {
             this.events.push(event);
-            console.log("Added event object with ID: '" + event.id + "'");
         }
     };
     BuilderComponent.prototype.buildDate = function () {
         var _this = this;
         var hasImage = false;
         this.date.business = [];
-        for (var i = 0; i < this.events.length; i++) {
-            var curEvent = this.events[i];
-            this.date.business.push(curEvent.id);
-            this.date.total_cost += curEvent.cost;
-            this.date.total_time += parseInt(curEvent.time);
-            if (!hasImage && curEvent.image_url != undefined) {
-                this.date.image_url = curEvent.image_url;
-                this.date.image_url = this.date.image_url.split("/").slice(0, -1).join('/');
-                this.date.image_url += "/l.jpg";
-                hasImage = true;
+        if (this.events.length > 0 && document.getElementsByClassName('ng-invalid').length === 0) {
+            for (var i = 0; i < this.events.length; i++) {
+                var curEvent = this.events[i];
+                this.date.business.push(curEvent.id);
+                this.date.total_cost += curEvent.cost;
+                this.date.total_time += parseInt(curEvent.time);
+                if (!hasImage && curEvent.image_url != undefined) {
+                    this.date.image_url = curEvent.image_url;
+                    this.date.image_url = this.date.image_url.split("/").slice(0, -1).join('/');
+                    this.date.image_url += "/l.jpg";
+                    hasImage = true;
+                }
             }
+            this.datesService.build(this.date).then(function (x) {
+                _this.router.navigateByUrl('date/' + x);
+            });
         }
-        this.datesService.build(this.date).then(function (x) {
-            _this.router.navigateByUrl('date/' + x);
-        });
+        else {
+            eval("$('.form-group-sm.is-empty').addClass('has-error');");
+        }
     };
     BuilderComponent.prototype.removeEvent = function (event) {
         var index = this.events.indexOf(event);
