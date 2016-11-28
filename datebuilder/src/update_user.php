@@ -2,10 +2,11 @@
 
 function update_user($user_id, $name, $password, $email, $age, $loc_serv) {
 
-    $db_servername = "localhost";
-    $db_username = "root";
-    $db_password = "pass";
-    $table_name = "datebuilder_db.users";
+    require_once("credentials.php");
+    $db_servername = $cred_db_servername;
+    $db_username = $cred_db_username;
+    $db_password = $cred_db_password;
+    $table_name = $users_table_name;
 
     $conn = new mysqli($db_servername, $db_username, $db_password);
 
