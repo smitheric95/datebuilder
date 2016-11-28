@@ -22,6 +22,7 @@ var AccountComponent = (function () {
         this.user = {};
         this.stats = {};
         this.datesLoaded = false;
+        this.datesLoaded = true;
         this.user = {
             allow_loc_services: false
         };
@@ -60,6 +61,8 @@ var AccountComponent = (function () {
                 _this.user = temp.user;
                 _this.dates = temp.dates;
                 _this.datesLoaded = true;
+                if (_this.dates.length > 0)
+                    _this.datesEmpty = false;
                 _this.stats = temp.stats;
             });
         }

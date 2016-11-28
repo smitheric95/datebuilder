@@ -22,7 +22,8 @@ export class AccountComponent {
     isLoggedIn: boolean;
     settings : any;
     datesLoaded : boolean;
-    
+    datesEmpty : boolean;
+
     constructor(private route: ActivatedRoute,
         private router: Router,
         private usersService: UsersService) { }
@@ -34,7 +35,8 @@ export class AccountComponent {
 
         this.stats = {};
         this.datesLoaded = false;
-        
+        this.datesLoaded = true;
+
         this.user = { //defaults
             allow_loc_services: false
         }
@@ -76,9 +78,14 @@ export class AccountComponent {
             this.usersService.get().then(x => {
                 var temp = JSON.parse(x);
                 this.user = temp.user;
+                
                 this.dates = temp.dates;
                 this.datesLoaded = true;
+                if ( this.dates.length > 0)
+                    this.datesEmpty = false;
+
                 this.stats = temp.stats;
+                
             });
         }
     }
