@@ -12,6 +12,9 @@ var core_1 = require('@angular/core');
 var LandingComponent = (function () {
     function LandingComponent() {
     }
+    LandingComponent.prototype.ngOnInit = function () {
+        this.isLoggedIn = document.cookie.includes("isLoggedIn=true;");
+    };
     LandingComponent = __decorate([
         core_1.Component({
             selector: 'landing',

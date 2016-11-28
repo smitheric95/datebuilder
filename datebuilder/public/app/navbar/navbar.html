@@ -12,8 +12,7 @@
 
     <div class='collapse navbar-collapse' id='bs-example-navbar-collapse-1'>
       <ul class='nav navbar-nav'>
-        <li class='active'><a href='#' routerLink="search/">Search<span class='sr-only'>(current)</span></a></li>
-        <li><a href='#'>Builder</a></li>
+        <li><a href='#' routerLink="search/">Search<span class='sr-only'>(current)</span></a></li>
       </ul>
 
       <!-- right nav dropdown -->
@@ -24,7 +23,8 @@
             <li><a routerLink="account/" href='#'>My Dates</a></li>
             <li><a routerLink="account/" [routerLink]="['/account', 'settings']" href='#'>Settings</a></li>
             <li role='separator' class='divider'></li>
-            <li><a (click)="logout()">Logout</a></li>
+            <li *ngIf="isLoggedIn"><a (click)="logout()">Logout</a></li>
+            <li *ngIf="!isLoggedIn"><a [routerLink]="['/account', 'login']">Log In</a></li>
           </ul>
         </li>
       </ul>

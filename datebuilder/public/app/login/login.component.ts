@@ -28,7 +28,8 @@ export class LoginComponent {
         this.userService.logIn(this.user).then(x => {
             if( x == "Log in confirmed." ){
                 document.cookie = "isLoggedIn=true";
-                this.router.navigateByUrl('/search');
+                window.location.reload();
+                //this.router.navigateByUrl('/search');
             }
             else {
                 this.incorrect = true;

@@ -37,22 +37,24 @@ export class SearchComponent {
             else {
                 this.eventsService.load().then(x => {
                     this.events = JSON.parse(x);
-                    this.singleEvent = false;        
+                    this.singleEvent = false;
                 });
             }
         });
     }
 
-    onQuery(query : any){
+    onQuery(query: any) {
         this.currentQuery = query;
-        this.eventsService.search(query).then(x => {
-            this.events = JSON.parse(x);
-            this.singleEvent = false;
-        });
+        if (query != "") {
+            this.eventsService.search(query).then(x => {
+                this.events = JSON.parse(x);
+                this.singleEvent = false;
+            });
+        }
     }
 
     focus() {
         eval("$(function(){ $('#search').focus() });")
     }
-     
+
 }

@@ -12,6 +12,9 @@ import { UsersService } from '../repositories/users.service';
     ]
 })
 export class NavbarComponent {
+
+    isLoggedIn : boolean;
+
     constructor(private route: ActivatedRoute,
         private router: Router,
         private usersService: UsersService) { }
@@ -19,6 +22,11 @@ export class NavbarComponent {
     logout() {
         this.usersService.logout();
         document.cookie = "isLoggedIn=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
-        this.router.navigateByUrl('/'); 
+        window.location.reload();
     }
+    ngOnInit() {
+        this.isLoggedIn = document.cookie.includes("isLoggedIn=true;");
+    }
+
+
 }

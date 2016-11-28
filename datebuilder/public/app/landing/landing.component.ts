@@ -10,5 +10,10 @@ import { Component } from '@angular/core';
   ]
 })
 
-export class LandingComponent { 
+export class LandingComponent {
+  isLoggedIn: boolean;
+  
+  ngOnInit() {
+        this.isLoggedIn = document.cookie.includes("isLoggedIn=true;");
+    } 
 }

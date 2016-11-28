@@ -41,10 +41,12 @@ var SearchComponent = (function () {
     SearchComponent.prototype.onQuery = function (query) {
         var _this = this;
         this.currentQuery = query;
-        this.eventsService.search(query).then(function (x) {
-            _this.events = JSON.parse(x);
-            _this.singleEvent = false;
-        });
+        if (query != "") {
+            this.eventsService.search(query).then(function (x) {
+                _this.events = JSON.parse(x);
+                _this.singleEvent = false;
+            });
+        }
     };
     SearchComponent.prototype.focus = function () {
         eval("$(function(){ $('#search').focus() });");
