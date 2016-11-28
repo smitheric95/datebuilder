@@ -2,11 +2,12 @@
 
 function get_date($date_id, $user_id) {
 
-    $db_servername = "localhost";
-    $db_username = "root";
-    $db_password = "pass";
-    $table_name = "datebuilder_db.dates";
-    $subtable_name = "datebuilder_db.date_elements";
+    require_once("credentials.php");
+    $db_servername = $cred_db_servername;
+    $db_username = $cred_db_username;
+    $db_password = $cred_db_password;
+    $table_name = $dates_table_name;
+    $subtable_name = $date_elms_table_name;
 
     $conn = new mysqli($db_servername, $db_username, $db_password);
 
@@ -109,11 +110,12 @@ function calc_distances($coord_array) {
 
 function update_date($user_id, $date_id, $businesses, $total_cost, $name, $total_time, $image_url) {
 
-    $db_servername = "localhost";
-    $db_username = "root";
-    $db_password = "pass";
-    $table_name = "datebuilder_db.dates";
-    $subtable_name = "datebuilder_db.date_elements";
+    require_once("credentials.php");
+    $db_servername = $cred_db_servername;
+    $db_username = $cred_db_username;
+    $db_password = $cred_db_password;
+    $table_name = $dates_table_name;
+    $subtable_name = $date_elms_table_name;
 
     $conn = new mysqli($db_servername, $db_username, $db_password);
 

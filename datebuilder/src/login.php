@@ -1,9 +1,10 @@
 <?php
 function validate_login ($email, $password) {
-    $db_servername = "localhost";
-    $db_username = "app";
-    $db_password = "app!db!password";
-    $table_name = "datebuilder_db.users";
+    require_once("credentials.php");
+    $db_servername = $cred_db_servername;
+    $db_username = $cred_db_username;
+    $db_password = $cred_db_password;
+    $table_name = $users_table_name;
 
     $conn = new mysqli($db_servername, $db_username, $db_password);
 
@@ -41,7 +42,7 @@ function validate_login ($email, $password) {
                     if ($result->num_rows == 1) {
                         $row = $result->fetch_assoc();
                         $user_id = $row["user_id"];
-                        #$user_id = 
+                        #$user_id =
                         $session_id = session_id();
                         $_SESSION['session'] = $session_id;
                         $_SESSION['user_id']= $user_id;  // Initializing Session with value of PHP Variable
@@ -53,7 +54,7 @@ function validate_login ($email, $password) {
                 } else {
                     return "Error getting username and email from users table: " . $conn->error;
                 }
-                
+
             } else {
                 return "Email not found in users table";
             }
