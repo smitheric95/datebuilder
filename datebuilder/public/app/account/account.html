@@ -88,13 +88,14 @@
                 <p *ngIf="datesLoaded && dates?.length == 0">You don't have any dates.<br><br><a routerLink="/search">Build one now.</a></p>
                 <p *ngIf="!datesLoaded">Loading your dates...</p>
                 <div class="list-group">
-                    <div class="list-group-item" *ngFor="let date of dates">
+                    <div class="list-group-item" *ngFor="let date of dates; let i = index;">
+                        <div *ngIf="i == 0" class="list-group-separator separator-first"></div>
                         <a [routerLink]="['../date/' + date.id]" target="_blank">
                             <div class="row-picture">
                                 <img class="circle" src='{{ date.image_url | image:"original" }}' alt="icon">
                             </div>
                             <div class="row-content">
-                                <h4 class="list-group-item-heading">{{ date.name }}</h4>
+                                <h4 class="list-group-item-heading">{{ date.name | ellipsis:50 }}</h4>
 
                                 <p class="list-group-item-text">Total cost: ${{ date.total_cost }} Total time: {{ date.total_time | hours }}.</p>
                             </div>
@@ -147,7 +148,7 @@
                                     ><span class="checkbox-material"><span class="check"></span></span> Allow location services
                             </label>
 
-                            <button type="submit" class="btn btn-primary" (click)="changeSettings()">CHANGE<div class="ripple-container"></div></button>
+                            <button type="submit" class="btn btn-primary change" (click)="changeSettings()">CHANGE<div class="ripple-container"></div></button>
                         </div>
                     </fieldset>
                 </form>

@@ -3,7 +3,6 @@
 }
 
 ul.nav-pills {
-    margin-left: 15px;
     margin-top: 65px;
 }
 
@@ -16,3 +15,60 @@ fieldset > div > label {
     margin-top: 5px;
 }
 
+img.circle {
+    margin-bottom: -5px;
+}
+
+
+@media (min-width: 992px){
+    .col-xl-6 {
+        width: 690px !important;
+    }
+    .col-md-offset-2.col-md-10 {
+        width: 100% !important;
+        margin-left: 0 !important;
+    }
+}
+
+@media (max-width: 350px){
+    .nav-pills > li {
+        float: none !important;
+    }
+
+}
+
+@media (max-width: 600px){
+    p.list-group-item-text {
+        display: none;
+    }
+
+    img.circle {
+        display: none !important;
+    }
+
+    div.list-group-item > a {
+        margin-left: 70px !important;
+    }
+
+    div.list-group {
+        margin-left: -100px;
+    }
+
+    div.row-content {
+        min-height: 0 !important;
+    }
+}
+
+@media (min-width: 600px){
+    .tab-content {
+        min-width: 690px;
+    }
+}
+
+@media (max-width: 398px) {
+    .btn.btn-primary.change {
+        position: absolute;
+        right: 0px;
+        bottom: -50px;
+    }
+}
