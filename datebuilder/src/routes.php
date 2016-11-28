@@ -151,7 +151,10 @@ $app->post('/users/updatesettings', function (Request $request, Response $respon
 // The "businesses" key maps to a list of recomended businesses, ranked for the user.
 $app->get('/search/load', function (Request $request, Response $response) {
     include "search.php";
-    $user_id = $_SESSION["user_id"];
+    $user_id = 0;
+    if (isset($_SESSION["user_id"])) {
+        $user_id = $_SESSION["user_id"];
+    }
 
     $search_return = default_search($user_id);
 

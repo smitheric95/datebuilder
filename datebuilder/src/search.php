@@ -24,10 +24,11 @@ function default_search($user_id) {
 
     // queries database to see if user has allowed location services
     if ($user_id != 0) {
-        $db_servername = "localhost";
-        $db_username = "root";
-        $db_password = "pass";
-        $table_name = "datebuilder_db.users";
+        require_once("credentials.php");
+        $db_servername = $cred_db_servername;
+        $db_username = $cred_db_username;
+        $db_password = $cred_db_pasword;
+        $table_name = $users_table_name;
 
         $conn = new mysqli($db_servername, $db_username, $db_password);
 
@@ -37,7 +38,7 @@ function default_search($user_id) {
             return "Could not connect to db.";
         }
 
-        $sql = "SELECT * FROM datebuilder_db.users WHERE user_id = '$user_id'";
+        $sql = "SELECT * FROM {$table_name} WHERE user_id = '$user_id'";
 
         // execute query
         if ($result = $conn->query($sql)) {
@@ -81,10 +82,10 @@ function default_search($user_id) {
     // filter returned data
     $yelp_data = $yelp_data["businesses"];
     $yelp_data = filter_data($yelp_data);
-    
+
     // randomize businesses
     shuffle($yelp_data);
-    
+
     // json encode and return
     return json_encode($yelp_data);
 }

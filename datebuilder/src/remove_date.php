@@ -22,17 +22,27 @@ function delete_date($user_id, $date_id) {
     $date_id_match = preg_match($date_id_pattern, $date_id);
 
     if ($date_id_match == 1) {
-        $sql = "DELETE * FROM {$table_name} WHERE date_id = '$date_id' AND user_id = '$user_id';
-                DELETE * FROM {$subtable_name} WHERE date_id = '$date_id'";
+        // $sql = "DELETE FROM {$table_name} WHERE date_id = '$date_id' AND user_id = '$user_id';
+        //         DELETE FROM {$subtable_name} WHERE date_id = '$date_id'";
+        $sql = "SELECT * FROM {$table_name} WHERE date_id = '$date_id' AND user_id = '$user_id'";
 
-        if ($conn->query($sql)) {
-            return True;
+        if ($result = $conn->query($sql)) {
+            if ($result->num_rows > 0 ) {
+                $sql = "DELETE FROM {$subtable_name} WHERE date_id = '$date_id';
+                        DELETE FROM {$table_name} WHERE date_id = '$date_id' AND user_id = '$user_id'";
+                if ($conn->multi_query($sql)) {
+                    return True;
+                } else {
+                    return "Error removing date: " . $conn->error . $conn->errno;
+                }
+            } else {
+                return "Date does not exist.";
+            }
         } else {
-            return "Could not remove date: " . $conn->error;
+            return "Error finding date: " . $conn->error;
         }
     } else {
         return "Invalid input.";
     }
 }
-
 ?>
