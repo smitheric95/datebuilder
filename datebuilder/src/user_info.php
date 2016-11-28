@@ -2,10 +2,13 @@
 
 function get_user_info($user_id) {
 
-    $db_servername = "localhost";
-    $db_username = "root";
-    $db_password = "pass";
-    $table_name = "datebuilder_db.users";
+    require_once("credentials.php");
+    $db_servername = $cred_db_servername;
+    $db_username = $cred_db_username;
+    $db_password = $cred_db_password;
+    $table_name = $users_table_name;
+    $dates_name = $dates_table_name;
+    $date_elms_name = $date_elms_table_name;
 
     $conn = new mysqli($db_servername, $db_username, $db_password);
 
@@ -24,7 +27,7 @@ function get_user_info($user_id) {
         $results = array();
 
         // get user specific info
-        $sql = "SELECT * FROM datebuilder_db.users WHERE user_id = '$user_id'";
+        $sql = "SELECT * FROM {$table_name} WHERE user_id = '$user_id'";
 
         // execute query
         if ($result = $conn->query($sql)) {
@@ -50,7 +53,7 @@ function get_user_info($user_id) {
         }
 
         // get dates for user
-        $sql = "SELECT * FROM datebuilder_db.dates WHERE user_id = '$user_id'";
+        $sql = "SELECT * FROM {$dates_name} WHERE user_id = '$user_id'";
 
         // execute query
         if ($result = $conn->query($sql)) {
@@ -66,12 +69,12 @@ function get_user_info($user_id) {
                     $date_to_add["total_cost"] = $row["total_cost"];
                     $date_to_add["total_time"] = $row["total_time"];
                     $date_to_add["image_url"] = $row["image_url"];
-                    
+
                     $date_id = $row['date_id'];
                     $date_to_add["id"] = $date_id;
 
                     // prepare query
-                    $sql = "SELECT * FROM datebuilder_db.date_elements WHERE date_id = '$date_id'";
+                    $sql = "SELECT * FROM {$date_elms_name} WHERE date_id = '$date_id'";
 
                     if ($date_elms = $conn->query($sql)) {
 

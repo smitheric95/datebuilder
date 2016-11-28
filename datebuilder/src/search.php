@@ -27,7 +27,7 @@ function default_search($user_id) {
         require_once("credentials.php");
         $db_servername = $cred_db_servername;
         $db_username = $cred_db_username;
-        $db_password = $cred_db_pasword;
+        $db_password = $cred_db_password;
         $table_name = $users_table_name;
 
         $conn = new mysqli($db_servername, $db_username, $db_password);
