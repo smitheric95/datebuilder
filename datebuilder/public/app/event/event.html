@@ -13,7 +13,7 @@
     </div>
     <div [ngClass]="{'panel-body': !isSelected}">
         <a *ngIf="!isSelected && !isMini" (click)="onAddEvent(event.id)" class="close add-event-button btn btn-primary btn-fab"><i class="star material-icons">add</i></a>
-        <a *ngIf="!isSelected && !isMini" target="_blank" href="{{googleLink}}" class="close map-event-button btn btn-primary btn-fab"><i class="star material-icons">map</i></a>
+        <a *ngIf="!isSelected && !isMini" target="_blank" href="{{googleLinks}}" class="close map-event-button btn btn-primary btn-fab"><i class="star material-icons">map</i></a>
 
         <a (click)="selectEvent()">
             <div class='event-info'>
@@ -29,8 +29,7 @@
                 </div>
                 <div *ngIf="singleEvent">
                     <p style="color:black;">Categories</p>
-                    <div *ngFor="let cat of categories; let i = index"
-                    >
+                    <div *ngFor="let cat of categories; let i = index">
                         <span class="label label-primary" *ngIf="i%2 == 0">{{cat}}</span>
                     </div>
                     <br>

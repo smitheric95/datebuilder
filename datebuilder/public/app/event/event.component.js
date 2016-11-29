@@ -22,7 +22,6 @@ var EventComponent = (function () {
         this.googleLinks = "";
         this.singleEvent = false;
         this.categories = [];
-        ;
     };
     EventComponent.prototype.ngAfterContentInit = function () {
         var _this = this;

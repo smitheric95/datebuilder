@@ -34,13 +34,12 @@ export class EventComponent {
     ngOnInit() {
         this.googleLinks = "";
         this.singleEvent = false;
-        this.categories = []];
+        this.categories = [];
     }
 
     ngAfterContentInit() {
         if (this.googleLinks !== undefined) {
             this.googleLinks = ("http://maps.google.com/?q=" + this.event.location[0] + this.event.location[1]);
-
 
             this.route.params.forEach((params: Params) => {
                 if (params['id'] === this.event.id){
