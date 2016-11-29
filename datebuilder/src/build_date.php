@@ -11,7 +11,7 @@ function build_date($business, $total_cost, $name, $total_time, $image_url) {
     $db_password = $cred_db_password;
     $table_name = $dates_table_name;
     $subtable_name = $date_elms_table_name;
-    
+
     $conn = new mysqli($db_servername, $db_username, $db_password);
 
     // Check connection
@@ -20,12 +20,12 @@ function build_date($business, $total_cost, $name, $total_time, $image_url) {
     }
 
     // regex check input
-    $total_cost_pattern = "/\d+(\.\d+)?/";
-    $name_pattern = "/[\w\s\' -\d]+/";
-    $total_time_pattern = "/\d+/";
+    $total_cost_pattern = "/^\d+(\.\d+)?$/";
+    $name_pattern = "/^[\w\s' \-\d]+$/";
+    $total_time_pattern = "/^\d+$/";
     // $image_url_pattern = "/\bhttps:\/\/s3-media\S*\/l\.jpg\b/";
     // $image_url_pattern = "/^(http:\/\/|https:\/\/|http:\/\/www\.|https:\/\/www\.)[\w]+\.[\w]{3}(\/\w+)*(\/[\w]+\.[a-zA-Z]{3})?$/";
-    $image_url_pattern = "/^(http:\/\/|https:\/\/)[\.\w-]+\.[\w-]+(\/\w+)*(\/[\w]+\.[a-zA-Z]{3})?$/";
+    $image_url_pattern = "/^(http:\/\/|https:\/\/)[\.\w\-]+\.[\w\-]+(\/\w+)*(\/[\w]+\.[a-zA-Z]{3})?$/";
 
 
     $tc_match = preg_match($total_cost_pattern, $total_cost);
@@ -47,7 +47,7 @@ function build_date($business, $total_cost, $name, $total_time, $image_url) {
             #$link = mysql_connect('localhost', 'root', 'pass');
             for($i = 0; $i < sizeof($business); $i++)
             {
-                $business_pattern = "/[\w\-]+/";
+                $business_pattern = "/^[\w\-]+$/";
                 $this_business = $business[$i];
                 $b_match = preg_match($business_pattern, $this_business);
                 if($b_match == 1)
@@ -55,6 +55,7 @@ function build_date($business, $total_cost, $name, $total_time, $image_url) {
                     $sql = "INSERT INTO {$subtable_name} (date_id, business_id) VALUES ('$date_id', '$this_business')";
                     if ($conn->query($sql) === TRUE) {
                         //success
+                        return $date_id;
                     }
                     else
                     {

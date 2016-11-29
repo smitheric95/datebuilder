@@ -91,10 +91,11 @@ $app->post('/users/logout', function (Request $request, Response $response) {
         unset($_SESSION['session']);  //Is Used To Destroy Specified Session
         unset($_SESSION['is_validated']);  //Is Used To Destroy Specified Session
         // echo "Logout confirmed";
-        $response->getBody()->write("Log in confirmed.");
+        $response->getBody()->write("Log out confirmed.");
         return $response;
     }
-
+    $response->getBody()->write("Could not log out user.");
+    return $response;
 
     /*
     $status = validate_login($user_email, $password);
