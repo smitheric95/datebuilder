@@ -17,7 +17,7 @@ function update_user($user_id, $name, $password, $email, $age, $loc_serv) {
     }
 
     // regex check input
-    $name_pattern = "/^\w+$/";
+    $name_pattern = "/^[a-zA-Z ,\.'-]+$/i";
     $email_pattern = "/^\w+@\w+\.\w{3}$/";
     $age_pattern = "/^\d{1,3}$/";
     $loc_serv_pattern = "/^(True|False)$/";
@@ -35,6 +35,7 @@ function update_user($user_id, $name, $password, $email, $age, $loc_serv) {
             } else {
                 $loc_serv = 0;
             }
+            $name = $conn->real_escape_string($name);
             // prepare query
             $sql = "UPDATE {$table_name} SET
                 name = '$name', email = '$email',
@@ -60,7 +61,7 @@ function update_user($user_id, $name, $password, $email, $age, $loc_serv) {
             } else {
                 $loc_serv = 0;
             }
-
+            $name = $conn->real_escape_string($name);
             // prepare query
             $sql = "UPDATE {$table_name} SET
                 name = '$name', email = '$email',
