@@ -36,8 +36,7 @@ function build_date($business, $total_cost, $name, $total_time, $image_url) {
     // if the input fields are all valid, the user is added to the users table
     if ($tc_match == 1 && $n_match == 1 && $tt_match == 1 && $iu_match == 1) {
 
-        // $user_id = $_SESSION["user_id"];
-        $user_id=5;
+        $user_id = $_SESSION["user_id"];
         $name = $conn->real_escape_string($name);
         $image_url = $conn->real_escape_string($image_url);
         $sql = "INSERT INTO {$table_name} (date_id, user_id, name, total_cost, total_time, image_url) VALUES (NULL,'$user_id', '$name', '$total_cost', '$total_time', '$image_url')";
