@@ -51,7 +51,7 @@ export class EventComponent {
     }
 
     onAddEvent() {
-        if (document.cookie.includes("isLoggedIn=true;"))
+        if (document.cookie.includes("isLoggedIn=true"))
             this.eventAdded.emit(this.event);
         else
             this.router.navigateByUrl('account')

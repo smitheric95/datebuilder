@@ -34,7 +34,7 @@ export class AccountComponent {
 
     ngOnInit() {
 
-        this.isLoggedIn = document.cookie.includes("isLoggedIn=true;");
+        this.isLoggedIn = document.cookie.includes("isLoggedIn=true");
         this.user = {};
         this.accountCreatedLoginUser = {};
 

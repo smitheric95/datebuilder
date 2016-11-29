@@ -18,7 +18,7 @@ var AccountComponent = (function () {
         this.usersService = usersService;
     }
     AccountComponent.prototype.ngOnInit = function () {
-        this.isLoggedIn = document.cookie.includes("isLoggedIn=true;");
+        this.isLoggedIn = document.cookie.includes("isLoggedIn=true");
         this.user = {};
         this.accountCreatedLoginUser = {};
         this.stats = {};
