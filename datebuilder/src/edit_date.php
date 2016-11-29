@@ -131,7 +131,7 @@ function update_date($user_id, $date_id, $businesses, $total_cost, $name, $total
     $cost_pattern = "/^\d+(\.\d+)?$/";
     $name_pattern = "/[\w\s' \-\d]+/";
     $time_pattern = "/^\d+$/";
-    $image_url_pattern = "/^(http:\/\/|https:\/\/)[\.\w\-]+\.[\w\-]+(\/\w+)*(\/[\w]+\.[a-zA-Z]{3})?$/";
+    $image_url_pattern = "/^(http:\/\/|https:\/\/)[\.\w\-]+\.[\w\-]+(\/[\w\-]+)*(\/[\w\-]+\.[a-zA-Z]{3})?$/";
 
     $d_id_match = preg_match($date_id_pattern, $date_id);
     $c_match = preg_match($cost_pattern, $total_cost);

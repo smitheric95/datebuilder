@@ -56,7 +56,7 @@ function add_user($name, $password, $email, $age, $allow_loc_services) {
 
             // execute query
             if ($conn->query($sql) === TRUE) {
-                echo "New user successfully created";
+                // echo "New user successfully created";
                 $sql = "SELECT * FROM {$table_name} WHERE email = '$email' AND password = '$password'";
 
                     if ($result = $conn->query($sql)) {
@@ -71,7 +71,7 @@ function add_user($name, $password, $email, $age, $allow_loc_services) {
                             $_SESSION['is_validated'] = True;
                             #echo $_SESSION['user_id'];
                             #echo $_SESSION['session'];
-                            echo "successfully logged in";
+                            // echo "successfully logged in";
                             return True;
                         }
                     } else {

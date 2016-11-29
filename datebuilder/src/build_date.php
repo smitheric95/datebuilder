@@ -25,7 +25,7 @@ function build_date($business, $total_cost, $name, $total_time, $image_url) {
     $total_time_pattern = "/^\d+$/";
     // $image_url_pattern = "/\bhttps:\/\/s3-media\S*\/l\.jpg\b/";
     // $image_url_pattern = "/^(http:\/\/|https:\/\/|http:\/\/www\.|https:\/\/www\.)[\w]+\.[\w]{3}(\/\w+)*(\/[\w]+\.[a-zA-Z]{3})?$/";
-    $image_url_pattern = "/^(http:\/\/|https:\/\/)[\.\w\-]+\.[\w\-]+(\/\w+)*(\/[\w]+\.[a-zA-Z]{3})?$/";
+    $image_url_pattern = "/^(http:\/\/|https:\/\/)[\.\w\-]+\.[\w\-]+(\/[\w\-]+)*(\/[\w\-]+\.[a-zA-Z]{3})?$/";
 
 
     $tc_match = preg_match($total_cost_pattern, $total_cost);
@@ -36,7 +36,8 @@ function build_date($business, $total_cost, $name, $total_time, $image_url) {
     // if the input fields are all valid, the user is added to the users table
     if ($tc_match == 1 && $n_match == 1 && $tt_match == 1 && $iu_match == 1) {
 
-        $user_id = $_SESSION["user_id"];
+        // $user_id = $_SESSION["user_id"];
+        $user_id=5;
         $name = $conn->real_escape_string($name);
         $image_url = $conn->real_escape_string($image_url);
         $sql = "INSERT INTO {$table_name} (date_id, user_id, name, total_cost, total_time, image_url) VALUES (NULL,'$user_id', '$name', '$total_cost', '$total_time', '$image_url')";
@@ -55,7 +56,7 @@ function build_date($business, $total_cost, $name, $total_time, $image_url) {
                     $sql = "INSERT INTO {$subtable_name} (date_id, business_id) VALUES ('$date_id', '$this_business')";
                     if ($conn->query($sql) === TRUE) {
                         //success
-                        return $date_id;
+                        // return $date_id;
                     }
                     else
                     {
