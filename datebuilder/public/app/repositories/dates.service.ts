@@ -4,13 +4,13 @@ import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class DatesService {
-    private _apiUrl = '';
+    private _apiUrl = 'index.php';
 
     constructor(private http: Http) { }
 
     get(date): Promise<any> {
         return this.http
-            .get(this._apiUrl + `editdate/${date}`)
+            .get(this._apiUrl + `/editdate/${date}`)
             .toPromise()
             .then(x => x['_body'] as any);
     }

@@ -24,6 +24,8 @@ export class DateComponent {
     dateNotFound: boolean;
     dateLoaded: boolean;
     deleteDate: any;
+    addresses: string[];
+    googleLinks: string[];
 
     constructor(private route: ActivatedRoute,
         private router: Router,
@@ -37,6 +39,8 @@ export class DateComponent {
         this.businessNames = [];
         this.businessUrls = [];
         this.distances = [];
+        this.addresses = [];
+        this.googleLinks = [];
 
         this.route.params.forEach((params: Params) => {
             //router: date/:id=date-id
@@ -47,15 +51,19 @@ export class DateComponent {
                         for (var i = 0; i < this.date.businesses.length; i++) {
                             var curBusUrl = this.date.businesses[i];
 
-                            if (i < this.date.businesses.length - 1)
+                            if (i < this.date.businesses.length - 1) {
                                 this.distances.push( this.date.distances[i].toFixed(2) );
+                                this.distances.unshift(-1);
+                            }
 
                             this.eventsService.getEvent(curBusUrl).then(x => {
                                 var curBus = JSON.parse(x);
+                                this.addresses.push(curBus.location[0]);
+                                this.googleLinks.push(("http://maps.google.com/?q=" + curBus.location[0] + curBus.location[1]));
                                 this.businessNames.push(curBus.name);
                                 this.businessUrls.push("/search/" + curBusUrl);
                             });
-                        }
+                        }console.log(this.googleLinks);
                     }
                     else {
                         this.dateNotFound = true;

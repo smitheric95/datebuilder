@@ -30,17 +30,28 @@
             <div>
                 <b>Total Cost: ${{ date.total_cost }}</b><br>
                 <b>Total Time: {{ date.total_time | hours }}</b><br><br>
-                <p>Your plans: </p>
-                <ul>
-                    <li *ngFor="let bus of businessNames; let i = index;">
-                        <a target="_blank" [routerLink]="businessUrls[i]">{{ bus }}</a><br>
+                <h4>Your date plans: </h4>
+                <div class="list-group">
+                    <div class="list-group-item" *ngFor="let bus of businessNames; let i = index;">
+                        <div *ngIf="i == 0" class="list-group-separator separator-first"></div>
+                        <a [routerLink]="businessUrls[i]" target="_blank">
+                            <div class="row-picture">
+                                <div class="circle">
+                                    <i *ngIf="i == 0" class="material-icons">place</i>
+                                    <i *ngIf="distances[i] < 2 && i != 0" class="material-icons">directions_walk</i>
+                                    <i *ngIf="distances[i] > 2" class="material-icons">directions_car</i>
+                                </div>
+                            </div>
+                            <div class="row-content">
+                                <h4 class="list-group-item-heading">{{ bus }}</h4>
 
-                        <div *ngIf="i != businessNames.length-1">
-                            <p *ngIf="distances[i] < 2"><i class="material-icons">directions_walk</i>{{ distances[i] }} miles</p>
-                            <p *ngIf="distances[i] > 2"><i class="material-icons">directions_car</i>{{ distances[i] }} miles</p>
-                        </div>
-                    </li>
-                </ul>
+                                <p class="list-group-item-text"><span *ngIf="distances[i] > -1">{{ distances[i] }} miles to </span><a target="_blank" href="{{googleLinks[i]}}"
+                                        class="google-link">{{ addresses[i] | ellipsis:20 }}</a></p>
+                            </div>
+                        </a>
+                        <div class="list-group-separator"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

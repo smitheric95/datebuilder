@@ -27,6 +27,8 @@ var DateComponent = (function () {
         this.businessNames = [];
         this.businessUrls = [];
         this.distances = [];
+        this.addresses = [];
+        this.googleLinks = [];
         this.route.params.forEach(function (params) {
             //router: date/:id=date-id
             if (params['id'] !== undefined) {
@@ -35,14 +37,19 @@ var DateComponent = (function () {
                         _this.date = JSON.parse(x);
                         for (var i = 0; i < _this.date.businesses.length; i++) {
                             var curBusUrl = _this.date.businesses[i];
-                            if (i < _this.date.businesses.length - 1)
+                            if (i < _this.date.businesses.length - 1) {
                                 _this.distances.push(_this.date.distances[i].toFixed(2));
+                                _this.distances.unshift(-1);
+                            }
                             _this.eventsService.getEvent(curBusUrl).then(function (x) {
                                 var curBus = JSON.parse(x);
+                                _this.addresses.push(curBus.location[0]);
+                                _this.googleLinks.push(("http://maps.google.com/?q=" + curBus.location[0] + curBus.location[1]));
                                 _this.businessNames.push(curBus.name);
                                 _this.businessUrls.push("/search/" + curBusUrl);
                             });
                         }
+                        console.log(_this.googleLinks);
                     }
                     else {
                         _this.dateNotFound = true;

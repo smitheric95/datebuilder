@@ -20,7 +20,6 @@ a.img-wrapper {
 
 .panel {
     margin-top: 75px;
-    max-width: 500px;
 }
 
 li {
@@ -42,4 +41,13 @@ li {
 
 .delete-date {
     margin-bottom: 0 !important;
+}
+
+.google-link {
+  
+    text-decoration: underline;
+}
+
+.row-content {
+    margin-left: 15px;
 }

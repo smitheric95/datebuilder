@@ -1,23 +1,23 @@
-<div class="col-md-6">
-    <div class="well bs-component">
-        <form class="form-horizontal">
-            <fieldset>
-                <div class="col-md-offset-2 col-md-10">
-                    <legend>Log in</legend>
-                    <p *ngIf="incorrect" class="text-danger">Incorrect email or password.</p>
-                    <div class="form-group label-floating is-empty">
-                        <label class="control-label" for="email">Your email</label>
-                        <input [(ngModel)]="user.email" name="email" class="form-control" id="email" type="email">
-                        <span class="help-block">Please enter a valid email address</span>
-                    </div>
-
-                    <div class="form-group label-floating is-empty">
-                        <label for="password" class="control-label">Password</label>
-                        <input [(ngModel)]="user.password" name="password" class="form-control" id="password" type="password">
-                    </div>
-                    <button type="submit" class="btn btn-primary" (click)="logIn()">LOGIN<div class="ripple-container"></div></button>
+<form class="form-horizontal">
+    <fieldset>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8 loginsignup">
+                <legend>Log in</legend>
+                <p *ngIf="incorrect" class="text-danger">Incorrect email or password.</p>
+                <div class="form-group label-floating is-empty">
+                    <label class="control-label" for="email">Your email</label>
+                    <input [(ngModel)]="user.email" name="email" class="form-control" id="email" type="email">
+                    <span class="help-block">Please enter a valid email address</span>
                 </div>
-            </fieldset>
-        </form>
-    </div>
-</div>
+
+                <div class="form-group label-floating is-empty">
+                    <label for="password" class="control-label">Password</label>
+                    <input [(ngModel)]="user.password" name="password" class="form-control" id="password" type="password">
+                </div>
+                <button type="submit" class="btn btn-primary" (click)="logIn()">LOGIN<div class="ripple-container"></div></button>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </fieldset>
+</form>

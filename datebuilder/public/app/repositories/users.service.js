@@ -14,7 +14,7 @@ require('rxjs/add/operator/toPromise');
 var UsersService = (function () {
     function UsersService(http) {
         this.http = http;
-        this._apiUrl = 'users';
+        this._apiUrl = 'index.php/users';
     }
     UsersService.prototype.add = function (user) {
         return this.http
@@ -31,7 +31,7 @@ var UsersService = (function () {
     };
     UsersService.prototype.get = function () {
         return this.http
-            .get("/getuser/")
+            .get("index.php/getuser/")
             .toPromise()
             .then(function (x) { return x['_body']; });
     };

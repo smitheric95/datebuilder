@@ -4,7 +4,7 @@ import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class UsersService {
-    private _apiUrl = 'users';
+    private _apiUrl = 'index.php/users';
 
     constructor(private http: Http){}
 
@@ -25,7 +25,7 @@ export class UsersService {
 
     get() : Promise<any> {
         return this.http
-            .get(`/getuser/`)
+            .get(`index.php/getuser/`)
             .toPromise()
             .then(x => x['_body'] as any);
     }
