@@ -21,13 +21,7 @@ img.circle {
 
 
 @media (min-width: 992px){
-    .col-xl-6 {
-        width: 690px !important;
-    }
-    .col-md-offset-2.col-md-10 {
-        width: 100% !important;
-        margin-left: 0 !important;
-    }
+   
 }
 
 @media (max-width: 350px){
@@ -71,4 +65,20 @@ img.circle {
         right: 0px;
         bottom: -50px;
     }
+}
+
+.account-panel {
+    box-shadow: none !important;
+}
+
+form {
+    margin-top: 30px;
+}
+
+legend {
+    margin-left: -15px;
+}
+
+.col-md-8.loginsignup {
+    padding: 0 30px;
 }
