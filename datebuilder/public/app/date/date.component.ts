@@ -81,11 +81,12 @@ export class DateComponent {
     }
 
     delete() {
+        eval("$(function(){$('#dateModal').modal('hide')})");
         this.route.params.forEach((params: Params) => {            
             this.deleteDate.date_id = params['id'];
             this.datesService.delete(this.deleteDate).then(x => {
-                console.log(x);
-                //this.router.navigateByUrl('account#mydates');
+                window.location.reload();
+                this.router.navigateByUrl('account');
             });
         });
     }

@@ -102,6 +102,9 @@ export class AccountComponent {
                 if (this.dates.length > 0)
                     this.datesEmpty = false;
 
+                temp.stats.average_cost = temp.stats.average_cost.toFixed(2);
+                temp.stats.average_time = temp.stats.average_time.toFixed(2);
+                
                 this.stats = temp.stats;
 
             });

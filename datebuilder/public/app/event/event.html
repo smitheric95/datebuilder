@@ -17,7 +17,8 @@
 
         <a (click)="selectEvent()">
             <div class='event-info'>
-                <h2 style="color:#000000;" [ngClass]="{'spacing': isSelected}" *ngIf="!isMini">{{ event.name | ellipsis:23 }}</h2>
+                <h2 style="color:#000000;" *ngIf="!isMini && !isSelected">{{ event.name | ellipsis:19 }}</h2>
+                <h2 style="color:#000000;" class="spacing" *ngIf="!isMini && isSelected">{{ event.name | ellipsis:30 }}</h2>
                 <h4 *ngIf="isMini">{{ event.name | ellipsis:30 }}</h4>
                 <div *ngIf="!isMini">
                     <p>{{ event.location.display_address }}</p>

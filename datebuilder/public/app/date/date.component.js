@@ -63,11 +63,12 @@ var DateComponent = (function () {
     };
     DateComponent.prototype.delete = function () {
         var _this = this;
+        eval("$(function(){$('#dateModal').modal('hide')})");
         this.route.params.forEach(function (params) {
             _this.deleteDate.date_id = params['id'];
             _this.datesService.delete(_this.deleteDate).then(function (x) {
-                console.log(x);
-                //this.router.navigateByUrl('account#mydates');
+                window.location.reload();
+                _this.router.navigateByUrl('account');
             });
         });
     };
