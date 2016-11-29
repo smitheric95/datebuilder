@@ -17,7 +17,6 @@
     position: absolute;
     left: 0;
     top: 0;
-    background-color: #eee;
 }
 
 h1 {
@@ -52,11 +51,28 @@ h1 {
 
 #yelp {
     float: left;
-    margin-top: 10px;
+    margin-top: -3px;
     margin-bottom: 5px;
     margin-left: -15px
 }
 
 #yelp > img {
     margin-top: -10px;
+}
+
+
+/***** iPhones *****/
+/* iPhone 6+ */
+@media only screen 
+and (min-device-width : 414px) 
+and (max-device-width : 736px) 
+and (orientation : portrait) { 
+    div.container {
+        margin-top: -50px !important;
+    }
+
+    button.btn.btn-default {
+        float: left !important;
+        margin-top: 0px !important;
+    }
 }

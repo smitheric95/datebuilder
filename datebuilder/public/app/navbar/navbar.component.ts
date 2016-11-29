@@ -25,7 +25,7 @@ export class NavbarComponent {
         window.location.reload();
     }
     ngOnInit() {
-        this.isLoggedIn = document.cookie.includes("isLoggedIn=true;");
+        this.isLoggedIn = document.cookie.includes("isLoggedIn=true");
     }
 
 

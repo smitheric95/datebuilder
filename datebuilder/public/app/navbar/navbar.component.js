@@ -23,7 +23,7 @@ var NavbarComponent = (function () {
         window.location.reload();
     };
     NavbarComponent.prototype.ngOnInit = function () {
-        this.isLoggedIn = document.cookie.includes("isLoggedIn=true;");
+        this.isLoggedIn = document.cookie.includes("isLoggedIn=true");
     };
     NavbarComponent = __decorate([
         core_1.Component({

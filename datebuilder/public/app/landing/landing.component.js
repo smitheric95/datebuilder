@@ -13,7 +13,7 @@ var LandingComponent = (function () {
     function LandingComponent() {
     }
     LandingComponent.prototype.ngOnInit = function () {
-        this.isLoggedIn = document.cookie.includes("isLoggedIn=true;");
+        this.isLoggedIn = document.cookie.includes("isLoggedIn=true");
     };
     LandingComponent = __decorate([
         core_1.Component({

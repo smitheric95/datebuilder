@@ -53,7 +53,6 @@ export class DateComponent {
 
                             if (i < this.date.businesses.length - 1) {
                                 this.distances.push( this.date.distances[i].toFixed(2) );
-                                this.distances.unshift(-1);
                             }
 
                             this.eventsService.getEvent(curBusUrl).then(x => {
@@ -63,7 +62,8 @@ export class DateComponent {
                                 this.businessNames.push(curBus.name);
                                 this.businessUrls.push("/search/" + curBusUrl);
                             });
-                        }console.log(this.googleLinks);
+                        }
+                        this.distances.unshift(-1);
                     }
                     else {
                         this.dateNotFound = true;
@@ -81,11 +81,12 @@ export class DateComponent {
     }
 
     delete() {
+        eval("$(function(){$('#dateModal').modal('hide')})");
         this.route.params.forEach((params: Params) => {            
             this.deleteDate.date_id = params['id'];
             this.datesService.delete(this.deleteDate).then(x => {
-                console.log(x);
-                //this.router.navigateByUrl('account#mydates');
+                window.location.reload();
+                this.router.navigateByUrl('account');
             });
         });
     }

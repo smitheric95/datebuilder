@@ -39,7 +39,6 @@ var DateComponent = (function () {
                             var curBusUrl = _this.date.businesses[i];
                             if (i < _this.date.businesses.length - 1) {
                                 _this.distances.push(_this.date.distances[i].toFixed(2));
-                                _this.distances.unshift(-1);
                             }
                             _this.eventsService.getEvent(curBusUrl).then(function (x) {
                                 var curBus = JSON.parse(x);
@@ -49,7 +48,7 @@ var DateComponent = (function () {
                                 _this.businessUrls.push("/search/" + curBusUrl);
                             });
                         }
-                        console.log(_this.googleLinks);
+                        _this.distances.unshift(-1);
                     }
                     else {
                         _this.dateNotFound = true;
@@ -64,11 +63,12 @@ var DateComponent = (function () {
     };
     DateComponent.prototype.delete = function () {
         var _this = this;
+        eval("$(function(){$('#dateModal').modal('hide')})");
         this.route.params.forEach(function (params) {
             _this.deleteDate.date_id = params['id'];
             _this.datesService.delete(_this.deleteDate).then(function (x) {
-                console.log(x);
-                //this.router.navigateByUrl('account#mydates');
+                window.location.reload();
+                _this.router.navigateByUrl('account');
             });
         });
     };

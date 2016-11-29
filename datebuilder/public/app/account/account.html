@@ -92,7 +92,7 @@
                 <div class="list-group">
                     <div class="list-group-item" *ngFor="let date of dates; let i = index;">
                         <div *ngIf="i == 0" class="list-group-separator separator-first"></div>
-                        <a [routerLink]="['../date/' + date.id]" target="_blank">
+                        <a [routerLink]="['/date/' + date.id]" >
                             <div class="row-picture">
                                 <img class="circle" src='{{ date.image_url | image:"original" }}' alt="icon">
                             </div>

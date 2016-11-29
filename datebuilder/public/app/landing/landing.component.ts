@@ -14,6 +14,6 @@ export class LandingComponent {
   isLoggedIn: boolean;
   
   ngOnInit() {
-        this.isLoggedIn = document.cookie.includes("isLoggedIn=true;");
+        this.isLoggedIn = document.cookie.includes("isLoggedIn=true");
     } 
 }

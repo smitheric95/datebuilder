@@ -1,4 +1,5 @@
-<div class="event" [ngClass]="{'panel panel-default': !isSelected, 'mini' : isMini }">
+<div [ngClass]="{'col-lg-2':singleEvent}"></div>
+<div class="event" [ngClass]="{'panel panel-default': !isSelected, 'mini' : isMini, 'col-lg-8' : singleEvent }">
     <div *ngIf="!isSelected">
         <a class="img-wrapper" (click)="selectEvent()">
             <a *ngIf="isMini" (click)="removeEvent()" class="btn btn-fab btn-fab-mini"><i class="material-icons">close</i><div class="ripple-container"></div></a>
@@ -10,12 +11,14 @@
             </div>
         </a>
     </div>
-    <div [ngClass]="{'panel-body': !isSelected }">
-        <a *ngIf="!isSelected && !isMini" (click)="onAddEvent(event.id)" class="close add-event-button btn btn-primary btn-fab"><i class="star material-icons">add</i>
-        </a>
+    <div [ngClass]="{'panel-body': !isSelected}">
+        <a *ngIf="!isSelected && !isMini" (click)="onAddEvent(event.id)" class="close add-event-button btn btn-primary btn-fab"><i class="star material-icons">add</i></a>
+        <a *ngIf="!isSelected && !isMini" target="_blank" href="{{googleLinks}}" class="close map-event-button btn btn-primary btn-fab"><i class="star material-icons">map</i></a>
+
         <a (click)="selectEvent()">
             <div class='event-info'>
-                <h3 *ngIf="!isMini">{{ event.name | ellipsis:23 }}</h3>
+                <h2 style="color:#000000;" *ngIf="!isMini && !isSelected">{{ event.name | ellipsis:19 }}</h2>
+                <h2 style="color:#000000;" class="spacing" *ngIf="!isMini && isSelected">{{ event.name | ellipsis:30 }}</h2>
                 <h4 *ngIf="isMini">{{ event.name | ellipsis:30 }}</h4>
                 <div *ngIf="!isMini">
                     <p>{{ event.location.display_address }}</p>
@@ -25,6 +28,14 @@
                     <p *ngIf="event.rating">Rating: {{ event.rating }}</p>
                     <p *ngIf="!event.rating">No rating available</p>
                 </div>
+                <div *ngIf="singleEvent">
+                    <p style="color:black;">Categories</p>
+                    <div *ngFor="let cat of categories; let i = index">
+                        <span class="label label-primary" *ngIf="i%2 == 0">{{cat}}</span>
+                    </div>
+                    <br>
+                </div>
+
                 <div *ngIf="isMini">
                     <div class="form-group form-group-sm is-empty">
                         <label class="small-label control-label">Cost:</label>
@@ -57,3 +68,4 @@
         </a>
     </div>
 </div>
+<div [ngClass]="{'col-lg-2':singleEvent}"></div>

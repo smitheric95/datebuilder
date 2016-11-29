@@ -18,7 +18,7 @@ var AccountComponent = (function () {
         this.usersService = usersService;
     }
     AccountComponent.prototype.ngOnInit = function () {
-        this.isLoggedIn = document.cookie.includes("isLoggedIn=true;");
+        this.isLoggedIn = document.cookie.includes("isLoggedIn=true");
         this.user = {};
         this.accountCreatedLoginUser = {};
         this.stats = {};
@@ -77,6 +77,8 @@ var AccountComponent = (function () {
                 _this.datesLoaded = true;
                 if (_this.dates.length > 0)
                     _this.datesEmpty = false;
+                temp.stats.average_cost = temp.stats.average_cost.toFixed(2);
+                temp.stats.average_time = temp.stats.average_time.toFixed(2);
                 _this.stats = temp.stats;
             });
         }
