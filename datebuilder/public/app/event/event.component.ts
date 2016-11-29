@@ -4,6 +4,7 @@ import { EllipsisPipe } from '../pipes/ellipsis.pipe';
 import { ImagePipe } from '../pipes/image.pipe';
 import { PopoverContent } from 'ng2-popover';
 
+
 @Component({
     selector: 'event',
     templateUrl: './app/event/event.html',
@@ -23,13 +24,37 @@ export class EventComponent {
     @Output() eventAdded = new EventEmitter<any>();
     @Output() eventRemoved = new EventEmitter<any>();
 
+    googleLinks: string;
+    singleEvent: boolean;
+    categories: string[];
+
     constructor(private route: ActivatedRoute,
-        private router: Router){}
+        private router: Router) { }
+
+    ngOnInit() {
+        this.googleLinks = "";
+        this.singleEvent = false;
+        this.categories = []];
+    }
+
+    ngAfterContentInit() {
+        if (this.googleLinks !== undefined) {
+            this.googleLinks = ("http://maps.google.com/?q=" + this.event.location[0] + this.event.location[1]);
+
+
+            this.route.params.forEach((params: Params) => {
+                if (params['id'] === this.event.id){
+                    this.singleEvent = true;
+                    this.categories = this.event.categories[0];
+                }
+            });
+        }
+    }
 
     onAddEvent() {
-        if ( document.cookie.includes("isLoggedIn=true;") )
+        if (document.cookie.includes("isLoggedIn=true;"))
             this.eventAdded.emit(this.event);
-        else 
+        else
             this.router.navigateByUrl('account')
     }
 

@@ -18,6 +18,24 @@ var EventComponent = (function () {
         this.eventAdded = new core_1.EventEmitter();
         this.eventRemoved = new core_1.EventEmitter();
     }
+    EventComponent.prototype.ngOnInit = function () {
+        this.googleLinks = "";
+        this.singleEvent = false;
+        this.categories = [];
+        ;
+    };
+    EventComponent.prototype.ngAfterContentInit = function () {
+        var _this = this;
+        if (this.googleLinks !== undefined) {
+            this.googleLinks = ("http://maps.google.com/?q=" + this.event.location[0] + this.event.location[1]);
+            this.route.params.forEach(function (params) {
+                if (params['id'] === _this.event.id) {
+                    _this.singleEvent = true;
+                    _this.categories = _this.event.categories[0];
+                }
+            });
+        }
+    };
     EventComponent.prototype.onAddEvent = function () {
         if (document.cookie.includes("isLoggedIn=true;"))
             this.eventAdded.emit(this.event);
