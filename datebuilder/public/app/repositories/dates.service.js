@@ -14,11 +14,11 @@ require('rxjs/add/operator/toPromise');
 var DatesService = (function () {
     function DatesService(http) {
         this.http = http;
-        this._apiUrl = '';
+        this._apiUrl = 'index.php';
     }
     DatesService.prototype.get = function (date) {
         return this.http
-            .get(this._apiUrl + ("editdate/" + date))
+            .get(this._apiUrl + ("/editdate/" + date))
             .toPromise()
             .then(function (x) { return x['_body']; });
     };
