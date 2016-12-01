@@ -4,7 +4,7 @@ import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class DatesService {
-    private _apiUrl = 'index.php';
+    private _apiUrl = 'index.php/api';
 
     constructor(private http: Http) { }
 

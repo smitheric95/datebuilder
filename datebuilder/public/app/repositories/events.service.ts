@@ -5,7 +5,7 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class EventsService {
 
-    private _apiUrl = 'index.php/search';
+    private _apiUrl = 'index.php/api/search';
 
 
     /*

@@ -9,20 +9,20 @@ require '../vendor/autoload.php';
 
 $app = new \Slim\App;
 
-$app->get('/[{name}]', function ($request, $response, $args) {
+$app->get('/api/[{name}]', function ($request, $response, $args) {
     // Render index view
     $view = new \Slim\Views\PhpRenderer(__DIR__.'/../templates/');
     return $view->render($response, './index.phtml', $args);
 });
 
-$app->get('/hello/{name}', function (Request $request, Response $response) {
+$app->get('/api/hello/{name}', function (Request $request, Response $response) {
     $name = $request->getAttribute('name');
     $response->getBody()->write("Hello, $name");
 
     return $response;
 });
 
-$app->get('/getuser/', function (Request $request, Response $response) {
+$app->get('/api/getuser/', function (Request $request, Response $response) {
     // get user_id from session id
     if(isset($_SESSION['user_id']))
     {
@@ -44,7 +44,7 @@ $app->get('/getuser/', function (Request $request, Response $response) {
 
 // Request to create an account comes in the form of a JSON object that
 // includes all releveant account data.
-$app->post('/users', function (Request $request, Response $response) {
+$app->post('/api/users', function (Request $request, Response $response) {
     $parsed_body = $request->getParsedBody();
     $name = $parsed_body['name'];
     $email = $parsed_body['email'];
@@ -65,7 +65,7 @@ $app->post('/users', function (Request $request, Response $response) {
     return $response;
 });
 
-$app->post('/users/login', function (Request $request, Response $response) {
+$app->post('/api/users/login', function (Request $request, Response $response) {
     $parsed_body = $request->getParsedBody();
     $user_email = $parsed_body['email'];
     $password = $parsed_body['password'];
@@ -83,7 +83,7 @@ $app->post('/users/login', function (Request $request, Response $response) {
     return $response;
 });
 
-$app->post('/users/logout', function (Request $request, Response $response) {
+$app->post('/api/users/logout', function (Request $request, Response $response) {
     $parsed_body = $request->getParsedBody();
     if(isset($_SESSION['user_id']))
     {
@@ -114,7 +114,7 @@ $app->post('/users/logout', function (Request $request, Response $response) {
     */
 });
 
-$app->post('/users/updatesettings', function (Request $request, Response $response) {
+$app->post('/api/users/updatesettings', function (Request $request, Response $response) {
     if(!isset($_SESSION['is_validated']) or $_SESSION['is_validated'] == False)
     {
         header("Location:index.php"); //Do not allow him to access.
@@ -150,7 +150,7 @@ $app->post('/users/updatesettings', function (Request $request, Response $respon
 
 // Returns a JSON object that contains top rated restaurants in the users area
 // The "businesses" key maps to a list of recomended businesses, ranked for the user.
-$app->get('/search/load', function (Request $request, Response $response) {
+$app->get('/api/search/load', function (Request $request, Response $response) {
     include "search.php";
     $user_id = 0;
     if (isset($_SESSION["user_id"])) {
@@ -173,7 +173,7 @@ $app->get('/search/load', function (Request $request, Response $response) {
 
 // Returns a JSON array of JSON objects, each object contains the relevant data
 // for any single business.
-$app->get('/search/search/{query}', function (Request $request, Response $response) {
+$app->get('/api/search/search/{query}', function (Request $request, Response $response) {
     $query = $request->getAttribute('query');
 
     include "search.php";
@@ -188,7 +188,7 @@ $app->get('/search/search/{query}', function (Request $request, Response $respon
         return $response;
 });
 
-$app->get('/search/business/{businessid}', function (Request $request, Response $response) {
+$app->get('/api/search/business/{businessid}', function (Request $request, Response $response) {
     $businessid = $request->getAttribute('businessid');
 
     include "business_info.php";
@@ -202,7 +202,7 @@ $app->get('/search/business/{businessid}', function (Request $request, Response 
 
 
 
-$app->post('/build/', function (Request $request, Response $response) {
+$app->post('/api/build/', function (Request $request, Response $response) {
     if(!isset($_SESSION['is_validated']) or $_SESSION['is_validated'] == False)
     {
         header("Location:index.php"); //Do not allow him to access.
@@ -226,7 +226,7 @@ $app->post('/build/', function (Request $request, Response $response) {
     return $response;
 });
 
-$app->get('/editdate/{date_id}', function (Request $request, Response $response) {
+$app->get('/api/editdate/{date_id}', function (Request $request, Response $response) {
     if(!isset($_SESSION['is_validated']) or $_SESSION['is_validated'] == False or !isset($_SESSION['user_id']))
     {
         header("Location:index.php"); //Do not allow him to access.
@@ -242,7 +242,7 @@ $app->get('/editdate/{date_id}', function (Request $request, Response $response)
     return $response;
 });
 
-$app->post('/updatedate', function (Request $request, Response $response){
+$app->post('/api/updatedate', function (Request $request, Response $response){
     if(!isset($_SESSION['is_validated']) or $_SESSION['is_validated'] == False or !isset($_SESSION['user_id']))
     {
         header("Location:index.php"); //Do not allow him to access.
@@ -267,7 +267,7 @@ $app->post('/updatedate', function (Request $request, Response $response){
     return $response;
 });
 
-$app->post('/deletedate', function (Request $request, Response $response) {
+$app->post('/api/deletedate', function (Request $request, Response $response) {
     if(!isset($_SESSION['is_validated']) or $_SESSION['is_validated'] == False or !isset($_SESSION['user_id']))
     {
         header("Location:index.php"); //Do not allow him to access.

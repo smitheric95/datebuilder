@@ -14,7 +14,7 @@ require('rxjs/add/operator/toPromise');
 var DatesService = (function () {
     function DatesService(http) {
         this.http = http;
-        this._apiUrl = 'index.php';
+        this._apiUrl = 'index.php/api';
     }
     DatesService.prototype.get = function (date) {
         return this.http
