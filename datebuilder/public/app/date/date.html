@@ -34,7 +34,7 @@
                 <div class="list-group">
                     <div class="list-group-item" *ngFor="let bus of businessNames; let i = index;">
                         <div *ngIf="i == 0" class="list-group-separator separator-first"></div>
-                        <a [routerLink]="businessUrls[i]" target="_blank">
+                        <a [routerLink]="businessUrls[i]">
                             <div class="row-picture">
                                 <div class="circle">
                                     <i *ngIf="i == 0" class="material-icons">place</i>
