@@ -26,7 +26,7 @@ var LoginComponent = (function () {
         this.userService.logIn(this.user).then(function (x) {
             if (x == "Log in confirmed.") {
                 document.cookie = "isLoggedIn=true";
-                window.location.reload();
+                _this.router.navigateByUrl('/');
             }
             else {
                 _this.incorrect = true;

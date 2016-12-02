@@ -72,7 +72,7 @@ export class AccountComponent {
             this.usersService.logIn(this.accountCreatedLoginUser)
                 .then(() => {
                     document.cookie = "isLoggedIn=true";
-                    window.location.reload();
+                    //window.location.reload();
                     this.returnToList(false)
                 });
         }

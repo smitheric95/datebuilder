@@ -67,7 +67,7 @@ var DateComponent = (function () {
         this.route.params.forEach(function (params) {
             _this.deleteDate.date_id = params['id'];
             _this.datesService.delete(_this.deleteDate).then(function (x) {
-                window.location.reload();
+                //window.location.reload();
                 _this.router.navigateByUrl('account');
             });
         });

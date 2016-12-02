@@ -20,9 +20,16 @@ var NavbarComponent = (function () {
     NavbarComponent.prototype.logout = function () {
         this.usersService.logout();
         document.cookie = "isLoggedIn=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
-        window.location.reload();
+        if (this.router.url === '/')
+            this.router.navigateByUrl('/account');
+        else
+            this.router.navigateByUrl('/');
+        //window.location.reload();
     };
     NavbarComponent.prototype.ngOnInit = function () {
+        this.isLoggedIn = document.cookie.includes("isLoggedIn=true");
+    };
+    NavbarComponent.prototype.ngDoCheck = function () {
         this.isLoggedIn = document.cookie.includes("isLoggedIn=true");
     };
     NavbarComponent = __decorate([

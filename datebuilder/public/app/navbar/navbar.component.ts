@@ -22,9 +22,17 @@ export class NavbarComponent {
     logout() {
         this.usersService.logout();
         document.cookie = "isLoggedIn=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
-        window.location.reload();
+        if( this.router.url === '/' )
+            this.router.navigateByUrl('/account');
+        else
+            this.router.navigateByUrl('/');
+        
+        //window.location.reload();
     }
     ngOnInit() {
+        this.isLoggedIn = document.cookie.includes("isLoggedIn=true");
+    }
+    ngDoCheck() {
         this.isLoggedIn = document.cookie.includes("isLoggedIn=true");
     }
 

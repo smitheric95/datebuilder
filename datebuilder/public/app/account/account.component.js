@@ -50,7 +50,7 @@ var AccountComponent = (function () {
             this.usersService.logIn(this.accountCreatedLoginUser)
                 .then(function () {
                 document.cookie = "isLoggedIn=true";
-                window.location.reload();
+                //window.location.reload();
                 _this.returnToList(false);
             });
         }

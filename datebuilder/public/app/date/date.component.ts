@@ -85,7 +85,7 @@ export class DateComponent {
         this.route.params.forEach((params: Params) => {            
             this.deleteDate.date_id = params['id'];
             this.datesService.delete(this.deleteDate).then(x => {
-                window.location.reload();
+                //window.location.reload();
                 this.router.navigateByUrl('account');
             });
         });
